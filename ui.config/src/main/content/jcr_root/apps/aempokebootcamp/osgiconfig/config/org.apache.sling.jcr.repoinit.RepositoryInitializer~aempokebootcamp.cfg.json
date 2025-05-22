@@ -1,0 +1,7 @@
+{
+    "scripts": [
+        "create path (sling:OrderedFolder) /content/dam/aempokebootcamp",
+        "create path (nt:unstructured) /content/dam/aempokebootcamp/jcr:content",
+        "set properties on /content/dam/aempokebootcamp/jcr:content\n  set cq:conf{String} to /conf/aempokebootcamp\n  set jcr:title{String} to \"AEM PokeBootcamp\"\nend"
+    ]
+}
