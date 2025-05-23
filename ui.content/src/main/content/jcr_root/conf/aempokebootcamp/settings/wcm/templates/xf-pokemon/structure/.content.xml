@@ -3,7 +3,7 @@
     jcr:primaryType="cq:Page">
     <jcr:content
         cq:deviceGroups="[mobile/groups/responsive]"
-        cq:template="/conf/aempokebootcamp/settings/wcm/templates/xf-web-variation"
+        cq:template="/conf/aempokebootcamp/settings/wcm/templates/xf-pokemon"
         jcr:primaryType="cq:PageContent"
         sling:resourceType="aempokebootcamp/components/xfpage">
         <root
