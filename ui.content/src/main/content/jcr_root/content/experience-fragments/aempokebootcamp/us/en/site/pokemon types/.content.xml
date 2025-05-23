@@ -2,10 +2,28 @@
 <jcr:root xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:sling="http://sling.apache.org/jcr/sling/1.0"
     jcr:primaryType="cq:Page">
     <jcr:content
-        cq:tags="[]"
+        cq:lastModified="{Date}2025-05-23T09:47:37.980-05:00"
+        cq:lastModifiedBy="admin"
         cq:template="/libs/cq/experience-fragments/components/experiencefragment/template"
         jcr:primaryType="cq:PageContent"
-        jcr:title="Header"
+        jcr:title="Pokemon Types"
         sling:resourceType="cq/experience-fragments/components/experiencefragment"/>
-    <master/>
+    <dark/>
+    <dragon/>
+    <electric/>
+    <fairy/>
+    <fighting/>
+    <fire/>
+    <flying/>
+    <ghost/>
+    <grass/>
+    <ground/>
+    <ice/>
+    <normal/>
+    <poison/>
+    <psychic/>
+    <rock/>
+    <steel/>
+    <water/>
+    <bug/>
 </jcr:root>

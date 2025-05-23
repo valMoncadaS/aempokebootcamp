@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:sling="http://sling.apache.org/jcr/sling/1.0"
+    jcr:primaryType="cq:Page">
+    <jcr:content
+        cq:lastModified="{Date}2025-05-23T09:35:05.306-05:00"
+        cq:lastModifiedBy="admin"
+        cq:tags="[]"
+        cq:template="/conf/aempokebootcamp/settings/wcm/templates/xf-pokemon"
+        cq:xfVariantType="web"
+        jcr:primaryType="cq:PageContent"
+        jcr:title="Ghost"
+        sling:resourceType="aempokebootcamp/components/xfpage">
+        <root
+            jcr:primaryType="nt:unstructured"
+            sling:resourceType="aempokebootcamp/components/container"
+            layout="responsiveGrid">
+            <pokemonImage
+                jcr:lastModified="{Date}2025-05-23T09:35:05.292-05:00"
+                jcr:lastModifiedBy="admin"
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="core/wcm/components/image/v3/image"
+                displayPopupTitle="true"
+                fileReference="/content/dam/aempokebootcamp/pokemon-images/pokemon-tag-images/ghost.png"
+                imageFromPageImage="false"
+                isDecorative="true"
+                linkTarget="_self"
+                titleValueFromDAM="true"/>
+        </root>
+    </jcr:content>
+</jcr:root>
