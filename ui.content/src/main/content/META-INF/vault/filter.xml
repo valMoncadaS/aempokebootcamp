@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <workspaceFilter version="1.0">
-    <filter root="/conf/aempokebootcamp" mode="merge"/>
-    <filter root="/content/aempokebootcamp" mode="merge"/>
+    <filter root="/conf/aempokebootcamp" mode="merge" />
+    <filter root="/content/aempokebootcamp" mode="merge" />
     <filter root="/content/dam/aempokebootcamp" mode="merge">
-        <exclude pattern="/content/dam/aempokebootcamp(/.*)?"/>
-        <include pattern="/content/dam/aempokebootcamp/jcr:content(/.*)?"/>
+        <exclude pattern="/content/dam/aempokebootcamp(/.*)?" />
+        <include pattern="/content/dam/aempokebootcamp/jcr:content(/.*)?" />
     </filter>
-    <filter root="/content/dam/aempokebootcamp/asset.jpg" mode="merge"/>
-    <filter root="/content/experience-fragments/aempokebootcamp" mode="merge"/>
+    <filter root="/content/dam/aempokebootcamp/asset.jpg" mode="merge" />
+    <filter root="/content/experience-fragments/aempokebootcamp" mode="merge" />
+    <filter root="/content/cq:tags" mode="merge" />
 </workspaceFilter>
