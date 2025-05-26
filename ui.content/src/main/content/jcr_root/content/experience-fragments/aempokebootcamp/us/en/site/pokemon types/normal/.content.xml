@@ -5,7 +5,7 @@
         cq:lastModified="{Date}2025-05-26T10:18:49.615-05:00"
         cq:lastModifiedBy="admin"
         cq:tags="[pokemon-types:normal]"
-        cq:template="/conf/aempokebootcamp/settings/wcm/templates/xf-pokemon"
+        cq:template="/conf/aempokebootcamp/settings/wcm/templates/xf-pokemon-types"
         cq:xfVariantType="web"
         jcr:primaryType="cq:PageContent"
         jcr:title="Normal"

@@ -5,7 +5,7 @@
         cq:lastModified="{Date}2025-05-26T10:17:33.927-05:00"
         cq:lastModifiedBy="admin"
         cq:tags="[pokemon-types:fairy]"
-        cq:template="/conf/aempokebootcamp/settings/wcm/templates/xf-pokemon"
+        cq:template="/conf/aempokebootcamp/settings/wcm/templates/xf-pokemon-types"
         cq:xfVariantType="web"
         jcr:primaryType="cq:PageContent"
         jcr:title="Fairy"
