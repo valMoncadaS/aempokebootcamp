@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:sling="http://sling.apache.org/jcr/sling/1.0"
+    jcr:primaryType="cq:Page">
+    <jcr:content
+        cq:lastModified="{Date}2025-05-27T10:08:10.958-05:00"
+        cq:lastModifiedBy="admin"
+        cq:tags="[pokemontags:normal]"
+        cq:template="/conf/aempokebootcamp/settings/wcm/templates/xf-pokemon-type"
+        jcr:primaryType="cq:PageContent"
+        jcr:title="Normal"
+        sling:resourceType="aempokebootcamp/components/page"
+        pwaCachestrategy="staleWhileRevalidate"
+        pwaDisplay="standalone"
+        pwaOrientation="any">
+        <root
+            jcr:primaryType="nt:unstructured"
+            sling:resourceType="aempokebootcamp/components/container"
+            layout="responsiveGrid">
+            <container
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="aempokebootcamp/components/container"
+                layout="responsiveGrid"/>
+            <image
+                jcr:created="{Date}2025-05-27T09:06:23.963-05:00"
+                jcr:createdBy="admin"
+                jcr:lastModified="{Date}2025-05-27T09:45:10.097-05:00"
+                jcr:lastModifiedBy="admin"
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="aempokebootcamp/components/image"
+                alt="normal"
+                altValueFromDAM="false"
+                displayPopupTitle="false"
+                fileReference="/content/dam/aempokebootcamp/normal.png"
+                imageFromPageImage="false"
+                isDecorative="false"
+                linkTarget="_self"
+                titleValueFromDAM="false"/>
+        </root>
+    </jcr:content>
+</jcr:root>
