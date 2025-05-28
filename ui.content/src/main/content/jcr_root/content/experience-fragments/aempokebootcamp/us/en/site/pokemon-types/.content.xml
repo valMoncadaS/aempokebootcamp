@@ -9,7 +9,6 @@
         jcr:primaryType="cq:PageContent"
         jcr:title="Pokemon Types"
         sling:resourceType="cq/experience-fragments/components/experiencefragment"/>
-    <master/>
     <dark/>
     <dragon/>
     <electric/>
@@ -27,4 +26,5 @@
     <rock/>
     <steel/>
     <water/>
+    <bug/>
 </jcr:root>
