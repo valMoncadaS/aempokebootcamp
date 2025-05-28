@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:sling="http://sling.apache.org/jcr/sling/1.0"
+    jcr:primaryType="cq:Page">
+    <jcr:content
+        cq:lastModified="{Date}2025-05-23T08:33:18.181-05:00"
+        cq:lastModifiedBy="admin"
+        cq:tags="[]"
+        cq:template="/libs/cq/experience-fragments/components/experiencefragment/template"
+        jcr:primaryType="cq:PageContent"
+        jcr:title="Type"
+        sling:resourceType="cq/experience-fragments/components/experiencefragment"/>
+    <master/>
+    <bug/>
+    <dragon/>
+    <electric/>
+    <fairy/>
+    <fighting/>
+    <ghost/>
+    <grass/>
+    <ground/>
+    <ice/>
+    <normal/>
+    <poison/>
+    <physic/>
+    <rock/>
+    <steel/>
+    <water/>
+    <dark/>
+    <fire/>
+    <flying/>
+    <shadow/>
+    <special/>
+</jcr:root>
