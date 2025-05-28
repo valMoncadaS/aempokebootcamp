@@ -3,7 +3,7 @@
     jcr:primaryType="cq:Template">
     <jcr:content
         cq:templateType="/conf/aempokebootcamp/settings/wcm/template-types/xf"
-        jcr:description="My Site Experience Fragment Template"
+        jcr:description="Pokemon type Experience Fragment"
         jcr:primaryType="cq:PageContent"
         jcr:title="Pokemon XF"
         status="enabled"/>
