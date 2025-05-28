@@ -18,7 +18,7 @@
                 jcr:lastModified="{Date}2025-05-23T09:29:19.797-05:00"
                 jcr:lastModifiedBy="admin"
                 jcr:primaryType="nt:unstructured"
-                sling:resourceType="core/wcm/components/image/v3/image"
+                sling:resourceType="aempokebootcamp/components/image"
                 displayPopupTitle="true"
                 fileReference="/content/dam/aempokebootcamp/pokemon-images/pokemon-tag-images/fighting.png"
                 imageFromPageImage="false"
