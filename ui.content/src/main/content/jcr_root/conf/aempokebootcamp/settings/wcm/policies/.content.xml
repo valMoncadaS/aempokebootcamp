@@ -275,11 +275,13 @@
                     <jcr:content jcr:primaryType="nt:unstructured"/>
                 </policy_649128221558427>
                 <policy_1575040440977
-                    jcr:description="Allows the template components and defines the component mapping (this configures what components should be automatically created when authors drop assets from the content finder to the page editor)."
+                    jcr:lastModified="{Date}2025-05-27T07:49:08.657-05:00"
+                    jcr:lastModifiedBy="admin"
                     jcr:primaryType="nt:unstructured"
-                    jcr:title="XF Root"
+                    jcr:title="XF Pokemon Type"
                     sling:resourceType="wcm/core/components/policy/policy"
-                    components="[group:AEM PokeBootcamp - Content,/apps/aempokebootcamp/components/form/container]">
+                    components="[/apps/aempokebootcamp/components/image]"
+                    layoutDisabled="false">
                     <jcr:content jcr:primaryType="nt:unstructured"/>
                     <cq:authoring jcr:primaryType="nt:unstructured">
                         <assetToComponentMapping jcr:primaryType="nt:unstructured">
