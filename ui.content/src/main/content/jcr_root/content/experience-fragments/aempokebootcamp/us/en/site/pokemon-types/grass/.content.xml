@@ -4,7 +4,7 @@
     <jcr:content
         cq:lastModified="{Date}2025-05-27T10:47:47.650-05:00"
         cq:lastModifiedBy="admin"
-        cq:tags="[]"
+        cq:tags="[poketypes:grass]"
         cq:template="/conf/aempokebootcamp/settings/wcm/templates/xf-pokemon-type"
         cq:xfVariantType="web"
         jcr:primaryType="cq:PageContent"

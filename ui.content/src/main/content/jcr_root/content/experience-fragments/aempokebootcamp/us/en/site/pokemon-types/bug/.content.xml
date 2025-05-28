@@ -4,7 +4,7 @@
     <jcr:content
         cq:lastModified="{Date}2025-05-27T22:32:48.860-05:00"
         cq:lastModifiedBy="admin"
-        cq:tags="[]"
+        cq:tags="[poketypes:bug]"
         cq:template="/conf/aempokebootcamp/settings/wcm/templates/xf-pokemon-type"
         cq:xfVariantType="web"
         jcr:primaryType="cq:PageContent"
