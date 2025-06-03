@@ -4,7 +4,7 @@
     <jcr:content
         cq:lastModified="{Date}2025-05-27T10:48:37.319-05:00"
         cq:lastModifiedBy="admin"
-        cq:tags="[poketypes:poison]"
+        cq:tags="[]"
         cq:template="/conf/aempokebootcamp/settings/wcm/templates/xf-pokemon-type"
         cq:xfVariantType="web"
         jcr:primaryType="cq:PageContent"

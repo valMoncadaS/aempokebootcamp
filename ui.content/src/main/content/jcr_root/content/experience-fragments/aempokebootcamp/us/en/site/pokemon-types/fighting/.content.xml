@@ -4,7 +4,7 @@
     <jcr:content
         cq:lastModified="{Date}2025-05-27T10:44:34.277-05:00"
         cq:lastModifiedBy="admin"
-        cq:tags="[poketypes:fighting]"
+        cq:tags="[]"
         cq:template="/conf/aempokebootcamp/settings/wcm/templates/xf-pokemon-type"
         cq:xfVariantType="web"
         jcr:primaryType="cq:PageContent"

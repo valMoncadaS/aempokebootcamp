@@ -4,7 +4,7 @@
     <jcr:content
         cq:lastModified="{Date}2025-05-27T10:43:56.268-05:00"
         cq:lastModifiedBy="admin"
-        cq:tags="[poketypes:dragon]"
+        cq:tags="[]"
         cq:template="/conf/aempokebootcamp/settings/wcm/templates/xf-pokemon-type"
         cq:xfVariantType="web"
         jcr:primaryType="cq:PageContent"
