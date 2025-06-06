@@ -80,7 +80,7 @@ Import-Package: javax.annotation;version=0.0.0,*
             <plugin>
                 <groupId>org.jacoco</groupId>
                 <artifactId>jacoco-maven-plugin</artifactId>
-                <version>0.8.7</version> <!-- Or a more recent version -->
+                <version>0.8.7</version>
                 <executions>
                     <execution>
                         <id>prepare-agent</id>
