@@ -1,0 +1,23 @@
+{
+  "content": {
+    "pokemoncards": {
+      "jcr:primaryType": "nt:unstructured",
+      "datasource": {
+        "jcr:primaryType": "nt:unstructured",
+        "tagsPath": "/content/cq:tags/types"
+      }
+    },
+    "pokemoncards-noTagsPath": {
+      "jcr:primaryType": "nt:unstructured",
+      "datasource": {
+        "jcr:primaryType": "nt:unstructured"
+      }
+    },
+    "cq:tags": {
+      "types": {
+        "jcr:primaryType": "nt:unstructured"
+      }
+    }
+  }
+}
+
