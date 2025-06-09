@@ -14,17 +14,18 @@ import org.apache.sling.api.resource.ValueMap;
 import org.apache.sling.api.servlets.HttpConstants;
 import org.apache.sling.api.servlets.SlingSafeMethodsServlet;
 import org.apache.sling.api.wrappers.ValueMapDecorator;
-import org.osgi.framework.Constants;
+import org.apache.sling.servlets.annotations.SlingServletResourceTypes;
 import org.osgi.service.component.annotations.Component;
 
 import javax.servlet.Servlet;
 import java.util.*;
 
 @Slf4j
-@Component(service = Servlet.class,
-        property = {Constants.SERVICE_DESCRIPTION + "= Tags value in dynamic Dropdown",
-                "sling.servlet.paths=/bin/pokemonTypesTags",
-                "sling.servlet.methods=" + HttpConstants.METHOD_GET})
+@Component(service = Servlet.class)
+@SlingServletResourceTypes(
+        resourceTypes = "aem/pokebootcamp/tagDropdown",
+        methods = HttpConstants.METHOD_GET
+)
 public class TagDropdownServlet extends SlingSafeMethodsServlet {
 
     transient ResourceResolver resourceResolver;
@@ -40,7 +41,7 @@ public class TagDropdownServlet extends SlingSafeMethodsServlet {
 
         String tagsPath = Objects.requireNonNull(pathResource.getChild("datasource")).getValueMap().get("tagsPath", String.class);
 
-        if(tagsPath == null) {
+        if (tagsPath == null) {
             log.warn("No tagsPath found");
             return;
         }
@@ -55,7 +56,7 @@ public class TagDropdownServlet extends SlingSafeMethodsServlet {
             valueMap = new ValueMapDecorator(new HashMap<>());
 
             Tag pokemonTypes = childTags.adaptTo(Tag.class);
-            if(pokemonTypes == null) {
+            if (pokemonTypes == null) {
                 log.info("Unable to adapt to Tag class");
                 continue;
             }

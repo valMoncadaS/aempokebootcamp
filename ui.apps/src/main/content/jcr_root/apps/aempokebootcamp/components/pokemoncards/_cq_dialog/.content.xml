@@ -51,7 +51,7 @@
                                     required="{Boolean}true">
                                     <datasource
                                         jcr:primaryType="nt:unstructured"
-                                        sling:resourceType="/bin/pokemonTypesTags"
+                                        sling:resourceType="aem/pokebootcamp/tagDropdown"
                                         tagsPath="/content/cq:tags/types"/>
                                 </pokemonTypes>
                             </items>

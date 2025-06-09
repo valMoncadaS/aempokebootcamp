@@ -4,21 +4,21 @@ import com.adobe.granite.ui.components.ds.DataSource;
 import com.day.cq.tagging.Tag;
 import io.wcm.testing.mock.aem.junit5.AemContext;
 import io.wcm.testing.mock.aem.junit5.AemContextExtension;
+import org.apache.commons.collections4.IteratorUtils;
 import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.resource.Resource;
 import org.apache.sling.api.resource.ResourceResolver;
-import org.apache.sling.api.resource.ValueMap;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 
-import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 import java.util.function.Function;
+import java.util.stream.Collectors;
 
 import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.*;
 
 @ExtendWith(AemContextExtension.class)
@@ -62,23 +62,24 @@ class TagDropdownServletTest {
 
         DataSource dataSource = (DataSource) dataSourceObj;
         Iterator<Resource> items = dataSource.iterator();
-        int count = 0;
+        List<Map<String, String>> resourceList = IteratorUtils
+                .toList(items)
+                .stream()
+                .map(Resource::getValueMap)
+                .map(valueMap -> Map.of(
+                        "text", valueMap.get("text", String.class),
+                        "value", valueMap.get("value", String.class)))
+                .collect(Collectors.toList());
 
-        while (items.hasNext()) {
-            Resource res = items.next();
-            ValueMap valueMap = res.getValueMap();
-            String value = valueMap.get("value", String.class);
-            String text = valueMap.get("text", String.class);
+        assertEquals(List.of(
+                        Map.of(
+                                "text", "poison",
+                                "value", "poison"),
+                        Map.of(
+                                "text", "fire",
+                                "value", "fire")),
+                resourceList);
 
-            assertNotNull(value);
-            assertNotNull(text);
-            assertTrue(value.equals("poison") || value.equals("fire"));
-            assertTrue(text.equals("poison") || text.equals("fire"));
-
-            count++;
-        }
-
-        assertEquals(2, count);
     }
 
     @Test
@@ -122,9 +123,6 @@ class TagDropdownServletTest {
         ctx.currentResource(resource);
         SlingHttpServletRequest request = ctx.request();
 
-        ResourceResolver resourceResolver = mock(ResourceResolver.class);
-        when(resourceResolver.adaptTo(Tag.class)).thenReturn(null);
-
         tagDropdownServlet.doGet(request, ctx.response());
 
         Object dataSourceObj = request.getAttribute(DataSource.class.getName());
@@ -132,13 +130,8 @@ class TagDropdownServletTest {
         assertInstanceOf(DataSource.class, dataSourceObj);
 
         DataSource dataSource = (DataSource) dataSourceObj;
-        Iterator<Resource> items = dataSource.iterator();
+        List<Resource> resourceList = IteratorUtils.toList(dataSource.iterator());
 
-        int totalTags = 0;
-        if (items.hasNext()) {
-            totalTags++;
-        }
-
-        assertEquals(0, totalTags);
+        assertEquals(0, resourceList.size());
     }
 }
