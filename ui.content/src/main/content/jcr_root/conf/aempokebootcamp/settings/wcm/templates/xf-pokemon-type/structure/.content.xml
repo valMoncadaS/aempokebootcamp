@@ -9,12 +9,8 @@
         <root
             jcr:primaryType="nt:unstructured"
             sling:resourceType="aempokebootcamp/components/container"
-            layout="responsiveGrid">
-            <image
-                jcr:primaryType="nt:unstructured"
-                sling:resourceType="aempokebootcamp/components/image"
-                editable="{Boolean}true"/>
-        </root>
+            editable="{Boolean}true"
+            layout="responsiveGrid"/>
         <cq:responsive jcr:primaryType="nt:unstructured">
             <breakpoints jcr:primaryType="nt:unstructured">
                 <phone

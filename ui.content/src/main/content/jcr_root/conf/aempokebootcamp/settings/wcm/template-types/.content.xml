@@ -5,13 +5,4 @@
     <xf/>
     <rep:policy/>
     <page/>
-    <xf-pokemon-type jcr:primaryType="nt:unstructured">
-        <initial/>
-        <jcr:content
-            jcr:description="Generic template for pokemon type experience fragments variations"
-            jcr:primaryType="cq:PageContent"
-            jcr:title="Pokemon Type Experience Fragment"/>
-        <structure/>
-        <policies/>
-    </xf-pokemon-type>
 </jcr:root>

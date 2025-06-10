@@ -4,7 +4,7 @@
     <jcr:content
         cq:lastModified="{Date}2019-12-02T17:37:24.544+01:00"
         cq:lastModifiedBy="admin"
-        cq:templateType="/conf/aempokebootcamp/settings/wcm/template-types/xf-pokemon-type"
+        cq:templateType="/conf/aempokebootcamp/settings/wcm/template-types/xf"
         jcr:description="Pokemon Type XF Template"
         jcr:primaryType="cq:PageContent"
         jcr:title="Pokemon Type"

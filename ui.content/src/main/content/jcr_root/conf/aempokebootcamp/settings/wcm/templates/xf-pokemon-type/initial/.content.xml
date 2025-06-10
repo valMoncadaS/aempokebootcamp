@@ -11,7 +11,8 @@
             layout="responsiveGrid">
             <image
                 jcr:primaryType="nt:unstructured"
-                sling:resourceType="aempokebootcamp/components/image"/>
+                sling:resourceType="aempokebootcamp/components/image"
+                editable="{Boolean}true"/>
         </root>
     </jcr:content>
 </jcr:root>
