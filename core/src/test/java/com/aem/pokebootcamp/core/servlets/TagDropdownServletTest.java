@@ -1,13 +1,11 @@
 package com.aem.pokebootcamp.core.servlets;
 
 import com.adobe.granite.ui.components.ds.DataSource;
-import com.day.cq.tagging.Tag;
 import io.wcm.testing.mock.aem.junit5.AemContext;
 import io.wcm.testing.mock.aem.junit5.AemContextExtension;
 import org.apache.commons.collections4.IteratorUtils;
 import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.resource.Resource;
-import org.apache.sling.api.resource.ResourceResolver;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -15,11 +13,9 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
-import java.util.function.Function;
 import java.util.stream.Collectors;
 
 import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.Mockito.*;
 
 @ExtendWith(AemContextExtension.class)
 class TagDropdownServletTest {
@@ -35,24 +31,11 @@ class TagDropdownServletTest {
 
     @Test
     void doGetSuccessfulTest() {
-        Resource resource = ctx.resourceResolver().getResource("/content/content/pokemoncards");
+        Resource resource = ctx.resourceResolver().getResource("/content/pokemoncards");
         assertNotNull(resource);
-
-        ctx.create().resource("/content/cq:tags/types/poison", "jcr:primaryType", "cq:Tag");
-        ctx.create().resource("/content/cq:tags/types/fire", "jcr:primaryType", "cq:Tag");
 
         ctx.currentResource(resource);
         SlingHttpServletRequest request = ctx.request();
-
-        ctx.registerAdapter(Resource.class, Tag.class, (Function<Resource, Tag>) (res) -> {
-            Tag mockTag = mock(Tag.class);
-            String name = res.getName();
-
-            when(mockTag.getTagID()).thenReturn(res.getPath());
-            when(mockTag.getTitle()).thenReturn(name);
-
-            return mockTag;
-        });
 
         tagDropdownServlet.doGet(request, ctx.response());
 
@@ -73,22 +56,19 @@ class TagDropdownServletTest {
 
         assertEquals(List.of(
                         Map.of(
-                                "text", "poison",
-                                "value", "poison"),
+                                "text", "Poison",
+                                "value", "types:poison"),
                         Map.of(
-                                "text", "fire",
-                                "value", "fire")),
+                                "text", "Fire",
+                                "value", "types:fire")),
                 resourceList);
 
     }
 
     @Test
     void doGetTagsPathFailsTest() {
-        Resource resource = ctx.resourceResolver().getResource("/content/content/pokemoncards-noTagsPath");
+        Resource resource = ctx.resourceResolver().getResource("/content/pokemoncards-noTagsPath");
         assertNotNull(resource);
-
-        ctx.create().resource("/content/cq:tags/types/poison", "jcr:primaryType", "cq:Tag");
-        ctx.create().resource("/content/cq:tags/types/fire", "jcr:primaryType", "cq:Tag");
 
         ctx.currentResource(resource);
         SlingHttpServletRequest request = ctx.request();
@@ -101,7 +81,7 @@ class TagDropdownServletTest {
 
     @Test
     void doGetTagsResourceFailsTest() {
-        Resource resource = ctx.resourceResolver().getResource("/content/content/pokemoncards");
+        Resource resource = ctx.resourceResolver().getResource("/content/pokemoncards-wrongTagsPath");
         assertNotNull(resource);
 
         ctx.currentResource(resource);
@@ -115,10 +95,8 @@ class TagDropdownServletTest {
 
     @Test
     void doGetSkipAdaptTagFailsTest() {
-        Resource resource = ctx.resourceResolver().getResource("/content/content/pokemoncards");
+        Resource resource = ctx.resourceResolver().getResource("/content/pokemoncards");
         assertNotNull(resource);
-
-        ctx.create().resource("/content/cq:tags/types/poison", "jcr:primaryType", "");
 
         ctx.currentResource(resource);
         SlingHttpServletRequest request = ctx.request();
@@ -132,6 +110,6 @@ class TagDropdownServletTest {
         DataSource dataSource = (DataSource) dataSourceObj;
         List<Resource> resourceList = IteratorUtils.toList(dataSource.iterator());
 
-        assertEquals(0, resourceList.size());
+        assertEquals(2, resourceList.size());
     }
 }
