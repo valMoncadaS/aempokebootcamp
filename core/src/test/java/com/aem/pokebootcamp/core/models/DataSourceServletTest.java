@@ -1,18 +1,15 @@
 package com.aem.pokebootcamp.core.models;
 import com.adobe.granite.ui.components.ds.DataSource;
-import com.day.cq.tagging.Tag;
-import com.day.cq.tagging.TagManager;
 import io.wcm.testing.mock.aem.junit5.AemContext;
 import io.wcm.testing.mock.aem.junit5.AemContextExtension;
-import org.apache.sling.api.resource.ResourceResolver;
+import org.apache.sling.api.resource.Resource;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
-import javax.servlet.ServletException;
 import java.io.IOException;
-import java.util.Arrays;
-import java.util.Iterator;
+import java.util.*;
+
 import static junit.framework.Assert.*;
-import static org.mockito.Mockito.*;
 
 @ExtendWith(AemContextExtension.class)
 class DataSourceServletTest {
@@ -21,28 +18,41 @@ class DataSourceServletTest {
     DataSourceServlet servlet = new DataSourceServlet();
     private Object dataSourceServlet;
 
+    @BeforeEach
+    void setUp() {
+        aemContext.load().json("/components/PokemonCardModel/PokemonTag.json", "/content");
+    }
+
     @Test
     void doGet() throws IOException {
-        TagManager tagManagerMock = mock(TagManager.class);
-        Tag rootTag = mock(Tag.class);
-        when(tagManagerMock.resolve("/content/cq:tags/pokemontags")).thenReturn(rootTag);
-
-        Tag tag1 = mock(Tag.class);
-        Tag tag2 = mock(Tag.class);
-        Iterator<Tag> tagIteratorMock = Arrays.asList(tag1, tag2).iterator();
-        when(rootTag.listAllSubTags()).thenReturn(tagIteratorMock);
-
-        when(tag1.getTagID()).thenReturn("pokemontags:normal");
-        when(tag2.getTagID()).thenReturn("pokemontags:grass");
-        when(tag1.getTitle()).thenReturn("Normal");
-        when(tag2.getTitle()).thenReturn("Grass");
-        when(tag1.getPath()).thenReturn("/content/cq:tags/pokemontags/normal");
-        when(tag2.getPath()).thenReturn("/content/cq:tags/pokemontags/grass");
-
-        aemContext.registerAdapter(ResourceResolver.class, TagManager.class , tagManagerMock);
-        aemContext.registerInjectActivateService(servlet);
+        Resource resource = aemContext.resourceResolver().getResource("/content/pokemoncards");
+        assertNotNull(resource);
         servlet.doGet(aemContext.request(), aemContext.response());
-        dataSourceServlet = aemContext.request().getAttribute(DataSource.class.getName());
+        DataSource dataSourceServlet = (DataSource) aemContext.request().getAttribute(DataSource.class.getName());
         assertNotNull(dataSourceServlet);
+
+        ArrayList<ArrayList<String>> expectedOutputs = new ArrayList<>();
+        ArrayList<String> normalOutput = new ArrayList<>();
+        ArrayList<String> grassOutput = new ArrayList<>();
+
+        normalOutput.add("Normal");
+        normalOutput.add("pokemontags:normal");
+        grassOutput.add("Grass");
+        grassOutput.add("pokemontags:grass");
+
+        expectedOutputs.add(normalOutput);
+        expectedOutputs.add(grassOutput);
+
+        ArrayList<ArrayList<String>> dataSourceOutputs = new ArrayList<>();
+        Iterator<Resource> elements = dataSourceServlet.iterator();
+        while (elements.hasNext()) {
+            Resource resource1 = elements.next();
+            ArrayList<String> temp = new ArrayList<>();
+            temp.add(resource1.getValueMap().get("text", String.class));
+            temp.add(resource1.getValueMap().get("value", String.class));
+            dataSourceOutputs.add(temp);
+        }
+
+        assertEquals(expectedOutputs, dataSourceOutputs);
     }
 }
