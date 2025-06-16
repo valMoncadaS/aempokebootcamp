@@ -1,0 +1,16 @@
+<div data-emptytext="Pokemon Cards" class="cq-placeholder"></div>
+<sly data-sly-use.pokemonCardsModel="com.aem.pokebootcamp.core.models.PokemonCardModel">
+    <div class="cmp-pokemonCards">
+        <ul class="cmp-pokemonCards-list">
+            <sly data-sly-list.listPokemonItem="${pokemonCardsModel.multifieldList}">
+                <li class="cmp-pokemonCards-item">
+                    <img src="${listPokemonItem.fileReference}" alt=""/>
+                    <p class="cmp-pokemonCards-pokemon-name">${listPokemonItem.name}</p>
+                    <div class="cmp-pokemonCards-pokemon-tags" data-sly-list.tag="${listPokemonItem.tagNames}">
+                        <p>${tag}</p>
+                    </div>
+                </li>
+            </sly>
+        </ul>
+    </div>
+</sly>
