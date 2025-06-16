@@ -8,5 +8,4 @@
     </filter>
     <filter root="/content/dam/aempokebootcamp/asset.jpg" mode="merge"/>
     <filter root="/content/experience-fragments/aempokebootcamp" mode="merge"/>
-    <filter root="/content/cq:tags" mode="merge"/>
 </workspaceFilter>

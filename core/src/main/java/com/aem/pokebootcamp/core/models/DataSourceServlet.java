@@ -10,8 +10,10 @@ import org.apache.sling.api.SlingHttpServletResponse;
 import org.apache.sling.api.resource.Resource;
 import org.apache.sling.api.resource.ResourceResolver;
 import org.apache.sling.api.resource.ValueMap;
+import org.apache.sling.api.servlets.HttpConstants;
 import org.apache.sling.api.servlets.SlingSafeMethodsServlet;
 import org.apache.sling.api.wrappers.ValueMapDecorator;
+import org.apache.sling.servlets.annotations.SlingServletResourceTypes;
 import org.osgi.service.component.annotations.Component;
 
 import javax.servlet.Servlet;
@@ -21,12 +23,11 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 
-@Component(
-        service = Servlet.class,
-        property = {
-                "sling.servlet.paths=/bin/pokebootcamp/pokemontags",
-                "sling.servlet.methods=GET"
-        })
+@Component(service = Servlet.class)
+@SlingServletResourceTypes(
+        resourceTypes = "apps/aempokebootcamp/components/pokemoncomponents/pokemonCards",
+        methods = HttpConstants.METHOD_GET
+)
 public class DataSourceServlet extends SlingSafeMethodsServlet {
     @Override
     protected void doGet(SlingHttpServletRequest request, SlingHttpServletResponse response) throws IOException {
