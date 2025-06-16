@@ -18,6 +18,7 @@ import org.apache.sling.servlets.annotations.SlingServletResourceTypes;
 import org.osgi.service.component.annotations.Component;
 
 import javax.servlet.Servlet;
+import java.io.IOException;
 import java.util.*;
 
 @Slf4j
@@ -28,52 +29,47 @@ import java.util.*;
 )
 public class TagDropdownServlet extends SlingSafeMethodsServlet {
 
-    transient ResourceResolver resourceResolver;
-    transient Resource pathResource;
-    transient ValueMap valueMap;
-    transient List<Resource> resourceList;
-
     @Override
-    protected void doGet(SlingHttpServletRequest request, SlingHttpServletResponse response) {
-        resourceResolver = request.getResourceResolver();
-        pathResource = request.getResource();
-        resourceList = new ArrayList<>();
+    protected void doGet(SlingHttpServletRequest request, SlingHttpServletResponse response) throws IOException {
+        final ResourceResolver resourceResolver = request.getResourceResolver();
+        final Resource pathResource = request.getResource();
+        List<Resource> resourceList = new ArrayList<>();
 
         String tagsPath = Objects.requireNonNull(pathResource.getChild("datasource")).getValueMap().get("tagsPath", String.class);
 
         if (tagsPath == null) {
-            log.warn("No tagsPath found");
-            return;
+            log.error("No tagsPath found at {} datasource", pathResource);
+            response.setStatus(500);
         }
 
         Resource tagsResource = resourceResolver.getResource(tagsPath);
         if (tagsResource == null) {
-            log.warn("tagsResource not found");
-            return;
-        }
+            log.error("tagsResource not found {}", tagsPath);
+            response.setStatus(500);
+        } else {
+            for (Resource childTags : tagsResource.getChildren()) {
+                ValueMap valueMap = new ValueMapDecorator(new HashMap<>());
 
-        for (Resource childTags : tagsResource.getChildren()) {
-            valueMap = new ValueMapDecorator(new HashMap<>());
+                Tag pokemonTypes = childTags.adaptTo(Tag.class);
+                if (pokemonTypes == null) {
+                    log.warn("Unable to adapt to Tag class {}", childTags);
+                    continue;
+                }
 
-            Tag pokemonTypes = childTags.adaptTo(Tag.class);
-            if (pokemonTypes == null) {
-                log.info("Unable to adapt to Tag class");
-                continue;
+                String tagFullName = pokemonTypes.getTagID();
+                String tagName = tagFullName.substring(tagFullName.lastIndexOf('/') + 1);
+                String tagTitle = pokemonTypes.getTitle();
+
+                valueMap.put("value", tagName);
+                valueMap.put("text", tagTitle);
+
+                resourceList.add(new ValueMapResource(resourceResolver, new ResourceMetadata(), "nt:unstructured", valueMap));
             }
 
-            String tagFullName = pokemonTypes.getTagID();
-            String tagName = tagFullName.substring(tagFullName.lastIndexOf('/') + 1);
-            String tagTitle = pokemonTypes.getTitle();
+            DataSource dataSource = new SimpleDataSource(resourceList.iterator());
+            request.setAttribute(DataSource.class.getName(), dataSource);
 
-            valueMap.put("value", tagName);
-            valueMap.put("text", tagTitle);
-
-            resourceList.add(new ValueMapResource(resourceResolver, new ResourceMetadata(), "nt:unstructured", valueMap));
+            log.info("Tags successfully exported using datasource");
         }
-
-        DataSource dataSource = new SimpleDataSource(resourceList.iterator());
-        request.setAttribute(DataSource.class.getName(), dataSource);
-
-        log.info("Tags successfully exported using datasource");
     }
 }
