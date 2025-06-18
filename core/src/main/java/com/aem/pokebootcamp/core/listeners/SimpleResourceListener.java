@@ -26,10 +26,11 @@ import org.slf4j.LoggerFactory;
 
 /**
  * A service to demonstrate how changes in the resource tree
- * can be listened for. 
+ * can be listened for.
  * Please note, that apart from EventHandler services,
  * the immediate flag should not be set on a service.
  */
+@SuppressWarnings({"PMD","checkstyle:all"})
 @Component(service = ResourceChangeListener.class,
            immediate = true
 )
