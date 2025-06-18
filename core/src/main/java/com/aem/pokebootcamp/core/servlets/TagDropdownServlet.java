@@ -23,7 +23,6 @@ import java.util.*;
 /**
  * TagDropddownServlet to create dynamic dropdown based on tags.
  */
-@SuppressWarnings("PMD.CloseResource")
 @Slf4j
 @Component(service = Servlet.class)
 @SlingServletResourceTypes(
@@ -35,7 +34,7 @@ public class TagDropdownServlet extends SlingSafeMethodsServlet {
 
     @Override
     protected final void doGet(final SlingHttpServletRequest request, final SlingHttpServletResponse response) {
-        final int errorStatusCode = 500;
+
         final Resource pathResource = request.getResource();
         final List<Resource> resourceList = new ArrayList<>();
         final ResourceResolver resourceResolver = request.getResourceResolver();
@@ -46,13 +45,13 @@ public class TagDropdownServlet extends SlingSafeMethodsServlet {
                 .get("tagsPath", String.class);
         if (tagsPath == null) {
             log.error("No tagsPath found at {} datasource", pathResource);
-            response.setStatus(errorStatusCode);
+            response.setStatus(SlingHttpServletResponse.SC_INTERNAL_SERVER_ERROR);
         }
 
         final Resource tagsResource = resourceResolver.getResource(tagsPath);
         if (tagsResource == null) {
             log.error("tagsResource not found {}", tagsPath);
-            response.setStatus(errorStatusCode);
+            response.setStatus(SlingHttpServletResponse.SC_INTERNAL_SERVER_ERROR);
         } else {
             for (final Resource childTags : tagsResource.getChildren()) {
                 final ValueMap valueMap = new ValueMapDecorator(new HashMap<>());
