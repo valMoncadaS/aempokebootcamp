@@ -8,12 +8,17 @@ import org.apache.sling.models.annotations.Model;
 import org.apache.sling.models.annotations.injectorspecific.ChildResource;
 
 import java.util.List;
-
+/**
+ * PokemonCardsImpl.
+ */
 @Model(adaptables = SlingHttpServletRequest.class,
         adapters = {PokemonCards.class},
         resourceType = {PokemonCardsImpl.RESOURCE_TYPE},
         defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
 public class PokemonCardsImpl implements PokemonCards {
+    /**
+     * PokemonCards resource type.
+     */
     protected static final String RESOURCE_TYPE = "aempokebootcamp/components/pokemoncards";
 
     @Getter

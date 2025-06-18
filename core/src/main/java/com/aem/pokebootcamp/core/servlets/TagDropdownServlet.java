@@ -18,9 +18,12 @@ import org.apache.sling.servlets.annotations.SlingServletResourceTypes;
 import org.osgi.service.component.annotations.Component;
 
 import javax.servlet.Servlet;
-import java.io.IOException;
 import java.util.*;
 
+/**
+ * TagDropddownServlet to create dynamic dropdown based on tags.
+ */
+@SuppressWarnings("PMD.CloseResource")
 @Slf4j
 @Component(service = Servlet.class)
 @SlingServletResourceTypes(
@@ -28,45 +31,55 @@ import java.util.*;
         methods = HttpConstants.METHOD_GET
 )
 public class TagDropdownServlet extends SlingSafeMethodsServlet {
+    private static final long serialVersionUID = 1L;
 
     @Override
-    protected void doGet(SlingHttpServletRequest request, SlingHttpServletResponse response) throws IOException {
-        final ResourceResolver resourceResolver = request.getResourceResolver();
+    protected final void doGet(final SlingHttpServletRequest request, final SlingHttpServletResponse response) {
+        final int errorStatusCode = 500;
         final Resource pathResource = request.getResource();
-        List<Resource> resourceList = new ArrayList<>();
+        final List<Resource> resourceList = new ArrayList<>();
+        final ResourceResolver resourceResolver = request.getResourceResolver();
 
-        String tagsPath = Objects.requireNonNull(pathResource.getChild("datasource")).getValueMap().get("tagsPath", String.class);
-
+        final String tagsPath = Objects.requireNonNull(
+                        pathResource.getChild("datasource"))
+                .getValueMap()
+                .get("tagsPath", String.class);
         if (tagsPath == null) {
             log.error("No tagsPath found at {} datasource", pathResource);
-            response.setStatus(500);
+            response.setStatus(errorStatusCode);
         }
 
-        Resource tagsResource = resourceResolver.getResource(tagsPath);
+        final Resource tagsResource = resourceResolver.getResource(tagsPath);
         if (tagsResource == null) {
             log.error("tagsResource not found {}", tagsPath);
-            response.setStatus(500);
+            response.setStatus(errorStatusCode);
         } else {
-            for (Resource childTags : tagsResource.getChildren()) {
-                ValueMap valueMap = new ValueMapDecorator(new HashMap<>());
+            for (final Resource childTags : tagsResource.getChildren()) {
+                final ValueMap valueMap = new ValueMapDecorator(new HashMap<>());
 
-                Tag pokemonTypes = childTags.adaptTo(Tag.class);
+                final Tag pokemonTypes = childTags.adaptTo(Tag.class);
                 if (pokemonTypes == null) {
                     log.warn("Unable to adapt to Tag class {}", childTags);
                     continue;
                 }
 
-                String tagFullName = pokemonTypes.getTagID();
-                String tagName = tagFullName.substring(tagFullName.lastIndexOf('/') + 1);
-                String tagTitle = pokemonTypes.getTitle();
+                final String tagFullName = pokemonTypes.getTagID();
+                final String tagName = tagFullName.substring(tagFullName.lastIndexOf('/') + 1);
+                final String tagTitle = pokemonTypes.getTitle();
 
                 valueMap.put("value", tagName);
                 valueMap.put("text", tagTitle);
 
-                resourceList.add(new ValueMapResource(resourceResolver, new ResourceMetadata(), "nt:unstructured", valueMap));
+                resourceList.add(
+                        new ValueMapResource(
+                                resourceResolver,
+                                new ResourceMetadata(),
+                                "nt:unstructured", valueMap
+                        )
+                );
             }
 
-            DataSource dataSource = new SimpleDataSource(resourceList.iterator());
+            final DataSource dataSource = new SimpleDataSource(resourceList.iterator());
             request.setAttribute(DataSource.class.getName(), dataSource);
 
             log.info("Tags successfully exported using datasource");

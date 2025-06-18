@@ -9,22 +9,29 @@ import org.apache.sling.models.annotations.injectorspecific.ValueMapValue;
 import java.util.List;
 import java.util.stream.Collectors;
 
+/**
+ * DTO Class PokeCard.
+ */
 @Model(adaptables = Resource.class,
         adapters = {PokeCard.class},
         defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
-public class PokeCard {
+public final class PokeCard {
 
     @Getter
     @ValueMapValue
-    String name;
+    private String name;
 
     @Getter
     @ValueMapValue
-    String fileReference;
+    private String fileReference;
 
     @ValueMapValue
-    List<String> pokemonTypes;
+    private List<String> pokemonTypes;
 
+    /**
+     * getPokemonTypes.
+     * @return List
+     */
     public List<String> getPokemonTypes() {
         return pokemonTypes.stream()
                 .map(type -> type.substring(type.lastIndexOf(':') + 1))

@@ -10,7 +10,6 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 
-import java.io.IOException;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
@@ -31,7 +30,7 @@ class TagDropdownServletTest {
 
 
     @Test
-    void doGetSuccessfulTest() throws IOException {
+    void doGetSuccessfulTest() {
         Resource resource = ctx.resourceResolver().getResource("/content/pokemoncards");
         assertNotNull(resource);
 
@@ -67,7 +66,7 @@ class TagDropdownServletTest {
     }
 
     @Test
-    void doGetTagsPathFailsTest() throws IOException {
+    void doGetTagsPathFailsTest() {
         Resource resource = ctx.resourceResolver().getResource("/content/pokemoncards-noTagsPath");
         assertNotNull(resource);
 
@@ -81,7 +80,7 @@ class TagDropdownServletTest {
     }
 
     @Test
-    void doGetTagsResourceFailsTest() throws IOException {
+    void doGetTagsResourceFailsTest() {
         Resource resource = ctx.resourceResolver().getResource("/content/pokemoncards-wrongTagsPath");
         assertNotNull(resource);
 
@@ -94,7 +93,7 @@ class TagDropdownServletTest {
     }
 
     @Test
-    void doGetSkipAdaptTagFailsTest() throws IOException {
+    void doGetSkipAdaptTagFailsTest() {
         Resource resource = ctx.resourceResolver().getResource("/content/pokemoncards");
         assertNotNull(resource);
 
