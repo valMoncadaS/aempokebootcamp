@@ -23,26 +23,25 @@ import java.util.*;
 /**
  * TagDropddownServlet to create dynamic dropdown based on tags.
  */
+// Add this as the resource resolver is not opened by this servlet.
+@SuppressWarnings("PMD.CloseResource")
 @Slf4j
 @Component(service = Servlet.class)
-@SlingServletResourceTypes(
-        resourceTypes = "aem/pokebootcamp/tagDropdown",
-        methods = HttpConstants.METHOD_GET
-)
+@SlingServletResourceTypes(resourceTypes = "aem/pokebootcamp/tagDropdown", methods = HttpConstants.METHOD_GET)
 public class TagDropdownServlet extends SlingSafeMethodsServlet {
     private static final long serialVersionUID = 1L;
 
     @Override
     protected final void doGet(final SlingHttpServletRequest request, final SlingHttpServletResponse response) {
 
+        final ResourceResolver resourceResolver = request.getResourceResolver();
         final Resource pathResource = request.getResource();
         final List<Resource> resourceList = new ArrayList<>();
-        final ResourceResolver resourceResolver = request.getResourceResolver();
+        final String tagsPath =
+                Objects.requireNonNull(pathResource.getChild("datasource"))
+                        .getValueMap()
+                        .get("tagsPath", String.class);
 
-        final String tagsPath = Objects.requireNonNull(
-                        pathResource.getChild("datasource"))
-                .getValueMap()
-                .get("tagsPath", String.class);
         if (tagsPath == null) {
             log.error("No tagsPath found at {} datasource", pathResource);
             response.setStatus(SlingHttpServletResponse.SC_INTERNAL_SERVER_ERROR);
