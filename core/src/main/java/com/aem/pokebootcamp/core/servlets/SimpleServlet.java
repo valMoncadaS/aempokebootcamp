@@ -36,6 +36,7 @@ import java.io.IOException;
  * {@link SlingSafeMethodsServlet} shall be used for HTTP methods that are
  * idempotent. For write operations use the {@link SlingAllMethodsServlet}.
  */
+@SuppressWarnings({"PMD","checkstyle:all"})
 @Component(service = { Servlet.class })
 @SlingServletResourceTypes(
         resourceTypes="aempokebootcamp/components/page",
