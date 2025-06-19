@@ -35,6 +35,7 @@ import org.slf4j.LoggerFactory;
 /**
  * Simple servlet filter component that logs incoming requests.
  */
+@SuppressWarnings({"PMD","all"})
 @Component(service = Filter.class,
            property = {
                    EngineConstants.SLING_FILTER_SCOPE + "=" + EngineConstants.FILTER_SCOPE_REQUEST,
