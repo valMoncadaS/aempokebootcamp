@@ -18,6 +18,7 @@ import org.apache.sling.servlets.annotations.SlingServletResourceTypes;
 import org.osgi.service.component.annotations.Component;
 
 import javax.servlet.Servlet;
+import java.io.IOException;
 import java.util.*;
 
 /**
@@ -27,12 +28,21 @@ import java.util.*;
 @SuppressWarnings("PMD.CloseResource")
 @Slf4j
 @Component(service = Servlet.class)
-@SlingServletResourceTypes(resourceTypes = "aem/pokebootcamp/tagDropdown", methods = HttpConstants.METHOD_GET)
+@SlingServletResourceTypes(resourceTypes = TagDropdownServlet.RESOURCE_TYPE, methods = HttpConstants.METHOD_GET)
 public class TagDropdownServlet extends SlingSafeMethodsServlet {
     private static final long serialVersionUID = 1L;
+    /**
+     * Resource type for tag dropdown.
+     */
+    public static final String RESOURCE_TYPE = "aem/pokebootcamp/tagDropdown";
+    /**
+     * Tags Path constant.
+     */
+    public static final String TAGS_PATH = "tagsPath";
 
     @Override
-    protected final void doGet(final SlingHttpServletRequest request, final SlingHttpServletResponse response) {
+    protected final void doGet(final SlingHttpServletRequest request, final SlingHttpServletResponse response)
+            throws IOException {
 
         final ResourceResolver resourceResolver = request.getResourceResolver();
         final Resource pathResource = request.getResource();
@@ -40,22 +50,22 @@ public class TagDropdownServlet extends SlingSafeMethodsServlet {
         final String tagsPath =
                 Objects.requireNonNull(pathResource.getChild("datasource"))
                         .getValueMap()
-                        .get("tagsPath", String.class);
+                        .get(TAGS_PATH, String.class);
+        log.debug("tagsPath: {}", tagsPath);
 
-        if (tagsPath == null) {
-            log.error("No tagsPath found at {} datasource", pathResource);
+        if (tagsPath == null || resourceResolver.getResource(tagsPath) == null) {
+            log.error("No tagsPath found in {} datasource", pathResource);
             response.setStatus(SlingHttpServletResponse.SC_INTERNAL_SERVER_ERROR);
-        }
-
-        final Resource tagsResource = resourceResolver.getResource(tagsPath);
-        if (tagsResource == null) {
-            log.error("tagsResource not found {}", tagsPath);
-            response.setStatus(SlingHttpServletResponse.SC_INTERNAL_SERVER_ERROR);
+            response.getWriter().write("Tags not found in " + pathResource + "datasource");
         } else {
+            final Resource tagsResource = resourceResolver.getResource(tagsPath);
+            log.debug("tagsResource: {}", tagsResource);
+
             for (final Resource childTags : tagsResource.getChildren()) {
                 final ValueMap valueMap = new ValueMapDecorator(new HashMap<>());
-
                 final Tag pokemonTypes = childTags.adaptTo(Tag.class);
+                log.debug("pokemonTypes: {}", pokemonTypes);
+
                 if (pokemonTypes == null) {
                     log.warn("Unable to adapt to Tag class {}", childTags);
                     continue;
@@ -67,6 +77,9 @@ public class TagDropdownServlet extends SlingSafeMethodsServlet {
 
                 valueMap.put("value", tagName);
                 valueMap.put("text", tagTitle);
+
+                final String valMap = valueMap.toString();
+                log.debug("valueMap: {}", valMap);
 
                 resourceList.add(
                         new ValueMapResource(

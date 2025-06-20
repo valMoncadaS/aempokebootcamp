@@ -13,6 +13,14 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+/**
+ * Unit test for {@link PokemonCardsImpl}.
+ * <p>
+ * This test class uses {@link AemContext} from wcm.io to simulate an AEM environment
+ * and validate the behavior of the {@link PokemonCards} model implementation.
+ * </p>
+ */
+@SuppressWarnings("PMD.JUnitTestContainsTooManyAsserts")
 @Slf4j
 @ExtendWith(AemContextExtension.class)
 class PokemonCardsImplTest {
@@ -28,17 +36,22 @@ class PokemonCardsImplTest {
     }
 
     @Test
-    void getPokemonCardsSizeTest() {
+    void pokemonCardsTest() {
         final int cards = 2;
-        assertEquals(cards, pokemonCards.getPokemonCards().size());
-    }
-
-    @Test
-    void getPokemonCardsValuesTest() {
         final String name = "Bulbasaur";
         final List<String> pokemonTypes = Arrays.asList("poison");
 
-        assertEquals(name, pokemonCards.getPokemonCards().get(0).getName());
-        assertEquals(pokemonTypes, pokemonCards.getPokemonCards().get(0).getPokemonTypes());
+        assertEquals(
+                name,
+                pokemonCards.getPokemonCards().get(0).getName(),
+                "Expected the name of the first Pokémon card to be '" + name + "'");
+        assertEquals(
+                pokemonTypes,
+                pokemonCards.getPokemonCards().get(0).getPokemonTypes(),
+                "Expected the Pokémon types of the first card to be " + pokemonTypes);
+        assertEquals(
+                cards,
+                pokemonCards.getPokemonCards().size(),
+                "Expected total number of Pokémon cards to be " + cards);
     }
 }

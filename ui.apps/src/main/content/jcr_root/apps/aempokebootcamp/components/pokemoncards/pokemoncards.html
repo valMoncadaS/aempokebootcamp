@@ -1,3 +1,4 @@
+<sly data-sly-use.templates="core/wcm/components/commons/v1/templates.html" />
 <div data-sly-use.model="com.aem.pokebootcamp.core.models.PokemonCards">
     <ul data-sly-test.hasContent="${model.pokemonCards}" data-sly-list.item="${model.pokemonCards}"
         class="cmp-pokemon-cards">
@@ -11,7 +12,8 @@
             </div>
         </li>
     </ul>
-    <div data-sly-test="${!hasContent}" class="cmp-pokemon-not-found">
+    <div data-sly-test="${!hasContent && !wcmmode.edit}" class="cmp-pokemon-not-found">
         <p>No Pokemon Found</p>
     </div>
 </div>
+<sly data-sly-call="${templates.placeholder @ isEmpty=!hasContent && wcmmode.edit}"></sly>

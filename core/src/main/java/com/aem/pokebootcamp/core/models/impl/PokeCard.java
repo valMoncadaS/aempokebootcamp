@@ -29,8 +29,15 @@ public final class PokeCard {
     private List<String> pokemonTypes;
 
     /**
-     * getPokemonTypes.
-     * @return List
+     * Returns a list of simplified Pokémon type names.
+     *
+     * <p>This method strips the namespace or path from the tag values,
+     * returning only the last segment. For example:
+     * <pre>
+     *     "pokemon:types/fire" → "fire"
+     * </pre></p>
+     *
+     * @return list of Pokémon type names without prefixes or tag namespaces
      */
     public List<String> getPokemonTypes() {
         return pokemonTypes.stream()
