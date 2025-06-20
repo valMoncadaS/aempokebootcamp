@@ -4,7 +4,7 @@
     <jcr:content
         cq:lastModified="{Date}2025-05-28T19:18:34.763-05:00"
         cq:lastModifiedBy="admin"
-        cq:tags="[experience-fragments:variation/web,types:dark]"
+        cq:tags="[experience-fragments:variation/web,pokemon-types:dark]"
         cq:template="/conf/aempokebootcamp/settings/wcm/templates/xf-pokemon-type"
         cq:xfVariantType="web"
         jcr:primaryType="cq:PageContent"

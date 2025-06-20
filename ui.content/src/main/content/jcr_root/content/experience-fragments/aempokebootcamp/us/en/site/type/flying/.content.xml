@@ -4,7 +4,7 @@
     <jcr:content
         cq:lastModified="{Date}2025-05-28T19:19:06.115-05:00"
         cq:lastModifiedBy="admin"
-        cq:tags="[experience-fragments:variation/web,types:flying]"
+        cq:tags="[experience-fragments:variation/web,pokemon-types:flying]"
         cq:template="/conf/aempokebootcamp/settings/wcm/templates/xf-pokemon-type"
         cq:xfVariantType="web"
         jcr:primaryType="cq:PageContent"
@@ -22,7 +22,7 @@
                 alt="flying type"
                 altValueFromDAM="false"
                 displayPopupTitle="true"
-                fileReference="/content/dam/aempokebootcamp/pokemon-types/Fighting.png"
+                fileReference="/content/dam/aempokebootcamp/pokemon-types/Flying.png"
                 imageFromPageImage="false"
                 isDecorative="false"
                 linkTarget="_self"
