@@ -1,0 +1,21 @@
+{
+  "pokemoncards": {
+    "jcr:primaryType": "nt:unstructured",
+    "sling:resourceType": "aempokebootcamp/components/pokemoncards",
+    "pokemonCards": {
+      "jcr:primaryType": "nt:unstructured",
+      "item0": {
+        "jcr:primaryType": "nt:unstructured",
+        "fileReference": "/content/dam/aempokebootcamp/pokemon/Bulbasaur.png",
+        "name": "Bulbasaur",
+        "pokemonTypes": "types:poison"
+      },
+      "item1": {
+        "jcr:primaryType": "nt:unstructured",
+        "fileReference": "/content/dam/aempokebootcamp/pokemon/Charmander.png",
+        "name": "Charmander",
+        "pokemonTypes": "types:fire"
+      }
+    }
+  }
+}
