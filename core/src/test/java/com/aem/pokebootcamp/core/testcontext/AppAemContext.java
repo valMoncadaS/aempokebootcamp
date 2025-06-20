@@ -27,6 +27,7 @@ import io.wcm.testing.mock.aem.junit5.AemContextCallback;
 /**
  * Sets up {@link AemContext} for unit tests in this application.
  */
+@SuppressWarnings({"PMD","all"})
 public final class AppAemContext {
 
     private AppAemContext() {
