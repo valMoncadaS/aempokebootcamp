@@ -20,7 +20,6 @@ import static org.junit.jupiter.api.Assertions.*;
  * and validate the behavior of the {@link PokemonCards} model implementation.
  * </p>
  */
-@SuppressWarnings("PMD.JUnitTestContainsTooManyAsserts")
 @Slf4j
 @ExtendWith(AemContextExtension.class)
 class PokemonCardsImplTest {
@@ -37,21 +36,21 @@ class PokemonCardsImplTest {
 
     @Test
     void pokemonCardsTest() {
-        final int cards = 2;
-        final String name = "Bulbasaur";
-        final List<String> pokemonTypes = Arrays.asList("poison");
+        final int expectedCards = 2;
+        final String expectedName = "Bulbasaur";
+        final List<String> expectedPokemonTypes = Arrays.asList("poison");
 
         assertEquals(
-                name,
+                expectedName,
                 pokemonCards.getPokemonCards().get(0).getName(),
-                "Expected the name of the first Pokémon card to be '" + name + "'");
+                "Expected the name of the first Pokémon card to be '" + expectedCards + "'");
         assertEquals(
-                pokemonTypes,
+                expectedPokemonTypes,
                 pokemonCards.getPokemonCards().get(0).getPokemonTypes(),
-                "Expected the Pokémon types of the first card to be " + pokemonTypes);
+                "Expected the Pokémon types of the first card to be " + expectedPokemonTypes);
         assertEquals(
-                cards,
+                expectedCards,
                 pokemonCards.getPokemonCards().size(),
-                "Expected total number of Pokémon cards to be " + cards);
+                "Expected total number of Pokémon cards to be " + expectedCards);
     }
 }
