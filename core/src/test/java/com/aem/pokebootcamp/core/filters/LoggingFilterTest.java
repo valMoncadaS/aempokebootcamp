@@ -39,6 +39,7 @@ import uk.org.lidalia.slf4jtest.TestLoggerFactory;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.mock;
 
+@SuppressWarnings({"PMD","all"})
 @ExtendWith(AemContextExtension.class)
 class LoggingFilterTest {
 

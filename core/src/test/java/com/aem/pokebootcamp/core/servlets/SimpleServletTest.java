@@ -29,6 +29,7 @@ import io.wcm.testing.mock.aem.junit5.AemContextExtension;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+@SuppressWarnings({"PMD","all"})
 @ExtendWith(AemContextExtension.class)
 class SimpleServletTest {
 
