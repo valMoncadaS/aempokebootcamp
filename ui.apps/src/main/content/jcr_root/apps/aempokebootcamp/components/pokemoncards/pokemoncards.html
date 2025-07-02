@@ -1,0 +1,19 @@
+<div
+  data-sly-use.model="com.aem.pokebootcamp.core.models.PokemonCards"
+  data-sly-use.template="core/wcm/components/commons/v1/templates.html"
+  class="cmp-pokemon-cards"
+>
+  <ul data-sly-list.item="${model.pokemonCards}">
+    <li>
+      <div>
+        <img src="${item.fileReference}" />
+      </div>
+      <div>
+        <p>${item.name}</p>
+      </div>
+    </li>
+  </ul>
+</div>
+<sly
+  data-sly-call="${template.placeholder @ isEmpty=false, classAppend='cmp-pokemon-cards'}"
+></sly>
