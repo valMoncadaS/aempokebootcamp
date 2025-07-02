@@ -1,39 +1,21 @@
 {
   "data": {
     "jcr:primaryType": "cq:Page",
-    "jcr:createdBy": "admin",
-    "jcr:created": "Thu May 22 2025 16:28:11 GMT-0500",
     "jcr:content": {
-      "jcr:primaryType": "cq:PageContent",
-      "jcr:createdBy": "admin",
       "jcr:title": "test",
       "cq:template": "/conf/aempokebootcamp/settings/wcm/templates/page-content",
-      "jcr:created": "Thu May 22 2025 16:28:11 GMT-0500",
-      "cq:lastModified": "Fri May 30 2025 17:11:57 GMT-0500",
       "sling:resourceType": "aempokebootcamp/components/page",
-      "cq:lastModifiedBy": "admin",
       "root": {
         "jcr:primaryType": "nt:unstructured",
-        "layout": "responsiveGrid",
         "sling:resourceType": "aempokebootcamp/components/container",
         "container": {
           "jcr:primaryType": "nt:unstructured",
-          "layout": "responsiveGrid",
           "sling:resourceType": "aempokebootcamp/components/container",
-          "title": {
-            "jcr:primaryType": "nt:unstructured",
-            "sling:resourceType": "aempokebootcamp/components/title"
-          },
           "container": {
             "jcr:primaryType": "nt:unstructured",
-            "layout": "responsiveGrid",
             "sling:resourceType": "aempokebootcamp/components/container",
             "pokemoncards": {
               "jcr:primaryType": "nt:unstructured",
-              "jcr:createdBy": "admin",
-              "jcr:lastModifiedBy": "admin",
-              "jcr:created": "Fri May 30 2025 17:11:05 GMT-0500",
-              "jcr:lastModified": "Fri May 30 2025 17:11:57 GMT-0500",
               "sling:resourceType": "aempokebootcamp/components/pokemoncomponents/pokemonCards",
               "multifieldList": {
                 "jcr:primaryType": "nt:unstructured",

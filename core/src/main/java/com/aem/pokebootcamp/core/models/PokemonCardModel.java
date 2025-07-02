@@ -6,10 +6,12 @@ import org.apache.sling.models.annotations.Model;
 import org.apache.sling.models.annotations.injectorspecific.ChildResource;
 
 import java.util.List;
-@Getter
+/**
+ * Class to create a multifield List of PokemonCards.
+ */
 @Model(adaptables = Resource.class, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
-public class PokemonCardModel
-{
+public class PokemonCardModel {
+    @Getter
     @ChildResource
     private List<PokemonCardModelList> multifieldList;
 }

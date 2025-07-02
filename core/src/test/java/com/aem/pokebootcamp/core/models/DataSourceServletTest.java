@@ -9,14 +9,16 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import java.io.IOException;
 import java.util.*;
 
-import static junit.framework.Assert.*;
+import static org.junit.jupiter.api.Assertions.*;
 
+/**
+ * Test for Data Source to validate the information is working as expected.
+ */
 @ExtendWith(AemContextExtension.class)
 class DataSourceServletTest {
 
-    AemContext aemContext = new AemContext();
-    DataSourceServlet servlet = new DataSourceServlet();
-    private Object dataSourceServlet;
+    private final AemContext aemContext = new AemContext();
+    private final DataSourceServlet servlet = new DataSourceServlet();
 
     @BeforeEach
     void setUp() {
@@ -25,15 +27,16 @@ class DataSourceServletTest {
 
     @Test
     void doGet() throws IOException {
-        Resource resource = aemContext.resourceResolver().getResource("/content/pokemoncards");
-        assertNotNull(resource);
+        final Resource resource = aemContext.resourceResolver().getResource("/content/pokemoncards");
+        aemContext.currentResource(resource);
+        assertNotNull(resource, "The resource was found");
         servlet.doGet(aemContext.request(), aemContext.response());
-        DataSource dataSourceServlet = (DataSource) aemContext.request().getAttribute(DataSource.class.getName());
-        assertNotNull(dataSourceServlet);
+        final DataSource dataSourceServlet = (DataSource) aemContext.request().getAttribute(DataSource.class.getName());
+        assertNotNull(dataSourceServlet, "The info requested was found");
 
-        ArrayList<ArrayList<String>> expectedOutputs = new ArrayList<>();
-        ArrayList<String> normalOutput = new ArrayList<>();
-        ArrayList<String> grassOutput = new ArrayList<>();
+        final List<List<String>> expectedOutputs = new ArrayList<>();
+        final List<String> normalOutput = new ArrayList<>();
+        final List<String> grassOutput = new ArrayList<>();
 
         normalOutput.add("Normal");
         normalOutput.add("pokemontags:normal");
@@ -43,16 +46,16 @@ class DataSourceServletTest {
         expectedOutputs.add(normalOutput);
         expectedOutputs.add(grassOutput);
 
-        ArrayList<ArrayList<String>> dataSourceOutputs = new ArrayList<>();
-        Iterator<Resource> elements = dataSourceServlet.iterator();
+        final List<List<String>> dataSourceOutputs = new ArrayList<>();
+        final Iterator<Resource> elements = dataSourceServlet.iterator();
         while (elements.hasNext()) {
-            Resource resource1 = elements.next();
-            ArrayList<String> temp = new ArrayList<>();
+            final Resource resource1 = elements.next();
+            final List<String> temp = new ArrayList<>();
             temp.add(resource1.getValueMap().get("text", String.class));
             temp.add(resource1.getValueMap().get("value", String.class));
             dataSourceOutputs.add(temp);
         }
 
-        assertEquals(expectedOutputs, dataSourceOutputs);
+        assertEquals(expectedOutputs, dataSourceOutputs, "Both tags match");
     }
 }

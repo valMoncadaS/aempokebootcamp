@@ -40,7 +40,9 @@
                                                 name="./tags">
                                             <datasource
                                                     jcr:primaryType="nt:unstructured"
-                                                    sling:resourceType="apps/aempokebootcamp/components/pokemoncomponents/pokemonCards"/>
+                                                    sling:resourceType="apps/aempokebootcamp/components/pokemoncomponents/pokemonCards"
+                                                    tagsPath="/content/cq:tags/pokemontags"
+                                            />
                                         </tags>
                                         <file
                                             jcr:primaryType="nt:unstructured"

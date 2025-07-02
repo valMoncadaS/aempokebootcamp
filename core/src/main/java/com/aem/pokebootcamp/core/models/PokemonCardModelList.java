@@ -1,6 +1,7 @@
 package com.aem.pokebootcamp.core.models;
 
 import lombok.Getter;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.sling.api.resource.Resource;
 import org.apache.sling.models.annotations.DefaultInjectionStrategy;
 import org.apache.sling.models.annotations.Model;
@@ -11,10 +12,16 @@ import com.day.cq.tagging.TagManager;
 import javax.inject.Inject;
 import java.util.*;
 import org.apache.sling.api.servlets.SlingSafeMethodsServlet;
+import java.io.Serializable;
 
-@Model(adaptables = Resource.class, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL
-)
-public class PokemonCardModelList extends SlingSafeMethodsServlet{
+/**
+ *  Pokémon Card Model with name, tags and fileReference.
+ */
+@Slf4j
+@Model(adaptables = Resource.class, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
+public class PokemonCardModelList extends SlingSafeMethodsServlet implements Serializable {
+    private static final long serialVersionUID = 1L;
+
     @Getter
     @ValueMapValue
     private String name;
@@ -31,16 +38,26 @@ public class PokemonCardModelList extends SlingSafeMethodsServlet{
     @Self
     private Resource resource;
 
-    public List<String> getTagNames(){
-        List<String> tagNames = new ArrayList<>();
-        TagManager tagManager = resource.getResourceResolver().adaptTo(TagManager.class);
-        if(tags != null && tagManager != null){
-            for(String tagItem : tags){
-                Tag tag = tagManager.resolve(tagItem);
-                if(tag != null) {
+
+    /**
+    * Function returns a list of tag names.
+     * @return list of tag names that were selected from the data source dropdown
+     * or an empty list if no tags were selected.
+     */
+    public List<String> getTagNames() {
+        final List<String> tagNames = new ArrayList<>();
+        final TagManager tagManager = resource.getResourceResolver().adaptTo(TagManager.class);
+        if (tags != null && tagManager != null) {
+            for (final String tagItem : tags) {
+                final Tag tag = tagManager.resolve(tagItem);
+                if (tag != null) {
                     tagNames.add(tag.getTitle());
+                } else {
+                    log.warn("Tag not found!");
                 }
             }
+        } else {
+            log.warn("tags array is empty or TagManager is null");
         }
         return tagNames;
     }
