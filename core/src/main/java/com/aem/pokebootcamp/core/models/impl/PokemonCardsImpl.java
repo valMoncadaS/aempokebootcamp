@@ -8,6 +8,8 @@ import org.apache.sling.models.annotations.injectorspecific.ChildResource;
 
 import lombok.Getter;
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.StreamSupport;
 
 @Model(adaptables = SlingHttpServletRequest.class, 
     adapters = {PokemonCards.class}, 
@@ -18,6 +20,22 @@ public class PokemonCardsImpl implements PokemonCards {
     public static final String RESOURCE = "aempokebootcamp/components/pokemoncards";
 
     @Getter
-    @ChildResource
-    private List<String> pokemonCards;
+    @ChildResource(name = "pokemonCards");
+    private Resource pokemonCards;
+
+    private List<PokemonItem> pokemonItemList;
+
+    @PostConstruct
+    protected void inint() {
+        if(pokemonCards != null) {
+            pokemonItemList = StreamSupport.stream(pokemonCards.getChildren().spliterator(), false)
+                    .map(resource -> resource.adaptTo(PokemonItem.class))
+                    .collect(Collectors.toList());
+        }
+    }
+
+    @Override
+    public List<PokemonItem> getPokemonCards() {
+        return pokemonItemList;
+    }
 }
