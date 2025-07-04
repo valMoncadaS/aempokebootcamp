@@ -19,7 +19,7 @@ import javax.annotation.PostConstruct;
         resourceType = {PokemonCardsImpl.RESOURCE},
         defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
 
-public class PokemonCardsImpl implements PokemonCards {
+public final class PokemonCardsImpl implements PokemonCards {
 
     /** The resource type for the PokemonCards component. */
     public static final String RESOURCE = "aempokebootcamp/components/pokemoncards";
@@ -29,6 +29,10 @@ public class PokemonCardsImpl implements PokemonCards {
     private Resource pokemonCards;
 
     private List<PokemonItem> pokemonItemList;
+
+    /**
+    * Initializes the list of Pokemon items. Subclasses may override this method to provide custom initialization.
+    */
 
     @PostConstruct
     protected void inint() {
