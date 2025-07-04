@@ -77,6 +77,28 @@ Import-Package: javax.annotation;version=0.0.0,*
                     </archive>
                 </configuration>
             </plugin>
+            <plugin>
+                <groupId>org.jacoco</groupId>
+                <artifactId>jacoco-maven-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-checkstyle-plugin</artifactId>
+                <configuration>
+                    <skip>${static.analysis.skip}</skip>
+                    <failsOnError>${static.analysis.fail.build}</failsOnError>
+                    <consoleOutput>${static.analysis.fail.build}</consoleOutput>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-pmd-plugin</artifactId>
+                <configuration>
+                    <skip>${static.analysis.skip}</skip>
+                    <failOnViolation>${static.analysis.fail.build}</failOnViolation>
+                    <printFailingErrors>${static.analysis.fail.build}</printFailingErrors>
+                </configuration>
+            </plugin>
         </plugins>
     </build>
 
