@@ -20,6 +20,8 @@ import javax.annotation.PostConstruct;
         defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
 
 public class PokemonCardsImpl implements PokemonCards {
+
+    /** The resource type for the PokemonCards component. */
     public static final String RESOURCE = "aempokebootcamp/components/pokemoncards";
 
     @Getter
