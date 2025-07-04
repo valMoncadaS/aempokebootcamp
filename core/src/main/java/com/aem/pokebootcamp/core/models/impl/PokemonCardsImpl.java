@@ -8,15 +8,16 @@ import org.apache.sling.models.annotations.injectorspecific.ChildResource;
 import org.apache.sling.api.resource.Resource;
 
 import lombok.Getter;
+
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
 import javax.annotation.PostConstruct;
 
-@Model(adaptables = SlingHttpServletRequest.class, 
-    adapters = {PokemonCards.class}, 
-    resourceType = {PokemonCardsImpl.RESOURCE}, 
-    defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
+@Model(adaptables = SlingHttpServletRequest.class,
+        adapters = {PokemonCards.class},
+        resourceType = {PokemonCardsImpl.RESOURCE},
+        defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
 
 public class PokemonCardsImpl implements PokemonCards {
     public static final String RESOURCE = "aempokebootcamp/components/pokemoncards";
@@ -29,7 +30,7 @@ public class PokemonCardsImpl implements PokemonCards {
 
     @PostConstruct
     protected void inint() {
-        if(pokemonCards != null) {
+        if (pokemonCards != null) {
             pokemonItemList = StreamSupport.stream(pokemonCards.getChildren().spliterator(), false)
                     .map(resource -> resource.adaptTo(PokemonItem.class))
                     .collect(Collectors.toList());
