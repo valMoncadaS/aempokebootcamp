@@ -27,6 +27,9 @@ public final class PokemonItem {
 
 
     public List<String> getTypes() {
+         if (types == null) {
+            return List.of();
+        }
         return types.stream()
                     .map(type -> type.substring(type.lastIndexOf(':') + 1))
                     .collect(Collectors.toList());
