@@ -5,11 +5,13 @@ import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.models.annotations.Model;
 import org.apache.sling.models.annotations.DefaultInjectionStrategy;
 import org.apache.sling.models.annotations.injectorspecific.ChildResource;
+import org.apache.sling.api.resource.Resource;
 
 import lombok.Getter;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
+import javax.annotation.PostConstruct;
 
 @Model(adaptables = SlingHttpServletRequest.class, 
     adapters = {PokemonCards.class}, 
@@ -20,7 +22,7 @@ public class PokemonCardsImpl implements PokemonCards {
     public static final String RESOURCE = "aempokebootcamp/components/pokemoncards";
 
     @Getter
-    @ChildResource(name = "pokemonCards");
+    @ChildResource(name = "pokemonCards")
     private Resource pokemonCards;
 
     private List<PokemonItem> pokemonItemList;
