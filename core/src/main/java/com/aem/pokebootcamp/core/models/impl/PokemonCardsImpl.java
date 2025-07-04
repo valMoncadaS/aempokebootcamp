@@ -9,7 +9,10 @@ import org.apache.sling.models.annotations.injectorspecific.ChildResource;
 import lombok.Getter;
 import java.util.List;
 
-@Model(adaptables = SlingHttpServletRequest.class, adapters = {PokemonCards.class}, resourceType = {PokemonCardsImpl.RESOURCE}, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
+@Model(adaptables = SlingHttpServletRequest.class, 
+    adapters = {PokemonCards.class}, 
+    resourceType = {PokemonCardsImpl.RESOURCE}, 
+    defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
 
 public class PokemonCardsImpl implements PokemonCards {
     public static final String RESOURCE = "aempokebootcamp/components/pokemoncards";

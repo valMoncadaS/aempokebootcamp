@@ -8,7 +8,9 @@ import org.apache.sling.models.annotations.DefaultInjectionStrategy;
 import java.util.List;
 import java.util.stream.Collectors;
 
-@Model(adaptables = Resource.class, adapters = {PokemonItem.class}, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
+@Model(adaptables = Resource.class, 
+    adapters = {PokemonItem.class}, 
+    defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
 
 public final class PokemonItem {
 
