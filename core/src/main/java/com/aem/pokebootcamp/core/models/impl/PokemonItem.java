@@ -4,6 +4,7 @@ import org.apache.sling.api.resource.Resource;
 import org.apache.sling.models.annotations.Model;
 import org.apache.sling.models.annotations.injectorspecific.ValueMapValue;
 import org.apache.sling.models.annotations.DefaultInjectionStrategy;
+import lombok.Getter;
 
 import java.util.List;
 import java.util.stream.Collectors;
