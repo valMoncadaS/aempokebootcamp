@@ -10,7 +10,6 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Model(adaptables = Resource.class, 
-    adapters = {PokemonItem.class}, 
     defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
 
 public final class PokemonItem {
