@@ -28,8 +28,9 @@ import java.util.*;
 @SuppressWarnings("PMD.CloseResource")
 @Slf4j
 @Component(service = Servlet.class)
-@SlingServletResourceTypes(resourceTypes = TagDropdownServlet.RESOURCE_TYPE, methods = HttpConstants.METHOD_GET)
-public class TagDropdownServlet extends SlingSafeMethodsServlet {
+@SlingServletResourceTypes(resourceTypes = TagDatasourceServlet.RESOURCE_TYPE, methods = HttpConstants.METHOD_GET)
+
+public class TagDatasourceServlet extends SlingSafeMethodsServlet {
     private static final long serialVersionUID = 1L;
 
     /**
