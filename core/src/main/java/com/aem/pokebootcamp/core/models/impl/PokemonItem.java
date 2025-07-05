@@ -9,6 +9,10 @@ import lombok.Getter;
 import java.util.List;
 import java.util.stream.Collectors;
 
+/**
+ * DTO Class PokemonItem.
+ */
+
 @Model(adaptables = Resource.class,
         defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
 
@@ -32,11 +36,9 @@ public final class PokemonItem {
      */
 
     public List<String> getTypes() {
-        if (types == null) {
-            return List.of();
-        }
         return types.stream()
                 .map(type -> type.substring(type.lastIndexOf(':') + 1))
                 .collect(Collectors.toList());
+
     }
 }
