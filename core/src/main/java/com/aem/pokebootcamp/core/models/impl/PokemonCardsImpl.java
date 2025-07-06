@@ -13,6 +13,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
 import javax.annotation.PostConstruct;
+import java.util.Collections;
 
 /**
  * Default implementation of the {@link PokemonCards} interface.
@@ -56,6 +57,6 @@ public final class PokemonCardsImpl implements PokemonCards {
 
     @Override
     public List<PokemonItem> getPokemonCards() {
-        return pokemonItemList;
+        return pokemonItemList != null ? pokemonItemList : Collections.emptyList();
     }
 }
