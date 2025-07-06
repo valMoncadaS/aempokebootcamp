@@ -34,12 +34,12 @@ import static org.junit.jupiter.api.Assertions.*;
  */
 @ExtendWith(AemContextExtension.class)
 class TagDatasourceServletTest {
-    private final AemContext ctx = new AemContext();
+    private final AemContext context = new AemContext();
     private TagDatasourceServlet tagDatasourceServlet;
 
     @BeforeEach
     void setUp() {
-        ctx.load().json("/com/aem/pokebootcamp/core/servlets/TagDatasourceServletTest.json",
+        context.load().json("/com/aem/pokebootcamp/core/servlets/TagDatasourceServletTest.json",
                 "/content");
         tagDatasourceServlet = new TagDatasourceServlet();
     }
@@ -50,12 +50,12 @@ class TagDatasourceServletTest {
         final String text = "text";
         final String value = "value";
 
-        final Resource resource = ctx.resourceResolver().getResource("/content/pokemoncards");
+        final Resource resource = context.resourceResolver().getResource("/content/pokemoncards");
 
-        ctx.currentResource(resource);
-        final SlingHttpServletRequest request = ctx.request();
+        context.currentResource(resource);
+        final SlingHttpServletRequest request = context.request();
 
-        tagDatasourceServlet.doGet(request, ctx.response());
+        tagDatasourceServlet.doGet(request, context.response());
 
         final Object dataSourceObj = request.getAttribute(DataSource.class.getName());
 
@@ -81,12 +81,12 @@ class TagDatasourceServletTest {
 
     @Test
     void doGetTagsPathFailsTest() throws IOException {
-        final Resource resource = ctx.resourceResolver().getResource("/content/pokemoncards-noTagsPath");
+        final Resource resource = context.resourceResolver().getResource("/content/pokemoncards-noTagsPath");
 
-        ctx.currentResource(resource);
-        final SlingHttpServletRequest request = ctx.request();
+        context.currentResource(resource);
+        final SlingHttpServletRequest request = context.request();
 
-        tagDatasourceServlet.doGet(request, ctx.response());
+        tagDatasourceServlet.doGet(request, context.response());
 
         final Object dataSourceObj = request.getAttribute(DataSource.class.getName());
         assertNull(dataSourceObj, "Expected no DataSource to be set when 'cq:tagsPath' is missing");
@@ -94,25 +94,25 @@ class TagDatasourceServletTest {
 
     @Test
     void doGetTagsResourceFailsTest() throws IOException {
-        final Resource resource = ctx.resourceResolver().getResource("/content/pokemoncards-wrongTagsPath");
+        final Resource resource = context.resourceResolver().getResource("/content/pokemoncards-wrongTagsPath");
 
-        ctx.currentResource(resource);
-        final SlingHttpServletRequest request = ctx.request();
+        context.currentResource(resource);
+        final SlingHttpServletRequest request = context.request();
 
-        tagDatasourceServlet.doGet(request, ctx.response());
+        tagDatasourceServlet.doGet(request, context.response());
 
-        assertEquals(SlingHttpServletResponse.SC_INTERNAL_SERVER_ERROR, ctx.response().getStatus(),
+        assertEquals(SlingHttpServletResponse.SC_INTERNAL_SERVER_ERROR, context.response().getStatus(),
                 "Response status should be 500 when 'cq:tagsPath' points to a non-existent resource");
     }
 
     @Test
     void doGetSkipAdaptTagFailsTest() throws IOException {
-        final Resource resource = ctx.resourceResolver().getResource("/content/pokemoncards");
+        final Resource resource = context.resourceResolver().getResource("/content/pokemoncards");
 
-        ctx.currentResource(resource);
-        final SlingHttpServletRequest request = ctx.request();
+        context.currentResource(resource);
+        final SlingHttpServletRequest request = context.request();
 
-        tagDatasourceServlet.doGet(request, ctx.response());
+        tagDatasourceServlet.doGet(request, context.response());
 
         final Object dataSourceObj = request.getAttribute(DataSource.class.getName());
 
