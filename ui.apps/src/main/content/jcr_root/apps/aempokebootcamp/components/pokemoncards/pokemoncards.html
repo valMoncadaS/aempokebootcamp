@@ -1,0 +1,19 @@
+<sly data-sly-use.templates="core/wcm/components/commons/v1/templates.html" />
+<div data-sly-use.model="com.aem.pokebootcamp.core.models.PokemonCards">
+    <ul data-sly-test.notEmpy="${model.pokemonCards}" data-sly-list.pokemon="${model.pokemonCards}"
+        class="cmp-pokemon-cards">
+        <li class="cmp-pokemon-card">
+            <div class="cmp-pokemon-card__img">
+                <img src="${pokemon.fileReference}">
+            </div>
+            <div class="cmp-pokemon-card__info">
+                <p class="cmp-pokemon-card__info-name">${pokemon.name}</p>
+                <p>Types: ${pokemon.types}</p>
+            </div>
+        </li>
+    </ul>
+    <div data-sly-test="${!notEmpy}" class="cmp-pokemon-not-found">
+        <p>No Pokemon Found</p>
+    </div>
+</div>
+<sly data-sly-call="${templates.placeholder @ isEmpty=!notEmpy && wcmmode.edit}"></sly>

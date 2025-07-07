@@ -1,0 +1,6 @@
+{
+    "pokemoncards": {
+      "jcr:primaryType": "nt:unstructured",
+      "sling:resourceType": "aempokebootcamp/components/pokemoncards"
+    }
+  }
