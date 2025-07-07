@@ -1,0 +1,18 @@
+.cmp-pokemon-cards {}
+
+.cmp-pokemon-cards__list {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    list-style: none;
+}
+
+.cmp-pokemon-cards__types {
+    list-style: none;
+    display: flex;
+    gap: 15px;
+    padding: unset;
+}
+
+.cmp-pokemon-cards__type {
+    color: grey;
+}

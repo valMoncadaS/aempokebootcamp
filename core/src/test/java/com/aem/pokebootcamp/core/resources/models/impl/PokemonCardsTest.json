@@ -1,0 +1,60 @@
+{
+  "pokemoncards": {
+    "jcr:primaryType": "nt:unstructured",
+    "sling:resourceType": "aempokebootcamp/components/pokemoncards",
+    "pokemonCards": {
+      "jcr:primaryType": "nt:unstructured",
+      "item0": {
+        "jcr:primaryType": "nt:unstructured",
+        "fileReference": "/content/dam/aempokebootcamp/pokemons/weedle.png",
+        "name": "Weedle",
+        "pokemonTypes": [
+          "types:bug",
+          "types:poison"
+        ]
+      },
+      "item1": {
+        "jcr:primaryType": "nt:unstructured",
+        "fileReference": "/content/dam/aempokebootcamp/pokemons/bulbasaur.png",
+        "name": "Bulbasaur",
+        "pokemonTypes": [
+          "types:grass",
+          "types:poison"
+        ]
+      },
+      "item2": {
+        "jcr:primaryType": "nt:unstructured",
+        "fileReference": "/content/dam/aempokebootcamp/pokemons/squirtle.png",
+        "name": "Squirtle",
+        "pokemonTypes": "types:water"
+      },
+      "item3": {
+        "jcr:primaryType": "nt:unstructured",
+        "fileReference": "/content/dam/aempokebootcamp/pokemons/charmander.png",
+        "name": "Charmander",
+        "pokemonTypes": "types:fire"
+      },
+      "item4": {
+        "jcr:primaryType": "nt:unstructured",
+        "fileReference": "/content/dam/aempokebootcamp/pokemons/rattata.png",
+        "name": "Rattata",
+        "pokemonTypes": "types:normal"
+      },
+      "item5": {
+        "jcr:primaryType": "nt:unstructured",
+        "fileReference": "/content/dam/aempokebootcamp/pokemons/caterpie.png",
+        "name": "Caterpie",
+        "pokemonTypes": "types:bug"
+      },
+      "item6": {
+        "jcr:primaryType": "nt:unstructured",
+        "fileReference": "/content/dam/aempokebootcamp/pokemons/pidgey.png",
+        "name": "Pidgey",
+        "pokemonTypes": [
+          "types:normal",
+          "types:flying"
+        ]
+      }
+    }
+  }
+}

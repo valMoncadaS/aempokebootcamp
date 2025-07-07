@@ -1,0 +1,11 @@
+{
+  "pokemoncard": {
+    "jcr:primaryType": "nt:unstructured",
+    "fileReference": "/content/dam/aempokebootcamp/pokemons/weedle.png",
+    "name": "Weedle",
+    "pokemonTypes": [
+      "types:bug",
+      "types:poison"
+    ]
+  }
+}

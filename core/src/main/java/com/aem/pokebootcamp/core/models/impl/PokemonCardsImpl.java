@@ -13,6 +13,7 @@ import java.util.List;
     adapters = PokemonCards.class,
     resourceType = PokemonCardsImpl.RESOURCE_TYPE,
     defaultInjectionStrategy= DefaultInjectionStrategy.OPTIONAL
+
 )
 public class PokemonCardsImpl implements PokemonCards {
   protected static final String RESOURCE_TYPE = "aempokebootcamp/components/pokemoncards";
