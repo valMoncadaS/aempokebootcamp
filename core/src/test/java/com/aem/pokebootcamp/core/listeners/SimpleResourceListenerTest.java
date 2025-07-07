@@ -30,6 +30,7 @@ import uk.org.lidalia.slf4jtest.LoggingEvent;
 import uk.org.lidalia.slf4jtest.TestLogger;
 import uk.org.lidalia.slf4jtest.TestLoggerFactory;
 
+@SuppressWarnings({"PMD","all"})
 class SimpleResourceListenerTest {
 
     private SimpleResourceListener fixture = new SimpleResourceListener();

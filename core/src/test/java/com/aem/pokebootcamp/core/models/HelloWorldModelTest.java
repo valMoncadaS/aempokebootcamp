@@ -30,8 +30,9 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 /**
- * Simple JUnit test verifying the HelloWorldModel
+ * Simple JUnit test verifying the HelloWorldModel.
  */
+@SuppressWarnings({"PMD","all"})
 @ExtendWith(AemContextExtension.class)
 class HelloWorldModelTest {
 

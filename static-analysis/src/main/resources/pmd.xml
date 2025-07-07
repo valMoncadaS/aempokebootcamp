@@ -6,7 +6,10 @@
 
     <description>PMD ruleset for AEM projects.</description>
 
-    <rule ref="category/java/bestpractices.xml"/>
+    <rule ref="category/java/bestpractices.xml">
+        <!-- impractical -->
+        <exclude name="JUnitTestContainsTooManyAsserts"/>
+    </rule>
     <rule ref="category/java/codestyle.xml">
         <!-- impractical -->
         <exclude name="AtLeastOneConstructor"/>

@@ -95,7 +95,7 @@
     <checkstyle.version>8.41</checkstyle.version>
     <static.analysis.skip>false</static.analysis.skip>
     <static.analysis.fail.build>true</static.analysis.fail.build>
-    <coverage.ratio>0.80</coverage.ratio>
+    <coverage.ratio>0.90</coverage.ratio>
   </properties>
       
   <build>
@@ -822,6 +822,11 @@ Bundle-DocURL:
             <configLocation>checkstyle.xml</configLocation>
             <includeResources>false</includeResources>
             <includeTestResources>false</includeTestResources>
+            <includeTestSourceDirectory>true</includeTestSourceDirectory>
+            <sourceDirectories>
+              <sourceDirectory>${project.build.sourceDirectory}</sourceDirectory>
+              <sourceDirectory>${project.build.testSourceDirectory}</sourceDirectory>
+            </sourceDirectories>
           </configuration>
           <dependencies>
             <dependency>
@@ -851,6 +856,7 @@ Bundle-DocURL:
             </execution>
           </executions>
           <configuration>
+            <includeTests>true</includeTests>
             <linkXRef>false</linkXRef>
             <rulesets>
               <ruleset>pmd.xml</ruleset>
