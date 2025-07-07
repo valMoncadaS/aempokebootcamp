@@ -50,7 +50,7 @@
     <module>dispatcher</module>
             
     <module>ui.tests</module>
-      
+    <module>static-analysis</module>
   </modules>
       
   <properties>
@@ -86,7 +86,16 @@
     <aemanalyser.version>1.6.6</aemanalyser.version>
             
     <componentGroupName>AEM PokeBootcamp</componentGroupName>
-        
+
+    <!-- Static Analysis -->
+    <pmd.version>7.6.0</pmd.version>
+    <java.version>11</java.version>
+    <maven.pmd.plugin.version>3.25.0</maven.pmd.plugin.version>
+    <maven.checkstyle.plugin.version>3.5.0</maven.checkstyle.plugin.version>
+    <checkstyle.version>8.41</checkstyle.version>
+    <static.analysis.skip>false</static.analysis.skip>
+    <static.analysis.fail.build>true</static.analysis.fail.build>
+    <coverage.ratio>0.90</coverage.ratio>
   </properties>
       
   <build>
@@ -742,7 +751,136 @@ Bundle-DocURL:
           </configuration>
                           
         </plugin>
-                    
+        <!-- Static Analysis Configuration-->
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-site-plugin</artifactId>
+          <version>3.7.1</version>
+        </plugin>
+        <plugin>
+          <groupId>org.jacoco</groupId>
+          <artifactId>jacoco-maven-plugin</artifactId>
+          <version>0.8.6</version>
+          <executions>
+            <execution>
+              <id>default-prepare-agent</id>
+              <goals>
+                <goal>prepare-agent</goal>
+              </goals>
+            </execution>
+            <execution>
+              <id>default-report</id>
+              <phase>prepare-package</phase>
+              <goals>
+                <goal>report</goal>
+              </goals>
+            </execution>
+            <execution>
+              <id>default-check</id>
+              <goals>
+                <goal>check</goal>
+              </goals>
+              <configuration>
+                <rules>
+                  <rule>
+                    <element>CLASS</element>
+                    <limits>
+                      <limit>
+                        <counter>LINE</counter>
+                        <value>COVEREDRATIO</value>
+                        <minimum>${coverage.ratio}</minimum>
+                      </limit>
+                      <limit>
+                        <counter>BRANCH</counter>
+                        <value>COVEREDRATIO</value>
+                        <minimum>${coverage.ratio}</minimum>
+                      </limit>
+                    </limits>
+                  </rule>
+                </rules>
+                <excludes>
+                  <exclude>org/jasypt/**</exclude>
+                </excludes>
+              </configuration>
+            </execution>
+          </executions>
+        </plugin>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-checkstyle-plugin</artifactId>
+          <version>${maven.checkstyle.plugin.version}</version>
+          <executions>
+            <execution>
+              <phase>package</phase>
+              <goals>
+                <goal>checkstyle</goal>
+              </goals>
+            </execution>
+          </executions>
+          <configuration>
+            <linkXRef>false</linkXRef>
+            <configLocation>checkstyle.xml</configLocation>
+            <includeResources>false</includeResources>
+            <includeTestResources>false</includeTestResources>
+            <includeTestSourceDirectory>true</includeTestSourceDirectory>
+            <sourceDirectories>
+              <sourceDirectory>${project.build.sourceDirectory}</sourceDirectory>
+              <sourceDirectory>${project.build.testSourceDirectory}</sourceDirectory>
+            </sourceDirectories>
+          </configuration>
+          <dependencies>
+            <dependency>
+              <groupId>com.aem.pokebootcamp</groupId>
+              <artifactId>static-analysis</artifactId>
+              <version>0.0.1-SNAPSHOT</version>
+            </dependency>
+            <dependency>
+              <groupId>com.puppycrawl.tools</groupId>
+              <artifactId>checkstyle</artifactId>
+              <version>${checkstyle.version}</version>
+            </dependency>
+          </dependencies>
+        </plugin>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-pmd-plugin</artifactId>
+          <version>${maven.pmd.plugin.version}</version>
+          <executions>
+            <execution>
+              <phase>package</phase>
+              <goals>
+                <goal>pmd</goal>
+                <goal>cpd</goal>
+                <goal>check</goal>
+              </goals>
+            </execution>
+          </executions>
+          <configuration>
+            <includeTests>true</includeTests>
+            <linkXRef>false</linkXRef>
+            <rulesets>
+              <ruleset>pmd.xml</ruleset>
+            </rulesets>
+            <targetJdk>${java.version}</targetJdk>
+          </configuration>
+          <dependencies>
+            <dependency>
+              <groupId>com.aem.pokebootcamp</groupId>
+              <artifactId>static-analysis</artifactId>
+              <version>0.0.1-SNAPSHOT</version>
+            </dependency>
+            <dependency>
+              <groupId>net.sourceforge.pmd</groupId>
+              <artifactId>pmd-core</artifactId>
+              <version>${pmd.version}</version>
+            </dependency>
+            <dependency>
+              <groupId>net.sourceforge.pmd</groupId>
+              <artifactId>pmd-java</artifactId>
+              <version>${pmd.version}</version>
+            </dependency>
+          </dependencies>
+        </plugin>
       </plugins>
               
     </pluginManagement>
