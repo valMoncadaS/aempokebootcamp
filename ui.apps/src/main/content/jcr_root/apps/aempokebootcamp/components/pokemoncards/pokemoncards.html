@@ -1,0 +1,30 @@
+<sly data-sly-use.pokemonCardModel="com.aem.pokebootcamp.core.models.PokemonCardModel">
+    <sly data-sly-test.listEmpty="${pokemonCardModel.pokemonCardsList.empty}">
+        <sly data-sly-test.isEdit="${wcmmode.edit}">
+            <sly data-sly-use.templates="core/wcm/components/commons/v1/templates.html">
+                <sly data-sly-call="${templates.placeholder @ isEmpty=isEdit}"></sly>
+            </sly>
+        </sly>
+        <sly data-sly-test="${!isEdit}">
+            <div class="alert-error">
+                <h3>No Pokemon Found</h3>
+            </div>
+        </sly>
+    </sly>
+    <div class="cmp-pokemon-cards" data-sly-test="${!listEmpty}">
+        <sly data-sly-list.pokemonCard="${pokemonCardModel.pokemonCardsList}">
+            <div class="pokemon-card">
+                <div class="pokemon-image__container">
+                    <img src="${pokemonCard.pokemonImage}" alt="pokemon-image">
+                </div>
+                <div class="pokemon-info">
+                    <h2 class="pokemon-name">${pokemonCard.name}</h2>
+                    <div class="pokemon-types__container" data-sly-list.type="${pokemonCard.type}">
+                        <p>${type}</p>
+                    </div>
+                </div>
+            </div>
+        </sly>
+    </div>
+</sly>
+

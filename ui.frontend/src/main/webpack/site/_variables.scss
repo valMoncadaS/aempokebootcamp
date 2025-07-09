@@ -10,9 +10,29 @@ $font-height:           1.5;
 // Normal mode
 $color-foreground:      #202020;
 $color-background:      #ECECEC;
+$color-background-gray: #F2F2F2;
 $color-link:            #2020E0;
+$color-white:           #FFFFFF;
+$color-error:           #E3350D;
 
 // Dark mode
 $color-foreground-dark: invert($color-foreground);
 $color-background-dark: invert($color-background);
 $color-link-dark:       invert($color-link);
+
+//Spacing
+$spacing-unit: 0.5rem;
+$space-xxs: $spacing-unit * 0.25;  // 2px
+$space-xs: $spacing-unit * 0.5;    // 4px
+$space-sm: $spacing-unit * 0.75;   // 6px
+$space-md: $spacing-unit;          // 8px (base)
+$space-lg: $spacing-unit * 1.5;    // 12px
+$space-xl: $spacing-unit * 2;      // 16px
+$space-xxl: $spacing-unit * 3;     // 24px
+$space-xxxl: $spacing-unit * 4;    // 32px
+$space-xxxxl: $spacing-unit * 6;    // 48px
+
+//Media breakpoints
+$phone-size: 510px;
+$tablet-size: 768px;
+$desktop-size: 1024px;

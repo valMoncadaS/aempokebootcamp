@@ -1,0 +1,65 @@
+{
+  "pokemon-types": {
+    "jcr:primaryType": "nt:unstructured",
+    "datasource": {
+      "jcr:primaryType": "nt:unstructured",
+      "tagsPath": "/content/cq:tags/pokemon-types"
+    }
+  },
+  "pokemon-types-no-tagsPath": {
+    "jcr:primaryType": "nt:unstructured",
+    "datasource": {
+      "jcr:primaryType": "nt:unstructured"
+    }
+  },
+  "pokemon-types-invalid-tagsPath": {
+    "jcr:primaryType": "nt:unstructured",
+    "datasource": {
+      "jcr:primaryType": "nt:unstructured",
+      "tagsPath": "/content/cq:tags/pokemon-types-invalid"
+    }
+  },
+  "pokemon-types-empty-list": {
+    "jcr:primaryType": "nt:unstructured",
+    "datasource": {
+      "jcr:primaryType": "nt:unstructured",
+      "tagsPath": "/content/cq:tags/empty-pokemon-types"
+    }
+  },
+  "pokemon-types-null-tag": {
+    "jcr:primaryType": "nt:unstructured",
+    "datasource": {
+      "jcr:primaryType": "nt:unstructured",
+      "tagsPath": "/content/cq:tags/null-pokemon-type"
+    }
+  },
+  "cq:tags": {
+    "jcr:primaryType": "sling:Folder",
+    "pokemon-types": {
+      "jcr:primaryType": "cq:Tag",
+      "bug": {
+        "jcr:primaryType": "cq:Tag",
+        "jcr:title": "Bug",
+        "sling:resourceType": "cq/tagging/components/tag"
+      },
+      "dragon": {
+        "jcr:primaryType": "cq:Tag",
+        "jcr:title": "Dragon",
+        "sling:resourceType": "cq/tagging/components/tag"
+      },
+      "electric": {
+        "jcr:primaryType": "cq:Tag",
+        "jcr:title": "Electric",
+        "sling:resourceType": "cq/tagging/components/tag"
+      }
+    },
+    "empty-pokemon-types": {
+      "jcr:primaryType": "cq:Tag"
+    },
+    "null-pokemon-type": {
+      "jcr:primaryType": "cq:Tag",
+      "bug": {
+      }
+    }
+  }
+}
