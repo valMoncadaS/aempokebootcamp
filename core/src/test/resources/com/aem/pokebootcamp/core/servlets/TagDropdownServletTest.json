@@ -1,0 +1,9 @@
+{
+  "pokemonTypes": {
+    "jcr:primaryType": "nt:unstructured",
+    "datasource": {
+      "jcr:primaryType": "nt:unstructured",
+      "tagsPath": "/content/cq:tags/types"
+    }
+  }
+}

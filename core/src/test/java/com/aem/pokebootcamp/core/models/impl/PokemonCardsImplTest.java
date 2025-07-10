@@ -18,7 +18,7 @@ class PokemonCardsImplTest {
     @BeforeEach
     void setUp() {
         aemContext.addModelsForClasses(PokemonCards.class);
-        aemContext.load().json("src/test/java/com/aem/pokebootcamp/core/resources/models/impl/PokemonCardsTest.json", "/content");
+        aemContext.load().json("src/test/resources/com/aem/pokebootcamp/core/models/impl/PokemonCardsTest.json", "/content");
     }
 
     @Test
