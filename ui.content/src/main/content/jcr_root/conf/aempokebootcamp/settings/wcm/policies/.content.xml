@@ -238,10 +238,13 @@
                 </policy_1574694950110>
                 <policy_1574695586800
                     jcr:description="Allows the page components and defines the component mapping (this configures what components should be automatically created when authors drop assets from the content finder to the page editor)."
+                    jcr:lastModified="{Date}2025-07-03T12:13:48.597-05:00"
+                    jcr:lastModifiedBy="admin"
                     jcr:primaryType="nt:unstructured"
-                    jcr:title="Page Content"
+                    jcr:title="Pokemon Content Page"
                     sling:resourceType="wcm/core/components/policy/policy"
-                    components="[group:AEM PokeBootcamp - Content,/apps/aempokebootcamp/components/form/container]">
+                    components="[/apps/aempokebootcamp/components/pokemoncards]"
+                    layoutDisabled="false">
                     <jcr:content jcr:primaryType="nt:unstructured"/>
                     <cq:authoring jcr:primaryType="nt:unstructured">
                         <assetToComponentMapping jcr:primaryType="nt:unstructured">
