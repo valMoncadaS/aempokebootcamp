@@ -27,13 +27,13 @@ import java.util.Collections;
 
 @Model(adaptables = SlingHttpServletRequest.class,
         adapters = {PokemonCards.class},
-        resourceType = {PokemonCardsImpl.RESOURCE},
+        resourceType = {PokemonCardsImpl.RESOURCE_TYPE},
         defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
 
 public final class PokemonCardsImpl implements PokemonCards {
 
     /** The resource type for the PokemonCards component. */
-    public static final String RESOURCE = "aempokebootcamp/components/pokemoncards";
+    public static final String RESOURCE_TYPE = "aempokebootcamp/components/pokemoncards";
 
     @Getter
     @ChildResource(name = "pokemonCards")
