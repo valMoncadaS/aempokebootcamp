@@ -1,0 +1,45 @@
+{
+    "pokemoncards": {
+      "jcr:primaryType": "nt:unstructured",
+      "datasource": {
+        "jcr:primaryType": "nt:unstructured",
+        "tagsPath": "/content/cq:tags/types"
+      }
+    },
+    "pokemoncards-noTagsPath": {
+      "jcr:primaryType": "nt:unstructured",
+      "datasource": {
+        "jcr:primaryType": "nt:unstructured"
+      }
+    },
+    "pokemoncards-wrongTagsPath": {
+      "jcr:primaryType": "nt:unstructured",
+      "datasource": {
+        "jcr:primaryType": "nt:unstructured",
+        "tagsPath": "/content/cq:tags/wrong-types"
+      }
+    },
+    "cq:tags": {
+      "jcr:primaryType": "sling:Folder",
+      "types": {
+        "jcr:primaryType": "cq:Tag",
+        "jcr:title": "Types",
+        "sling:resourceType": "cq/tagging/components/tag",
+        "poison": {
+          "jcr:primaryType": "cq:Tag",
+          "jcr:title": "Poison",
+          "sling:resourceType": "cq/tagging/components/tag"
+        },
+        "fire": {
+          "jcr:primaryType": "cq:Tag",
+          "jcr:title": "Fire",
+          "sling:resourceType": "cq/tagging/components/tag"
+        },
+        "Bug": {
+          "jcr:primaryType": "",
+          "jcr:title": "Bug",
+          "sling:resourceType": "cq/tagging/components/tag"
+        }
+      }
+    }
+  }

@@ -81,7 +81,7 @@
             
     <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
             
-    <aem.sdk.api>2025.5.20936.20250519T095350Z-250400</aem.sdk.api>
+    <aem.sdk.api>2024.4.16145.20240430T082417Z-240400</aem.sdk.api>
             
     <aemanalyser.version>1.6.6</aemanalyser.version>
             
@@ -1291,6 +1291,13 @@ Bundle-DocURL:
         <artifactId>lombok</artifactId>
         <version>${lombok.version}</version>
         <scope>provided</scope>
+      </dependency>
+
+      <dependency>
+        <groupId>xerces</groupId>
+        <artifactId>xercesImpl</artifactId>
+        <version>2.12.2</version>
+        <scope>test</scope>
       </dependency>   
               
     </dependencies>
