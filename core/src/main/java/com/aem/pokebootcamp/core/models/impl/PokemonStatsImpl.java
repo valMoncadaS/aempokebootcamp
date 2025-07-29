@@ -7,18 +7,22 @@ import org.apache.sling.models.annotations.Model;
 import org.apache.sling.models.annotations.injectorspecific.ValueMapValue;
 import com.aem.pokebootcamp.core.models.PokemonStats;
 
-import javax.inject.Inject;
+/**
+ * Implementation of the {@link PokemonStats} interface.
+ * Provides base stats for a Pokémon including HP, attack, defense, and more.
+ */
 
 @Model(
     adaptables = Resource.class,
     adapters = PokemonStats.class,
     defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL
 )
-public class PokemonStatsImpl  implements PokemonStats {
+
+public final class PokemonStatsImpl  implements PokemonStats {
 
     @Getter
     @ValueMapValue
-    private int hp;
+    private int hitPoints;
 
     @Getter
     @ValueMapValue
