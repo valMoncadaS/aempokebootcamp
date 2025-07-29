@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root
+    xmlns:sling="http://sling.apache.org/jcr/sling/1.0"
+    xmlns:cq="http://www.day.com/jcr/cq/1.0"
+    xmlns:jcr="http://www.jcp.org/jcr/1.0"
+    jcr:primaryType="nt:unstructured"
+    jcr:title="Pokemon Stats"
+    sling:resourceType="cq/gui/components/authoring/dialog"
+    helpPath=""
+    xtype="dialog">
+    
+    <content
+        jcr:primaryType="nt:unstructured"
+        sling:resourceType="granite/ui/components/coral/foundation/container">
+        
+        <items jcr:primaryType="nt:unstructured">
+            <statsTab
+                jcr:primaryType="nt:unstructured"
+                jcr:title="Stats"
+                sling:resourceType="granite/ui/components/coral/foundation/form/tab">
+                
+                <items jcr:primaryType="nt:unstructured">
+                    <statsFields
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="granite/ui/components/coral/foundation/container">
+                        
+                        <items jcr:primaryType="nt:unstructured">
+                            <hp
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/numberfield"
+                                fieldLabel="HP"
+                                name="./hp"
+                                max="240"
+                                min="0"
+                                required="true"/>
+                            <attack
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/numberfield"
+                                fieldLabel="Attack"
+                                name="./attack"
+                                max="240"
+                                min="0"
+                                required="true"/>
+                            <defense
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/numberfield"
+                                fieldLabel="Defense"
+                                name="./defense"
+                                max="240"
+                                min="0"
+                                required="true"/>
+                            <specialAttack
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/numberfield"
+                                fieldLabel="Special Attack"
+                                name="./specialAttack"
+                                max="240"
+                                min="0"
+                                required="true"/>
+                            <specialDefense
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/numberfield"
+                                fieldLabel="Special Defense"
+                                name="./specialDefense"
+                                max="240"
+                                min="0"
+                                required="true"/>
+                            <speed
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/numberfield"
+                                fieldLabel="Speed"
+                                name="./speed"
+                                max="240"
+                                min="0"
+                                required="true"/>
+                        </items>
+                    </statsFields>
+                </items>
+            </statsTab>
+        </items>
+    </content>
+</jcr:root>
