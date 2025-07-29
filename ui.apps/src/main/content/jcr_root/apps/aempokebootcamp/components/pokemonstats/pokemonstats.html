@@ -1,0 +1,33 @@
+<sly data-sly-use.templates="core/wcm/components/commons/v1/templates.html" />
+<div data-sly-use.model="com.aem.pokebootcamp.core.models.PokemonStats">
+    <div class="pokemon-stats">
+        <h3>Puntos de base</h3>
+        <div class="stats-chart">
+          <div class="stat-column" style="--value: ${model.hitPoints @ context='styleToken'}">
+            <div class="stat-bar"></div>
+            <span>PS</span>
+          </div>
+          <div class="stat-column" style="--value: ${model.attack @ context='styleToken'}">
+            <div class="stat-bar"></div>
+            <span>Ataque</span>
+          </div>
+          <div class="stat-column" style="--value: ${model.defense @ context='styleToken'}">
+            <div class="stat-bar"></div>
+            <span>Defensa</span>
+          </div>
+          <div class="stat-column" style="--value: ${model.specialAttack @ context='styleToken'}">
+            <div class="stat-bar"></div>
+            <span>Ataque Especial</span>
+          </div>
+          <div class="stat-column" style="--value: ${model.specialDefense @ context='styleToken'}">
+            <div class="stat-bar"></div>
+            <span>Defensa Especial</span>
+          </div>
+          <div class="stat-column" style="--value: ${model.speed @ context='styleToken'}">
+            <div class="stat-bar"></div>
+            <span>Velocidad</span>
+          </div>
+        </div>
+      </div>
+</div>
+<sly data-sly-call="${templates.placeholder @ isEmpty=!notEmpy && wcmmode.edit}"></sly>
