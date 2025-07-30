@@ -1,11 +1,11 @@
 <sly data-sly-use.templates="core/wcm/components/commons/v1/templates.html" />
 <div data-sly-use.model="com.aem.pokebootcamp.core.models.PokemonStats">
     <div class="pokemon-stats">
-        <h3>Puntos de base</h3>
+        <h3>Stats</h3>
         <div class="stats-chart">
           <div class="stat-column" style="--value: ${model.hitPoints @ context='styleToken'}">
             <div class="stat-bar"></div>
-            <span>PS</span>
+            <span>HP</span>
           </div>
           <div class="stat-column" style="--value: ${model.attack @ context='styleToken'}">
             <div class="stat-bar"></div>
