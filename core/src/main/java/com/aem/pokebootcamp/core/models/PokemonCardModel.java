@@ -31,9 +31,16 @@ import java.util.Collection;
  */
 @Model(
         adaptables = {Resource.class, SlingHttpServletRequest.class},
-        resourceType = "aempokebootcamp/components/pokemoncards",
+        resourceType = PokemonCardModel.RESOURCE_TYPE,
         defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
 public class PokemonCardModel {
+    /**
+     * Defines the resource type associated with the `PokemonCardModel`.
+     * Specifies the path for the AEM component `aempokebootcamp/components/pokemoncards`,
+     * enabling this model to be linked to the corresponding resource in the repository.
+     */
+    public static final String RESOURCE_TYPE = "aempokebootcamp/components/pokemoncards";
+
     @Getter
     @ChildResource
     private Collection<PokemonCard> pokemonCardsList;

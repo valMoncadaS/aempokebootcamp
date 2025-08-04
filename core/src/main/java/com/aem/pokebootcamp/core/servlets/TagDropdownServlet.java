@@ -37,11 +37,17 @@ import java.util.Objects;
 @Component(service = Servlet.class, property = {Constants.SERVICE_DESCRIPTION + "= Tags value in dynamic Dropdown"
 })
 @SlingServletResourceTypes(
-        resourceTypes = "aempokebootcamp/tagdropdown",
+        resourceTypes = TagDropdownServlet.RESOURCE_TYPE,
         methods = HttpConstants.METHOD_GET
 )
 public class TagDropdownServlet extends SlingSafeMethodsServlet {
     private static final long serialVersionUID = 1L;
+    /**
+     * The RESOURCE_TYPE constant defines the Sling resource type that this servlet is associated with.
+     * This resource type ("aempokebootcamp/tagdropdown") is used in the context
+     * of dynamically populating dropdowns with tag data from a specified path.
+     */
+    public static final String RESOURCE_TYPE = "aempokebootcamp/tagdropdown";
 
     /**
      * Method designed to return a list of tags according provided datasource tagsPath attribute.
