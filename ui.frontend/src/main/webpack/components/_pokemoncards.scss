@@ -1,0 +1,73 @@
+.alert-error {
+  border: $space-xxs solid $color-error;
+  color: $color-error;
+
+  h3 {
+    margin: $space-xs * 2.5 $space-md * 2.5;
+  }
+}
+
+.cmp-pokemon-cards {
+  background: $color-white;
+  display: flex;
+  flex-direction: column;
+  padding-top: $space-xl;
+
+  .pokemon-card {
+    width: 100%;
+
+    .pokemon-image__container {
+      background-color: $color-background-gray;
+      display: flex;
+      justify-content: center;
+
+      img {
+        width: 100%;
+      }
+    }
+
+    .pokemon-info {
+      padding-left: $space-xl;
+
+      .pokemon-name {
+        margin: $space-md 0 $space-xs;
+      }
+
+      .pokemon-types__container {
+        display: flex;
+        gap: $space-sm;
+        margin-bottom: $space-md * 5;
+
+        p {
+          margin: 0;
+        }
+      }
+    }
+  }
+  @media (min-width: $phone-size) {
+    flex-direction: row;
+
+    .pokemon-card {
+      width: 50%;
+      margin: 0 $space-md;
+    }
+  }
+
+  @media (min-width: $tablet-size) {
+    flex-direction: row;
+
+    .pokemon-card {
+      margin: 0 $space-md;
+      width: calc(100% / 3);
+    }
+  }
+
+  @media (min-width: $desktop-size) {
+    flex-direction: row;
+
+    .pokemon-card {
+      width: 25%;
+      margin: 0 $space-md;
+    }
+  }
+}

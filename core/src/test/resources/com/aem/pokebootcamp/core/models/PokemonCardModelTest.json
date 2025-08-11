@@ -1,0 +1,32 @@
+{
+  "pokemoncards": {
+    "jcr:primaryType": "nt:unstructured",
+    "sling:resourceType": "aempokebootcamp/components/pokemoncards",
+    "pokemonCardsList": {
+      "jcr:primaryType": "nt:unstructured",
+      "item0": {
+        "jcr:primaryType": "nt:unstructured",
+        "name": "Bulbasaur",
+        "type": [
+          "pokemon-types:grass",
+          "pokemon-types:poison"
+        ],
+        "pokemonImage": "/content/dam/aempokebootcamp/pokemon-images/001.png"
+      },
+      "item1": {
+        "jcr:primaryType": "nt:unstructured",
+        "name": "Pikachu",
+        "type": [
+          "pokemon-types:electric"
+        ],
+        "pokemonImage": "/content/dam/aempokebootcamp/pokemon-images/025.png"
+      }
+    }
+  },
+  "pokemoncards-empty-list": {
+    "jcr:primaryType": "nt:unstructured",
+    "sling:resourceType": "aempokebootcamp/components/pokemoncards",
+    "pokemonCardsList": {
+    }
+  }
+}

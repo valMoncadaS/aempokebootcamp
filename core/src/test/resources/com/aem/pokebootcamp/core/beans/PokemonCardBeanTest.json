@@ -1,0 +1,11 @@
+{
+  "pokemonCard": {
+    "jcr:primaryType": "nt:unstructured",
+    "name": "Bulbasaur",
+    "type": [
+      "pokemon-types:grass",
+      "pokemon-types:poison"
+    ],
+    "pokemonImage": "/content/dam/aempokebootcamp/pokemon-images/001.png"
+  }
+}

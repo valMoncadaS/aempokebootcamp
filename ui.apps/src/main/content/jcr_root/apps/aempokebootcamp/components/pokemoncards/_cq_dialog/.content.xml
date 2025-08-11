@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+          xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:sling="http://sling.apache.org/jcr/sling/1.0"
+          jcr:primaryType="nt:unstructured"
+          jcr:title="Pokemon Cards"
+          sling:resourceType="cq/gui/components/authoring/dialog">
+    <content
+            jcr:primaryType="nt:unstructured"
+            sling:resourceType="granite/ui/components/coral/foundation/container">
+        <items jcr:primaryType="nt:unstructured">
+            <tabs
+                    jcr:primaryType="nt:unstructured"
+                    sling:resourceType="granite/ui/components/coral/foundation/tabs"
+                    maximized="{Boolean}false">
+                <items jcr:primaryType="nt:unstructured">
+                    <pokemonCards
+                            jcr:primaryType="nt:unstructured"
+                            sling:resourceType="granite/ui/components/coral/foundation/form/multifield"
+                            composite="{Boolean}true"
+                            fieldLabel="Pokemon Cards">
+                        <field
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/container"
+                                name="./pokemonCardsList">
+                            <items jcr:primaryType="nt:unstructured">
+                                <name
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                        emptyText="Name"
+                                        name="./name"
+                                        required="{Boolean}true"/>
+                                <image
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="cq/gui/components/authoring/dialog/fileupload"
+                                         allowDrop="{Boolean}true"
+                                    allowUpload="{Boolean}false"
+                                    fieldDescription="Pokemon Image"
+                                        fieldLabel="Image"
+                                        fileNameParameter="./fileName"
+                                        fileReferenceParameter="./pokemonImage"
+                                        mimeTypes="[image/gif,image/jpeg,image/png,image/webp,image/tiff,image/svg+xml]"
+                                        multiple="{Boolean}false"
+                                        name="./file"
+                                        required="{Boolean}true"/>
+                                <pokemonTypeTags
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/select"
+                                        fieldDescription="Select the pokemon type"
+                                        fieldLabel="Pokemon Type"
+                                        multiple="{Boolean}true"
+                                        name="./type"
+                                        required="{Boolean}true">
+                                    <datasource
+                                            jcr:primaryType="nt:unstructured"
+                                            sling:resourceType="aempokebootcamp/tagdropdown"
+                                            tagsPath="/content/cq:tags/pokemon-types"/>
+                                </pokemonTypeTags>
+                            </items>
+                        </field>
+                    </pokemonCards>
+                </items>
+            </tabs>
+        </items>
+    </content>
+</jcr:root>
