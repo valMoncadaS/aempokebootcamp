@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0"
+          xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+          jcr:primaryType="nt:unstructured"
+          jcr:title="Properties"
+          sling:resourceType="cq/gui/components/authoring/dialog">
+    <content
+            jcr:primaryType="nt:unstructured"
+            sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns">
+        <items jcr:primaryType="nt:unstructured">
+            <column
+                    jcr:primaryType="nt:unstructured"
+                    sling:resourceType="granite/ui/components/coral/foundation/container">
+                <items jcr:primaryType="nt:unstructured">
+                    <hp
+                            jcr:primaryType="nt:unstructured"
+                            sling:resourceType="granite/ui/components/coral/foundation/form/numberfield"
+                            fieldLabel="HP"
+                            min="0"
+                            max="240"
+                            name="./healthPoints"/>
+                    <attack
+                            jcr:primaryType="nt:unstructured"
+                            sling:resourceType="granite/ui/components/coral/foundation/form/numberfield"
+                            fieldLabel="Attack"
+                            min="0"
+                            max="240"
+                            name="./attack"/>
+                    <defense
+                            jcr:primaryType="nt:unstructured"
+                            sling:resourceType="granite/ui/components/coral/foundation/form/numberfield"
+                            fieldLabel="Defence"
+                            min="0"
+                            max="240"
+                            name="./defense"/>
+                    <specialAttack
+                            jcr:primaryType="nt:unstructured"
+                            sling:resourceType="granite/ui/components/coral/foundation/form/numberfield"
+                            fieldLabel="Special Attack"
+                            min="0"
+                            max="240"
+                            name="./specialAttack"/>
+                    <specialDefence
+                            jcr:primaryType="nt:unstructured"
+                            sling:resourceType="granite/ui/components/coral/foundation/form/numberfield"
+                            fieldLabel="Special Defence"
+                            min="0"
+                            max="240"
+                            name="./specialDefense"/>
+                    <speed
+                            jcr:primaryType="nt:unstructured"
+                            sling:resourceType="granite/ui/components/coral/foundation/form/numberfield"
+                            fieldLabel="Speed"
+                            min="0"
+                            max="240"
+                            name="./speed"/>
+                </items>
+            </column>
+        </items>
+    </content>
+</jcr:root>

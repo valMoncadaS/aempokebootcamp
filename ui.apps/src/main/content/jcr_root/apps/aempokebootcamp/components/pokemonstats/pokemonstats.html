@@ -1,0 +1,14 @@
+<sly data-sly-use.pokemonStats="com.aem.pokebootcamp.core.models.PokemonStatsModel"
+     data-sly-use.statsTemplate="stat.html">
+    <div class="pokemon-stats-info active">
+        <h3>${'Stats' @i18n}</h3>
+        <ul>
+            <sly data-sly-call="${statsTemplate.stat @ statValue=pokemonStats.healthPoints, statLabel='HP'}"/>
+            <sly data-sly-call="${statsTemplate.stat @ statValue=pokemonStats.attack, statLabel='Attack'}"/>
+            <sly data-sly-call="${statsTemplate.stat @ statValue=pokemonStats.defense, statLabel='Defense'}"/>
+            <sly data-sly-call="${statsTemplate.stat @ statValue=pokemonStats.specialAttack, statLabel='Special Attack'}"/>
+            <sly data-sly-call="${statsTemplate.stat @ statValue=pokemonStats.specialDefense, statLabel='Special Defense'}"/>
+            <sly data-sly-call="${statsTemplate.stat @ statValue=pokemonStats.speed, statLabel='Speed'}"/>
+        </ul>
+    </div>
+</sly>

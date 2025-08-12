@@ -1,0 +1,85 @@
+.pokemon-stats-info {
+  background-color: $color-background-gray-1;
+  border-radius: $border-radius-md * 2.5;
+  display: block;
+  float: left;
+  margin: $space-xxs*0.5 0;
+  width: 100%;
+
+  > h3 {
+    margin: $space-lg $space-xl $space-xxl;
+  }
+
+  > ul {
+    background-color: $color-background-gray-1;
+    display: flex;
+    height: fit-content;
+    list-style: none;
+    margin: 0 $space-xl $space-md*2.5;
+    padding: 0;
+
+    .stat {
+      align-content: center;
+      height: 100%;
+      position: relative;
+      text-align: center;
+      width: 100%;
+
+      .stat-values {
+        background: $color-white;
+        list-style: none;
+        margin: $space-md;
+        overflow: hidden;
+        padding: 0;
+        position: relative;
+        text-align: center;
+
+        .meter {
+          background: #30a7d7;
+          border: none;
+          height: 120%;
+          position: absolute;
+          top: 100%;
+          transition: top 0.5s ease-in-out;
+          z-index: 1;
+        }
+
+        li {
+          background: transparent;
+          border-bottom: $border-width-medium solid #a4a4a4;
+          height: $space-md;
+          position: relative;
+          text-align: center;
+          width: 100%;
+          z-index: 2;
+        }
+      }
+      .tooltip {
+        background-color: hsla(0, 0%, 100%, .8);
+        left: 50%;
+        opacity: 0;
+        position: absolute;
+        top: 0;
+        transform: translateX(-50%);
+        transition: opacity 0.7s ease-in;
+        z-index: 3;
+      }
+
+      .stat-values:hover + .tooltip {
+        opacity: 100;
+      }
+    }
+  }
+  
+  @media (min-width: $phone-size) {
+    > {
+      h3 {
+        margin: $space-lg $space-xxl $space-xxl;
+      }
+
+     ul {
+        margin: 0 $space-xxl $space-md*2.5;
+      }
+    }
+  }
+}
