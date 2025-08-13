@@ -1,0 +1,27 @@
+{
+  "pokemoncards": {
+    "jcr:primaryType": "nt:unstructured",
+    "datasource": {
+      "jcr:primaryType": "nt:unstructured",
+      "tagsPath": "/content/cq:tags/pokemontags"
+    }
+  },
+  "cq:tags": {
+    "jcr:primaryType": "sling:Folder",
+    "pokemontags": {
+      "jcr:primaryType": "cq:Tag",
+      "jcr:title": "Types",
+      "sling:resourceType": "cq/tagging/components/tag",
+      "normal": {
+        "jcr:primaryType": "cq:Tag",
+        "jcr:title": "Normal",
+        "sling:resourceType": "cq/tagging/components/tag"
+      },
+      "grass": {
+        "jcr:primaryType": "cq:Tag",
+        "jcr:title": "Grass",
+        "sling:resourceType": "cq/tagging/components/tag"
+      }
+    }
+  }
+}
