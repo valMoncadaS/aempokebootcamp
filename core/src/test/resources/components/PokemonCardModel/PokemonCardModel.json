@@ -1,0 +1,45 @@
+{
+  "data": {
+    "jcr:primaryType": "cq:Page",
+    "jcr:content": {
+      "jcr:title": "test",
+      "cq:template": "/conf/aempokebootcamp/settings/wcm/templates/page-content",
+      "sling:resourceType": "aempokebootcamp/components/page",
+      "root": {
+        "jcr:primaryType": "nt:unstructured",
+        "sling:resourceType": "aempokebootcamp/components/container",
+        "container": {
+          "jcr:primaryType": "nt:unstructured",
+          "sling:resourceType": "aempokebootcamp/components/container",
+          "container": {
+            "jcr:primaryType": "nt:unstructured",
+            "sling:resourceType": "aempokebootcamp/components/container",
+            "pokemoncards": {
+              "jcr:primaryType": "nt:unstructured",
+              "sling:resourceType": "aempokebootcamp/components/pokemoncomponents/pokemonCards",
+              "multifieldList": {
+                "jcr:primaryType": "nt:unstructured",
+                "item0": {
+                  "jcr:primaryType": "nt:unstructured",
+                  "fileReference": "/content/dam/aempokebootcamp/bulbasaur.png",
+                  "name": "Bulbasaur",
+                  "tags": [
+                    "pokemontags:normal"
+                  ]
+                },
+                "item1": {
+                  "jcr:primaryType": "nt:unstructured",
+                  "fileReference": "/content/dam/aempokebootcamp/ivysaur.png",
+                  "name": "Ivysaur",
+                  "tags": [
+                    "pokemontags:electric"
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
