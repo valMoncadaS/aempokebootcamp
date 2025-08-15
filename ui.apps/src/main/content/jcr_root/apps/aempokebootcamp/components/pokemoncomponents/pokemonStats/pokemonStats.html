@@ -1,0 +1,55 @@
+<sly data-sly-use.placeholderTemplate="core/wcm/components/commons/v1/templates.html"/>
+
+<sly data-sly-use.stats="com.aem.pokebootcamp.core.models.PokemonStatsModel">
+    <div class="cmp-pokemonStats">
+        <div class="sub_board">
+            <div class="sep_board"></div>
+            <div class="cont_board">
+                <div class="graf_board">
+                    <div class="barra">
+                        <div class="sub_barra" style="height: calc(${stats.hitPoints @ context='number'} / 240 * 100%)">
+                            <div class="tag_g">${stats.hitPoints}</div>
+                            <div class="tag_leyenda">HP</div>
+                        </div>
+                    </div>
+                    <div class="barra">
+                        <div class="sub_barra" style="height: calc(${stats.attack @ context='number'} / 240 * 100%)">
+                            <div class="tag_g">${stats.attack}</div>
+                            <div class="tag_leyenda">Attack</div>
+                        </div>
+                    </div>
+                    <div class="barra">
+                        <div class="sub_barra" style="height: calc(${stats.defense @ context='number'} / 240 * 100%)">
+                            <div class="tag_g">${stats.defense}</div>
+                            <div class="tag_leyenda">Defense</div>
+                        </div>
+                    </div>
+                    <div class="barra">
+                        <div class="sub_barra" style="height: calc(${stats.specialAttack @ context='number'} / 240 * 100%)">
+                            <div class="tag_g">${stats.specialAttack}</div>
+                            <div class="tag_leyenda">Special attack</div>
+                        </div>
+                    </div>
+                    <div class="barra">
+                        <div class="sub_barra" style="height: calc(${stats.specialDefense @ context='number'} / 240 * 100%)">
+                            <div class="tag_g">${stats.specialDefense}</div>
+                            <div class="tag_leyenda">Special Defense</div>
+                        </div>
+                    </div>
+                    <div class="barra">
+                        <div class="sub_barra" style="height: calc(${stats.speed @ context='number'} / 240 * 100%)">
+                            <div class="tag_g">${stats.speed}</div>
+                            <div class="tag_leyenda">Speed</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</sly>
+
+<sly data-sly-call="${placeholderTemplate.placeholder @ isEmpty=true}"></sly>
+
+
+
+
