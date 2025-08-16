@@ -33,4 +33,13 @@ public class PokemonStatsModel {
     @Getter
     @ValueMapValue
     private Long speed;
+
+    /**
+     * @return a boolean depending on the statistics, if they have all data or no.
+     */
+    public boolean isEmpty() {
+        return hitPoints == null && attack == null
+                && defense == null && specialAttack == null
+                && specialDefense == null && speed == null;
+    }
 }

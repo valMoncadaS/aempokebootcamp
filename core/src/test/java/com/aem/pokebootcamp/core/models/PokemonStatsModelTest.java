@@ -60,5 +60,8 @@ class PokemonStatsModelTest {
         final Long expectedSpeed = 210L;
         final Long actualSpeed = pokemonStatsModel.getSpeed();
         assertEquals(expectedSpeed, actualSpeed, "Expected Speed and Actual Speed are equal!");
+
+        final Boolean actualIsEmptyStats = pokemonStatsModel.isEmpty();
+        assertEquals(false, actualIsEmptyStats, "Function is NOT empty so the statistics will be shown");
     }
 }

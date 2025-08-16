@@ -17,42 +17,48 @@
                         name="./hitPoints"
                         sling:resourceType="granite/ui/components/coral/foundation/form/numberfield"
                         required="{Boolean}true"
-                        max="{Long}240"/>
+                        max="{Long}240"
+                        min="{Long}1"/>
                     <attack
                             jcr:primaryType="nt:unstructured"
                             fieldLabel="Attack"
                             name="./attack"
                             sling:resourceType="granite/ui/components/coral/foundation/form/numberfield"
                             required="{Boolean}true"
-                            max="{Long}240"/>
+                            max="{Long}240"
+                            min="{Long}1"/>
                     <defense
                             jcr:primaryType="nt:unstructured"
                             fieldLabel="Defense"
                             name="./defense"
                             sling:resourceType="granite/ui/components/coral/foundation/form/numberfield"
                             required="{Boolean}true"
-                            max="{Long}240"/>
+                            max="{Long}240"
+                            min="{Long}1"/>
                     <specialAttack
                             jcr:primaryType="nt:unstructured"
                             fieldLabel="Special Attack"
                             name="./specialAttack"
                             sling:resourceType="granite/ui/components/coral/foundation/form/numberfield"
                             required="{Boolean}true"
-                            max="{Long}240"/>
+                            max="{Long}240"
+                            min="{Long}1"/>
                     <specialDefense
                             jcr:primaryType="nt:unstructured"
                             fieldLabel="Special Defense"
                             name="./specialDefense"
                             sling:resourceType="granite/ui/components/coral/foundation/form/numberfield"
                             required="{Boolean}true"
-                            max="{Long}240"/>
+                            max="{Long}240"
+                            min="{Long}1"/>
                     <speed
                             jcr:primaryType="nt:unstructured"
                             fieldLabel="Speed"
                             name="./speed"
                             sling:resourceType="granite/ui/components/coral/foundation/form/numberfield"
                             required="{Boolean}true"
-                            max="{Long}240"/>
+                            max="{Long}240"
+                            min="{Long}1"/>
                 </items>
             </column>
         </items>
