@@ -16,27 +16,32 @@ import org.apache.sling.models.annotations.injectorspecific.ValueMapValue;
  * attack, defense, special attack, special defense, and speed. These properties are injected
  * using the {@link ValueMapValue} injector from the corresponding resource.
  */
-@Getter
 @Model(
         adaptables = {Resource.class, SlingHttpServletRequest.class},
         resourceType = "aempokebootcamp/components/pokemonstats",
         defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
 public class PokemonStatsModel {
+    @Getter
     @ValueMapValue
     private String healthPoints;
 
+    @Getter
     @ValueMapValue
     private String attack;
 
+    @Getter
     @ValueMapValue
     private String defense;
 
+    @Getter
     @ValueMapValue
     private String specialAttack;
 
+    @Getter
     @ValueMapValue
     private String specialDefense;
 
+    @Getter
     @ValueMapValue
     private String speed;
 }
