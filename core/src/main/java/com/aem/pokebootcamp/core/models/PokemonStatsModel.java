@@ -18,9 +18,16 @@ import org.apache.sling.models.annotations.injectorspecific.ValueMapValue;
  */
 @Model(
         adaptables = {Resource.class, SlingHttpServletRequest.class},
-        resourceType = "aempokebootcamp/components/pokemonstats",
+        resourceType = PokemonStatsModel.RESOURCE_TYPE,
         defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
 public class PokemonStatsModel {
+    /**
+     * Defines the resource type associated with the `PokemonStatsModel`.
+     * Specifies the path for the AEM component `aempokebootcamp/components/pokemonstats`,
+     * enabling this model to be linked to the corresponding resource in the repository.
+     */
+    public static final String RESOURCE_TYPE = "aempokebootcamp/components/pokemonstats";
+
     @Getter
     @ValueMapValue
     private String healthPoints;
