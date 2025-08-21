@@ -1,0 +1,106 @@
+body{
+  background-color: #ededed;
+}
+.board{
+    margin: auto;
+    width: 55%;
+    height: 450px;
+    background-color: #e2e2e2;
+    padding: 10px;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+.titulo_grafica{
+    width: 100%;
+    height: 10%;
+}
+.titulo_grafica>h3{
+    padding: 0;
+    margin: 0px;
+    text-align: center;
+    color: #666666;
+}
+.sub_board{
+    width: 100%;
+    height: 350px;
+    padding: 10px;
+    margin-top: 0px;
+    overflow: hidden;
+    box-sizing: border-box;
+}
+.sep_board{
+    width: 100%;
+    height: 10%;
+}
+.cont_board{
+    height: 250px;
+    width: 560px;
+}
+.graf_board{
+    width: 470px;
+    height: 100%;
+    margin-top: 0px;
+    border-left: 2px solid #999999;
+    border-bottom: 2px solid #999999;
+    box-sizing: border-box;
+    display: flex;
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00ffffff', endColorstr='#00ffffff',GradientType=0 );
+}
+.barra{
+    height: 100%;
+    margin-right: 15px;
+    margin-left: 15px;
+    display: flex;
+    align-items: flex-end;
+    text-align: -webkit-center;
+    width: min-content;
+}
+.sub_barra{
+    background: #00799b;
+    background: -moz-linear-gradient(top, #00799b 0%, #64d1be 100%);
+    background: -webkit-linear-gradient(top, #00799b 0%,#64d1be 100%);
+    background: linear-gradient(to bottom, #00799b 0%,#64d1be 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00799b', endColorstr='#64d1be',GradientType=0 );
+    -webkit-border-radius: 3px 3px 0 0;
+    border-radius: 3px 3px 0 0;
+}
+.tag_g{
+    position: relative;
+    width: 40px;
+    height: 100%;
+    margin-bottom: 30px;
+    text-align: center;
+    margin-top: -20px;
+    z-index: 2;
+}
+.tag_leyenda{
+    width: 100%;
+    text-align: center;
+    margin-top: 5px;
+}
+.tag_board{
+    height: 100%;
+    width: 15%;
+    border-bottom: 2px solid rgba(0,0,0,0);
+    box-sizing: border-box;
+}
+.sub_tag_board{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: flex-end;
+    flex-wrap: wrap;
+}
+.sub_tag_board>div{
+    width: 100%;
+    height: 10%;
+    text-align: right;
+    padding-right: 10px;
+    box-sizing: border-box;
+}
+.b1{ height: 35%}
+.b2{ height: 45%}
+.b3{ height: 55%}
+.b4{ height: 75%}
+.b5{ height: 85%}
+.b6{ height: 10%}
