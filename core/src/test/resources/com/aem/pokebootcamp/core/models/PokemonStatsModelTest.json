@@ -1,0 +1,12 @@
+{
+  "pokemonstats": {
+    "jcr:primaryType": "nt:unstructured",
+    "sling:resourceType": "aempokebootcamp/components/pokemonstats",
+    "attack": "32",
+    "specialAttack": "56",
+    "speed": "200",
+    "healthPoints": "100",
+    "defense": "43",
+    "specialDefense": "180"
+  }
+}

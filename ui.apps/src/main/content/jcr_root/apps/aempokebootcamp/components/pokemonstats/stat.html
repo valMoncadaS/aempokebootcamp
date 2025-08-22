@@ -1,0 +1,24 @@
+<template data-sly-template.stat="${@ statValue, statLabel}">
+    <li class="stat">
+        <ul class="stat-values">
+            <li data-value="${statValue}" class="meter"></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+        <span class="tooltip">${statValue}</span>
+        <span>${statLabel @ i18n}</span>
+    </li>
+</template>

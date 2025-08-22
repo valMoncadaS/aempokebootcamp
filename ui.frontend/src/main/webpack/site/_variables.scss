@@ -8,12 +8,14 @@ $font-height:           1.5;
 //== Color
 
 // Normal mode
-$color-foreground:      #202020;
-$color-background:      #ECECEC;
-$color-background-gray: #F2F2F2;
-$color-link:            #2020E0;
-$color-white:           #FFFFFF;
-$color-error:           #E3350D;
+$color-foreground:        #202020;
+$color-background:        #ECECEC;
+$color-background-gray:   #F2F2F2;
+$color-background-gray-1: #A4A4A4;
+$color-link:              #2020E0;
+$color-white:             #FFFFFF;
+$color-error:             #E3350D;
+$color-stat:              #30A7D7;
 
 // Dark mode
 $color-foreground-dark: invert($color-foreground);
@@ -36,3 +38,18 @@ $space-xxxxl: $spacing-unit * 6;    // 48px
 $phone-size: 510px;
 $tablet-size: 768px;
 $desktop-size: 1024px;
+
+//Border Radius
+$border-radius-sm: 0.125rem;   // 2px
+$border-radius-md: 0.25rem;    // 4px
+$border-radius-lg: 0.5rem;     // 8px
+$border-radius-xl: 1rem;       // 16px
+$border-radius-xxl: 2rem;      // 32px
+
+//Border Width
+$border-width-none:     0;         // 0px (no border)
+$border-width-hairline: 0.0625rem; // 1px (very thin)
+$border-width-thin:     0.125rem;  // 2px
+$border-width-medium:   0.25rem;   // 4px
+$border-width-thick:    0.5rem;    // 8px
+$border-width-heavy:    1rem;      // 16px
