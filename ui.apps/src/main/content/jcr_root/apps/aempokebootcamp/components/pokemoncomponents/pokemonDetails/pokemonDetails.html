@@ -1,0 +1,35 @@
+<sly data-sly-use.placeholderTemplate="core/wcm/components/commons/v1/templates.html"/>
+
+<sly data-sly-use.detail="com.aem.pokebootcamp.core.models.PokemonDetailsModel">
+    <div class="cmp-pokemonDetails" data-sly-test="${!detail.empty}">
+        <div class="height">
+            <h3>Height</h3>
+            <p>${detail.height} m</p>
+        </div>
+        <div class="category">
+            <h3>Category</h3>
+            <p>${detail.category}</p>
+        </div>
+        <div class="weight">
+            <h3>Weight</h3>
+            <p>${detail.weight} kg</p>
+        </div>
+        <div class="ability">
+            <h3>Ability</h3>
+            <p>${detail.ability}</p>
+        </div>
+        <div class="gender">
+            <h3>Gender</h3>
+            <div class="gender-types">
+                <p data-sly-test="${detail.maleGender}">♂</p>
+                <p data-sly-test="${detail.femaleGender}">♀</p>
+            </div>
+        </div>
+    </div>
+</sly>
+
+<sly data-sly-call="${placeholderTemplate.placeholder @ isEmpty=detail.empty}"></sly>
+
+
+
+
