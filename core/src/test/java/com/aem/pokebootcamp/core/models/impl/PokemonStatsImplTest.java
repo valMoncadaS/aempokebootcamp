@@ -30,9 +30,9 @@ class PokemonStatsImplTest {
     void setUp() {
         context.addModelsForPackage("com.aem.pokebootcamp.core.models.impl");
 
-        context.load().json("/com/aem/pokebootcamp/core/models/impl/pokemon-stats.json", "/content/pokemon");
+        context.load().json("/com/aem/pokebootcamp/core/models/impl/pokemon-stats.json", "/content/pokemonstats");
 
-        final Resource resource = context.resourceResolver().getResource("/content/pokemon");
+        final Resource resource = context.resourceResolver().getResource("/content/pokemonstats");
 
         assertNotNull(resource, "Resource should not be null");
         model = resource.adaptTo(PokemonStatsImpl.class);
