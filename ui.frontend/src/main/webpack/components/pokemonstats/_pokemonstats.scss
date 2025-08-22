@@ -1,0 +1,50 @@
+.pokemon-stats {
+    background-color: #999;
+    padding: 1.5rem;
+    border-radius: 12px;
+    color: #222;
+    font-family: Arial, sans-serif;
+    width: fit-content;
+  
+    h3 {
+      margin-top: 0;
+      margin-bottom: 1rem;
+      font-weight: bold;
+    }
+  
+    .stats-chart {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      align-items: flex-end;
+  
+      .stat-column {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+  
+        .stat-bar {
+          width: 50px;
+          height: 120px; /* 12 segments = 10px each */
+          display: grid;
+          grid-template-rows: repeat(12, 1fr);
+          gap: 2px;
+          background:
+            linear-gradient(
+              to top,
+              #58a9cc calc((var(--value) / 240) * 100%),
+              white calc((var(--value) / 240) * 100%)
+            );
+          background-size: 100% 100%;
+          background-repeat: no-repeat;
+          border: 1px solid #999;
+        }
+  
+        span {
+          margin-top: 0.5rem;
+          font-weight: bold;
+          text-align: center;
+        }
+      }
+    }
+  }

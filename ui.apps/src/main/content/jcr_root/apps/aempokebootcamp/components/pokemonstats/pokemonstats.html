@@ -1,0 +1,32 @@
+<sly data-sly-use.templates="core/wcm/components/commons/v1/templates.html" />
+<sly data-sly-use.model="com.aem.pokebootcamp.core.models.PokemonStats">
+  <div data-sly-test.notEmpy="${model}" class="pokemon-stats">
+    <h3>Stats</h3>
+    <div class="stats-chart">
+      <div class="stat-column" data-value="${model.hitPoints}">
+        <div class="stat-bar"></div>
+        <span>HP</span>
+      </div>
+      <div class="stat-column" data-value="${model.attack}">
+        <div class="stat-bar"></div>
+        <span>Attack</span>
+      </div>
+      <div class="stat-column" data-value="${model.defense}">
+        <div class="stat-bar"></div>
+        <span>Defense</span>
+      </div>
+      <div class="stat-column" data-value="${model.specialAttack}">
+        <div class="stat-bar"></div>
+        <span>Special Attack</span>
+      </div>
+      <div class="stat-column" data-value="${model.specialDefense}">
+        <div class="stat-bar"></div>
+        <span>Special Defense</span>
+      </div>
+      <div class="stat-column" data-value="${model.speed}">
+        <div class="stat-bar"></div>
+        <span>Speed</span>
+      </div>
+    </div>
+  </div>
+  <sly data-sly-call="${templates.placeholder @ isEmpty=!notEmpy && wcmmode.edit}"></sly>
