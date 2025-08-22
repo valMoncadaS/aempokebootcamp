@@ -1,0 +1,6 @@
+{
+  "pokemonAbility": {
+    "jcr:primaryType": "nt:unstructured",
+    "abilityName": "Poison Point"
+  }
+}

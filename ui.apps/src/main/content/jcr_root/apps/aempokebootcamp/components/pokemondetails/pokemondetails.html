@@ -1,0 +1,51 @@
+<sly data-sly-use.pokemonDetails="com.aem.pokebootcamp.core.models.PokemonDetailsModel"
+     data-sly-use.genderTemplate="gender.html">
+    <sly data-sly-set.detailsDefined="${pokemonDetails.height || pokemonDetails.category || pokemonDetails.weight}">
+        <sly data-sly-test.isEdit="${wcmmode.edit && !detailsDefined}">
+            <sly data-sly-use.templates="core/wcm/components/commons/v1/templates.html">
+                <sly data-sly-call="${templates.placeholder @ isEmpty=isEdit}"></sly>
+            </sly>
+        </sly>
+        <sly data-sly-test="${detailsDefined}">
+            <div class="pokemon-details">
+                <div class="left-column">
+                    <ul>
+                        <li>
+                            <span class="attribute-title">${"Height" @i18n}</span>
+                            <span class="attribute-value">${pokemonDetails.height}</span>
+                        </li>
+
+                        <li>
+                            <span class="attribute-title">${"Weight" @i18n}</span>
+                            <span class="attribute-value">${pokemonDetails.weight}</span>
+                        </li>
+
+                        <li>
+                            <span class="attribute-title">${"Gender" @i18n}</span>
+                            <span data-sly-list.gender="${pokemonDetails.gender}" class="attribute-value">
+                                <sly data-sly-call="${genderTemplate.gender @ gender=gender }"></sly>
+                            </span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="right-column">
+                    <ul>
+                        <li>
+                            <span class="attribute-title">${"Category" @i18n}</span>
+                            <span class="attribute-value">${pokemonDetails.category}</span>
+                        </li>
+                        <li>
+                            <span class="attribute-title">${"Abilities" @i18n}</span>
+                            <ul class="attribute-list" data-sly-list.ability="${pokemonDetails.abilities}">
+                                <li>
+                                    <span class="attribute-value">${ability.abilityName}</span>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </sly>
+    </sly>
+</sly>

@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+          xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:sling="http://sling.apache.org/jcr/sling/1.0"
+          jcr:primaryType="nt:unstructured"
+          jcr:title="Pokemon Details"
+          sling:resourceType="cq/gui/components/authoring/dialog">
+    <content
+            jcr:primaryType="nt:unstructured"
+            sling:resourceType="granite/ui/components/coral/foundation/container">
+        <items jcr:primaryType="nt:unstructured">
+            <column
+                    jcr:primaryType="nt:unstructured"
+                    sling:resourceType="granite/ui/components/coral/foundation/container">
+                <items jcr:primaryType="nt:unstructured">
+                    <height
+                            jcr:primaryType="nt:unstructured"
+                            sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                            fieldLabel="Height"
+                            name="./height"
+                            required="{Boolean}true"/>
+                    <weight
+                            jcr:primaryType="nt:unstructured"
+                            sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                            fieldLabel="Weight"
+                            name="./weight"
+                            required="{Boolean}true"/>
+                    <category
+                            jcr:primaryType="nt:unstructured"
+                            sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                            fieldLabel="Category"
+                            name="./category"
+                            required="{Boolean}true"/>
+                    <abilities
+                            jcr:primaryType="nt:unstructured"
+                            sling:resourceType="granite/ui/components/coral/foundation/form/multifield"
+                            composite="{Boolean}true"
+                            fieldLabel="Abilities">
+                        <field
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/container"
+                                name="./abilities">
+                            <items jcr:primaryType="nt:unstructured">
+                                <ability
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                        fieldLabel="Ability"
+                                        name="./abilityName"
+                                        required="{Boolean}true"/>
+                            </items>
+                        </field>
+                    </abilities>
+                    <gender
+                            jcr:primaryType="nt:unstructured"
+                            sling:resourceType="granite/ui/components/foundation/form/select"
+                            fieldDescription="Select pokemon gender"
+                            fieldLabel="Gender"
+                            multiple="{Boolean}true"
+                            name="./gender"
+                            required="{Boolean}true">
+                        <items jcr:primaryType="nt:unstructured">
+                            <male
+                                    jcr:primaryType="nt:unstructured"
+                                    text="Male"
+                                    value="male"/>
+                            <female
+                                    jcr:primaryType="nt:unstructured"
+                                    text="Female"
+                                    value="female"/>
+                        </items>
+                    </gender>
+                </items>
+            </column>
+        </items>
+    </content>
+</jcr:root>
