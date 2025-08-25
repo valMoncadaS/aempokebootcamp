@@ -10,7 +10,6 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 
 /**
  * Testing for Pokémon Details Model to see if the Pokémon weight, height, gender, ability and category
@@ -38,13 +37,13 @@ class PokemonDetailsModelTest {
 
     @Test
     void testStatistics() {
-        final Double expectedHP = 0.7;
-        final Double actualHP = pokemonDetailsModel.getHeight();
-        assertEquals(expectedHP, actualHP, "Expected HP and Actual HP are equal!");
+        final Double expectedHeight = 0.7;
+        final Double actualHeight = pokemonDetailsModel.getHeight();
+        assertEquals(expectedHeight, actualHeight, "Expected Height and Actual Height are equal!");
 
         final Double expectedWeight = 6.9;
         final Double actualWeight = pokemonDetailsModel.getWeight();
-        assertEquals(expectedWeight, actualWeight, "Expected Attack and Actual Attack are equal!");
+        assertEquals(expectedWeight, actualWeight, "Expected Weight and Actual Weight are equal!");
 
         final String expectedAbility = "";
         final String actualAbility = pokemonDetailsModel.getAbility();
@@ -55,10 +54,9 @@ class PokemonDetailsModelTest {
         assertEquals(expectedCategory, actualCategory,
                 "Expected Category and Actual Category are equal!");
 
-        final Boolean selectedFemaleGender = pokemonDetailsModel.getFemaleGender();
-        assertTrue(selectedFemaleGender, "Female gender is selected (TRUE)");
-
-        final Boolean selectedMaleGender = pokemonDetailsModel.getMaleGender();
-        assertTrue(selectedMaleGender, "Male gender is selected (TRUE)");
+        final String[] expectedGender = {"female", "male" };
+        final String[] actualGender = pokemonDetailsModel.getGender();
+        assertEquals(expectedGender, actualGender,
+                "Expected Gender and Actual Gender are equal!");
     }
 }

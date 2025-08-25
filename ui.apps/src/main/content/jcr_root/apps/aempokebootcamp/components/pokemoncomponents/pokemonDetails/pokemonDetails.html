@@ -21,8 +21,10 @@
         <div class="gender">
             <h3>Gender</h3>
             <div class="gender-types">
-                <p data-sly-test="${detail.maleGender}">♂</p>
-                <p data-sly-test="${detail.femaleGender}">♀</p>
+                <sly data-sly-list.genderSelection="${detail.gender}">
+                    <p data-sly-test="${genderSelection == 'male'}">♂</p>
+                    <p data-sly-test="${genderSelection == 'female'}">♀</p>
+                </sly>
             </div>
         </div>
     </div>

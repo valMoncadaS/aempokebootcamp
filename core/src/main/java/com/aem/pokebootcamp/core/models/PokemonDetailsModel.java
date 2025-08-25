@@ -28,11 +28,7 @@ public class PokemonDetailsModel {
 
     @Getter
     @ValueMapValue
-    private Boolean maleGender;
-
-    @Getter
-    @ValueMapValue
-    private Boolean femaleGender;
+    private String[] gender;
 
     /**
      * @return a boolean depending on the details, if they have all data or no.
@@ -40,6 +36,6 @@ public class PokemonDetailsModel {
     public boolean isEmpty() {
         return height == null && category == null
                 && weight == null && ability == null
-                && maleGender == null && femaleGender == null;
+                && gender == null;
     }
 }

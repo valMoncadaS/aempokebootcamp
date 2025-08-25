@@ -1,10 +1,14 @@
 {
   "pokemondetails": {
+    "jcr:primaryType": "nt:unstructured",
+    "sling:resourceType": "aempokebootcamp/components/pokemoncomponents/pokemonDetails",
     "height": "0.7",
     "ability": "Espesura",
     "weight": "6.9",
     "category": "Semilla",
-    "femaleGender": "true",
-    "maleGender": "true"
+    "gender": [
+      "female",
+      "male"
+    ]
   }
 }

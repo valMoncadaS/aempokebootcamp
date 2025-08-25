@@ -37,22 +37,25 @@
                             sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
                             fieldLabel="Ability"
                             name="./ability"/>
-                    <maleGender
-                        jcr:primaryType="nt:unstructured"
-                        sling:resourceType="granite/ui/components/foundation/form/checkbox"
-                        name="./maleGender"
-                        text="Male Gender"
-                        uncheckedValue="false"
-                        value="{Boolean}true">
-                    </maleGender>
-                    <femaleGender
+                    <gender
                             jcr:primaryType="nt:unstructured"
-                            sling:resourceType="granite/ui/components/foundation/form/checkbox"
-                            name="./femaleGender"
-                            text="Female Gender"
-                            uncheckedValue="false"
-                            value="{Boolean}true">
-                    </femaleGender>
+                            sling:resourceType="granite/ui/components/coral/foundation/form/select"
+                            fieldLabel="Type"
+                            multiple="true"
+                            name="./gender">
+                        <items jcr:primaryType="nt:unstructured">
+                            <maleGender
+                                    jcr:primaryType="nt:unstructured"
+                                    name="./maleGender"
+                                    text="Male Gender"
+                                    value="male"/>
+                            <femaleGender
+                                    jcr:primaryType="nt:unstructured"
+                                    name="./femaleGender"
+                                    text="Female Gender"
+                                    value="female"/>
+                        </items>
+                    </gender>
                 </items>
             </column>
         </items>
