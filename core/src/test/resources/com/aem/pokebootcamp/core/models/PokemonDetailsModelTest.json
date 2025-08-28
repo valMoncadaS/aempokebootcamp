@@ -1,0 +1,30 @@
+{
+  "pokemonDetails": {
+    "jcr:primaryType": "nt:unstructured",
+    "gender": [
+      "male",
+      "female"
+    ],
+    "height": "4' 07\"",
+    "weight": "136.7 lbs",
+    "category": "Drill",
+    "sling:resourceType": "aempokebootcamp/components/pokemondetails",
+    "abilities": {
+      "jcr:primaryType": "nt:unstructured",
+      "item0": {
+        "jcr:primaryType": "nt:unstructured",
+        "abilityName": "Poison Point"
+      },
+      "item1": {
+        "jcr:primaryType": "nt:unstructured",
+        "abilityName": "Rivalry"
+      }
+    }
+  },
+  "pokemonDetails-empty-abilities": {
+    "jcr:primaryType": "nt:unstructured",
+    "sling:resourceType": "aempokebootcamp/components/pokemondetails",
+    "abilities": {
+    }
+  }
+}
