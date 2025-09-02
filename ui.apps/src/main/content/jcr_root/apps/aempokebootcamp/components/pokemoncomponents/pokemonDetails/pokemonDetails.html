@@ -24,12 +24,7 @@
             <h3>Gender</h3>
             <div class="gender-types">
                 <sly data-sly-list.genderSelection="${detail.gender}">
-                    <p data-sly-test="${genderSelection == 'male'}">♂</p>
-                    <p data-sly-test="${genderSelection == 'female'}">♀</p>
-                </sly>
-                <sly data-sly-list.genderSelection="${properties.gender}">
-                    <p data-sly-test="${genderSelection == 'male'}">♂</p>
-                    <p data-sly-test="${genderSelection == 'female'}">♀</p>
+                    <p data-sly-test.currentGender="${genderSelection == 'male' ? '♂' : '♀'}"> ${currentGender}</p>
                 </sly>
             </div>
         </div>
