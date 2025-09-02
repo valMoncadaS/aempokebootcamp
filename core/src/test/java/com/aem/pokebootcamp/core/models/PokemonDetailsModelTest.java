@@ -45,8 +45,8 @@ class PokemonDetailsModelTest {
         final Double actualWeight = pokemonDetailsModel.getWeight();
         assertEquals(expectedWeight, actualWeight, "Expected Weight and Actual Weight are equal!");
 
-        final String expectedAbility = "";
-        final String actualAbility = pokemonDetailsModel.getAbility();
+        final String[] expectedAbility = {"Espesura", "Fuego" };
+        final String[] actualAbility = pokemonDetailsModel.getAbility();
         assertEquals(expectedAbility, actualAbility, "Expected Ability and Actual Ability are equal!");
 
         final String expectedCategory = "";

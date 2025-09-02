@@ -16,12 +16,18 @@
         </div>
         <div class="ability">
             <h3>Ability</h3>
-            <p>${detail.ability}</p>
+            <sly data-sly-list.name="${detail.ability}">
+                <p>${name}</p>
+            </sly>
         </div>
         <div class="gender">
             <h3>Gender</h3>
             <div class="gender-types">
                 <sly data-sly-list.genderSelection="${detail.gender}">
+                    <p data-sly-test="${genderSelection == 'male'}">♂</p>
+                    <p data-sly-test="${genderSelection == 'female'}">♀</p>
+                </sly>
+                <sly data-sly-list.genderSelection="${properties.gender}">
                     <p data-sly-test="${genderSelection == 'male'}">♂</p>
                     <p data-sly-test="${genderSelection == 'female'}">♀</p>
                 </sly>

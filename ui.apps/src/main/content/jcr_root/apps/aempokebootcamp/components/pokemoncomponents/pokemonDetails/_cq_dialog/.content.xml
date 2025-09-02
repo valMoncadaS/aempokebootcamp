@@ -34,9 +34,15 @@
                             min="0"/>
                     <ability
                             jcr:primaryType="nt:unstructured"
-                            sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                            fieldLabel="Ability"
-                            name="./ability"/>
+                            sling:resourceType="granite/ui/components/coral/foundation/form/multifield"
+                            fieldDescription="Click 'Add field' to add new city."
+                            fieldLabel="Ability">
+                        <field
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/foundation/form/textfield"
+                                required="true"
+                                name="./ability"/>
+                    </ability>
                     <gender
                             jcr:primaryType="nt:unstructured"
                             sling:resourceType="granite/ui/components/coral/foundation/form/select"
