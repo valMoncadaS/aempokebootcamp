@@ -1,0 +1,21 @@
+{
+  "pokemontype": {
+    "jcr:primaryType": "nt:unstructured",
+    "title": "Type",
+    "sling:resourceType": "aempokebootcamp/components/pokemontype",
+    "typesWeaknesses": [
+      "pokemon-types:dragon",
+      "pokemon-types:fairy",
+      "pokemon-types:bug"
+    ]
+  },
+  "pokemonweakness": {
+    "jcr:primaryType": "nt:unstructured",
+    "title": "Weakness",
+    "sling:resourceType": "aempokebootcamp/components/pokemontype",
+    "typesWeaknesses": [
+      "pokemon-types:dragon",
+      "pokemon-types:fairy"
+    ]
+  }
+}
