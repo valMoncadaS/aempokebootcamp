@@ -5,14 +5,12 @@ import com.day.cq.tagging.TagManager;
 import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.sling.api.resource.Resource;
-import org.apache.sling.api.servlets.SlingSafeMethodsServlet;
 import org.apache.sling.models.annotations.DefaultInjectionStrategy;
 import org.apache.sling.models.annotations.Model;
 import org.apache.sling.models.annotations.injectorspecific.Self;
 import org.apache.sling.models.annotations.injectorspecific.ValueMapValue;
 
 import javax.inject.Inject;
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -21,14 +19,12 @@ import java.util.List;
  */
 @Slf4j
 @Model(adaptables = Resource.class, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
-public class PokemonTypeModel extends SlingSafeMethodsServlet implements Serializable {
-    private static final long serialVersionUID = 1L;
+public class PokemonTypeModel {
 
     @Getter
     @ValueMapValue
     private String title;
 
-    @Getter
     @ValueMapValue
     private String[] tags;
 
@@ -36,6 +32,12 @@ public class PokemonTypeModel extends SlingSafeMethodsServlet implements Seriali
     @Self
     private Resource resource;
 
+    /**
+     * @return a boolean if they have data or no.
+     */
+    public boolean isEmpty() {
+        return title == null && tags == null;
+    }
 
     /**
      * Function returns a list of tag names.

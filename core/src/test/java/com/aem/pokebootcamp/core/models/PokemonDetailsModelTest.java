@@ -9,6 +9,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 
+import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 /**
@@ -47,16 +48,16 @@ class PokemonDetailsModelTest {
 
         final String[] expectedAbility = {"Espesura", "Fuego" };
         final String[] actualAbility = pokemonDetailsModel.getAbility();
-        assertEquals(expectedAbility, actualAbility, "Expected Ability and Actual Ability are equal!");
+        assertArrayEquals(expectedAbility, actualAbility, "Expected Ability and Actual Ability are equal!");
 
-        final String expectedCategory = "";
+        final String expectedCategory = "Semilla";
         final String actualCategory = pokemonDetailsModel.getCategory();
         assertEquals(expectedCategory, actualCategory,
                 "Expected Category and Actual Category are equal!");
 
         final String[] expectedGender = {"female", "male" };
         final String[] actualGender = pokemonDetailsModel.getGender();
-        assertEquals(expectedGender, actualGender,
+        assertArrayEquals(expectedGender, actualGender,
                 "Expected Gender and Actual Gender are equal!");
     }
 }

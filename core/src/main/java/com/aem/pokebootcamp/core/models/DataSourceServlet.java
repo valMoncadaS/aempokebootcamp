@@ -35,7 +35,7 @@ public class DataSourceServlet extends SlingSafeMethodsServlet implements Serial
     /**
      * DataSource with all tags coming from cq:tags/pokemontags.
      */
-    protected static final String RESOURCE_TYPE = "apps/aempokebootcamp/components/pokemoncomponents/pokemonCards";
+    protected static final String RESOURCE_TYPE = "apps/aempokebootcamp/tags";
     /**
      * Function that adds those Pokémon Tags (Tag id:Tag Title) to the DataSource.
      */
