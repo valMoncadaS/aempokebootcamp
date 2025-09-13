@@ -8,7 +8,6 @@ import com.day.cq.search.QueryBuilder;
 import com.day.cq.search.result.Hit;
 import com.day.cq.search.result.SearchResult;
 import com.day.cq.wcm.api.constants.NameConstants;
-import lombok.extern.slf4j.Slf4j;
 import org.apache.sling.api.resource.LoginException;
 import org.apache.sling.api.resource.Resource;
 import org.apache.sling.api.resource.ResourceResolver;
@@ -16,19 +15,27 @@ import org.apache.sling.api.resource.ResourceResolverFactory;
 import org.apache.sling.api.resource.ValueMap;
 import org.osgi.service.component.annotations.Component;
 import org.osgi.service.component.annotations.Reference;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.jcr.RepositoryException;
 import javax.jcr.Session;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+import java.util.HashMap;
+import java.util.Map;
+
 
 /**
  * Implementation of the {@link TagXFService} interface that provides functionality for retrieving
  * Experience Fragment (XF) paths based on associated tags. This class interacts with the repository
  * to fetch XF resources and processes them to return a list of unique XF paths that match with the provided tagId
  */
-@Slf4j
 @Component(service = TagXFService.class)
 public class TagXFServiceImpl implements TagXFService {
+    private final Logger log = LoggerFactory.getLogger(TagXFServiceImpl.class);
     private static final String XF_SEARCH_ROOT = "/content/experience-fragments/aempokebootcamp/us/en/site/type";
     private static final String TAG_PREFIX = "pokemon-types:";
     private static final String XF_RESOURCE_TYPE = "aempokebootcamp/components/xfpage";
@@ -54,11 +61,8 @@ public class TagXFServiceImpl implements TagXFService {
 
         try (ResourceResolver resolver = resolverFactory.getResourceResolver(null)) {
             xfs = findXfPathsForTags(resolver, tagIds);
-
         } catch (LoginException | RepositoryException e) {
-            if (log.isErrorEnabled()) {
-                log.error("Error obtaining resource resolver", e);
-            }
+            log.error("Error obtaining resource resolver", e);
         }
 
         return xfs;
@@ -149,19 +153,13 @@ public class TagXFServiceImpl implements TagXFService {
                              final ResourceResolver resourceResolver,
                              final String fullTagId) throws RepositoryException {
         for (final Hit hit : result.getHits()) {
-            try {
-                final Resource hitResource = resourceResolver.getResource(hit.getPath());
-                final Resource xfVariation = findXfVariation(hitResource);
+            final Resource hitResource = resourceResolver.getResource(hit.getPath());
+            final Resource xfVariation = findXfVariation(hitResource);
 
-                if (xfVariation != null) {
-                    uniqueXfPaths.add(xfVariation.getPath());
-                    if (log.isDebugEnabled()) {
-                        log.debug("Found XF variation: {} for tag: {}", xfVariation.getPath(), fullTagId);
-                    }
-                }
-            } catch (RepositoryException e) {
-                if (log.isErrorEnabled()) {
-                    log.error("Error processing search hit: {}", hit.getPath());
+            if (xfVariation != null) {
+                uniqueXfPaths.add(xfVariation.getPath());
+                if (log.isDebugEnabled()) {
+                    log.debug("Found XF variation: {} for tag: {}", xfVariation.getPath(), fullTagId);
                 }
             }
         }
@@ -182,7 +180,7 @@ public class TagXFServiceImpl implements TagXFService {
     private Resource findXfVariation(final Resource resource) {
         Resource current = resource;
 
-        while (current != null && !"/".equals(current.getPath())) {
+        while (current != null) {
             final String resourceType = current.getResourceType();
             final String resourceSuperType = current.getResourceSuperType();
 
