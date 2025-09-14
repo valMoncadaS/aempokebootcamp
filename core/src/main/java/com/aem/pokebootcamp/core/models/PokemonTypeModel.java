@@ -1,10 +1,12 @@
 package com.aem.pokebootcamp.core.models;
 
+import com.aem.pokebootcamp.core.services.TagXFService;
 import lombok.Getter;
 import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.resource.Resource;
 import org.apache.sling.models.annotations.DefaultInjectionStrategy;
 import org.apache.sling.models.annotations.Model;
+import org.apache.sling.models.annotations.injectorspecific.OSGiService;
 import org.apache.sling.models.annotations.injectorspecific.ValueMapValue;
 
 import java.util.List;
@@ -30,7 +32,21 @@ public class PokemonTypeModel {
     @ValueMapValue
     private String title;
 
+    @OSGiService
+    private TagXFService tagXFService;
+
     @Getter
     @ValueMapValue
     private List<String> typesWeaknesses;
+
+    /**
+     * Retrieves a list of Experience Fragments associated with the Pokémon type weaknesses.
+     * The method fetches Experience Fragments based on the tags representing the types of
+     * weaknesses stored in the model.
+     *
+     * @return a list of ExperienceFragment objects corresponding to the specified type weaknesses.
+     */
+    public List<String> getExperienceFragments() {
+        return tagXFService.getXFsByTags(typesWeaknesses);
+    }
 }
