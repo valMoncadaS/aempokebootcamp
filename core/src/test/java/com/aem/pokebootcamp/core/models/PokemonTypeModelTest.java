@@ -1,5 +1,6 @@
 package com.aem.pokebootcamp.core.models;
 
+import com.aem.pokebootcamp.core.services.TagXFService;
 import io.wcm.testing.mock.aem.junit5.AemContext;
 import io.wcm.testing.mock.aem.junit5.AemContextExtension;
 import org.apache.sling.api.resource.Resource;
@@ -11,6 +12,8 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
 
 /**
  * Unit test for the PokemonTypeModel Sling model, verifying its behavior and integration
@@ -68,6 +71,25 @@ class PokemonTypeModelTest {
         assertNotNull(pokemonTypes, "Expected Pokemon Type list to be populated from the test resource");
         assertEquals("pokemon-types:dragon", pokemonTypes.get(0), "Expected Pokemon Type to be 'dragon'");
         assertEquals("pokemon-types:fairy", pokemonTypes.get(1), "Expected Pokemon Type to be 'fairy'");
+    }
+
+    @Test
+    void pokemonTypeExperienceFragmentsWithContent() {
+        final Resource resource = context.resourceResolver().getResource("/content/pokemonweakness");
+        final TagXFService tagXFService = mock(TagXFService.class);
+        context.registerService(TagXFService.class, tagXFService);
+        context.currentResource(resource);
+        final MockSlingHttpServletRequest request = context.request();
+        final PokemonTypeModel model = request.adaptTo(PokemonTypeModel.class);
+
+        when(tagXFService.getXFsByTags(List.of("pokemon-types:dragon", "pokemon-types:fairy")))
+                .thenReturn(List.of("/content/experience-fragments/aempokebootcamp/us/en/site/type/dragon",
+                        "/content/experience-fragments/aempokebootcamp/us/en/site/type/fairy"));
+        assertNotNull(model, "Expected Pokemon Type to be adapted from the test resource");
+        assertEquals("/content/experience-fragments/aempokebootcamp/us/en/site/type/dragon",
+                model.getExperienceFragments().get(0), "Expected Pokemon type to be dragon XF path");
+        assertEquals("/content/experience-fragments/aempokebootcamp/us/en/site/type/fairy",
+                model.getExperienceFragments().get(1), "Expected Pokemon type to be fairy XF path");
     }
 
 }

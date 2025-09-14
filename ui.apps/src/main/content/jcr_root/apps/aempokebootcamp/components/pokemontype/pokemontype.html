@@ -7,9 +7,11 @@
         </sly>
     </sly>
     <sly data-sly-test="${typeDefined}">
-        <h3>${pokemonTypeModel.title}</h3>
-        <ul data-sly-list.element="${pokemonTypeModel.typesWeaknesses}">
-            <li>${element}</li>
+        <h3 class="pokemon-type__title">${pokemonTypeModel.title}</h3>
+        <ul class="type-weakness-list" data-sly-list.xf="${pokemonTypeModel.experienceFragments}">
+            <li class="type-weakness-item">
+                <sly data-sly-resource="${@path=xf, selectors='content', wcmmode='disabled'}"></sly>
+            </li>
         </ul>
     </sly>
 </div>
