@@ -1,0 +1,15 @@
+<sly data-sly-use.placeholderTemplate="core/wcm/components/commons/v1/templates.html"/>
+
+<sly data-sly-use.pokemonType="com.aem.pokebootcamp.core.models.PokemonTypeModel">
+    <div class="cmp-pokemonType">
+        <h3 class="title">${pokemonType.title}</h3>
+        <div class="tags" data-sly-list.tag="${pokemonType.tagNames}">
+            <p>${tag}</p>
+        </div>
+    </div>
+</sly>
+<sly data-sly-call="${placeholderTemplate.placeholder @ isEmpty=pokemonType.empty}"></sly>
+
+
+
+

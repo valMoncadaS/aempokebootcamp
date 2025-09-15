@@ -1,0 +1,15 @@
+{
+  "pokemontype": {
+    "jcr:primaryType": "nt:unstructured",
+    "tags": [
+      "pokemontags:water",
+      "pokemontags:rock",
+      "pokemontags:grass",
+      "pokemontags:normal",
+      "pokemontags:steel",
+      "pokemontags:dark"
+    ],
+    "title": "Weakness",
+    "sling:resourceType": "aempokebootcamp/components/pokemoncomponents/pokemonType"
+  }
+}
