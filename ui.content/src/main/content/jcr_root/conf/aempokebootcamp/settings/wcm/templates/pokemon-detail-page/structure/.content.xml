@@ -3,20 +3,100 @@
     jcr:primaryType="cq:Page">
     <jcr:content
         cq:deviceGroups="[mobile/groups/responsive]"
-        cq:lastModified="{Date}2025-09-12T12:07:08.983-05:00"
+        cq:lastModified="{Date}2025-09-23T11:15:54.403-05:00"
         cq:lastModifiedBy="admin"
         cq:template="/conf/aempokebootcamp/settings/wcm/templates/pokemon-detail-page"
         jcr:primaryType="cq:PageContent"
         sling:resourceType="aempokebootcamp/components/page">
         <root
+            jcr:lastModified="{Date}2025-09-23T11:08:21.451-05:00"
+            jcr:lastModifiedBy="admin"
             jcr:primaryType="nt:unstructured"
             sling:resourceType="aempokebootcamp/components/container"
             layout="responsiveGrid">
             <container
+                jcr:created="{Date}2025-09-23T11:09:16.101-05:00"
+                jcr:createdBy="admin"
+                jcr:lastModified="{Date}2025-09-23T11:12:10.030-05:00"
+                jcr:lastModifiedBy="admin"
                 jcr:primaryType="nt:unstructured"
-                sling:resourceType="aempokebootcamp/components/container"
-                editable="{Boolean}true"
-                layout="responsiveGrid"/>
+                sling:resourceType="aempokebootcamp/components/container">
+                <image
+                    jcr:created="{Date}2025-09-23T11:09:33.565-05:00"
+                    jcr:createdBy="admin"
+                    jcr:lastModified="{Date}2025-09-23T11:09:33.565-05:00"
+                    jcr:lastModifiedBy="admin"
+                    jcr:primaryType="nt:unstructured"
+                    sling:resourceType="aempokebootcamp/components/image"/>
+                <pokemonstats
+                    jcr:created="{Date}2025-09-23T11:09:39.317-05:00"
+                    jcr:createdBy="admin"
+                    jcr:lastModified="{Date}2025-09-23T11:09:39.317-05:00"
+                    jcr:lastModifiedBy="admin"
+                    jcr:primaryType="nt:unstructured"
+                    sling:resourceType="aempokebootcamp/components/pokemoncomponents/pokemonStats"/>
+                <cq:responsive jcr:primaryType="nt:unstructured">
+                    <default
+                        jcr:primaryType="nt:unstructured"
+                        offset="0"
+                        width="6"/>
+                    <tablet
+                        jcr:primaryType="nt:unstructured"
+                        offset="0"
+                        width="12"/>
+                    <phone
+                        jcr:primaryType="nt:unstructured"
+                        behavior="newline"/>
+                </cq:responsive>
+            </container>
+            <container_1300981701
+                jcr:created="{Date}2025-09-23T11:09:22.170-05:00"
+                jcr:createdBy="admin"
+                jcr:lastModified="{Date}2025-09-23T11:09:22.170-05:00"
+                jcr:lastModifiedBy="admin"
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="aempokebootcamp/components/container">
+                <text
+                    jcr:created="{Date}2025-09-23T11:11:41.751-05:00"
+                    jcr:createdBy="admin"
+                    jcr:lastModified="{Date}2025-09-23T11:11:41.751-05:00"
+                    jcr:lastModifiedBy="admin"
+                    jcr:primaryType="nt:unstructured"
+                    sling:resourceType="aempokebootcamp/components/text"/>
+                <pokemondetails
+                    jcr:created="{Date}2025-09-23T11:11:32.902-05:00"
+                    jcr:createdBy="admin"
+                    jcr:lastModified="{Date}2025-09-23T11:11:32.902-05:00"
+                    jcr:lastModifiedBy="admin"
+                    jcr:primaryType="nt:unstructured"
+                    sling:resourceType="aempokebootcamp/components/pokemoncomponents/pokemonDetails"/>
+                <pokemontype_copy
+                    jcr:created="{Date}2025-09-23T11:11:37.979-05:00"
+                    jcr:createdBy="admin"
+                    jcr:lastModified="{Date}2025-09-23T11:11:59.865-05:00"
+                    jcr:lastModifiedBy="admin"
+                    jcr:primaryType="nt:unstructured"
+                    sling:resourceType="aempokebootcamp/components/pokemoncomponents/pokemonType"
+                    title="Type"/>
+                <pokemontype
+                    jcr:created="{Date}2025-09-23T11:11:37.979-05:00"
+                    jcr:createdBy="admin"
+                    jcr:lastModified="{Date}2025-09-23T11:11:54.466-05:00"
+                    jcr:lastModifiedBy="admin"
+                    jcr:primaryType="nt:unstructured"
+                    sling:resourceType="aempokebootcamp/components/pokemoncomponents/pokemonType"
+                    title="Weakness"/>
+                <cq:responsive jcr:primaryType="nt:unstructured">
+                    <default
+                        jcr:primaryType="nt:unstructured"
+                        offset="0"
+                        width="6"/>
+                    <phone
+                        jcr:primaryType="nt:unstructured"
+                        offset="0"
+                        width="12"/>
+                </cq:responsive>
+            </container_1300981701>
         </root>
         <cq:responsive jcr:primaryType="nt:unstructured">
             <breakpoints jcr:primaryType="nt:unstructured">
