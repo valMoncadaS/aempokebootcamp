@@ -57,9 +57,11 @@ public class TagXFServiceImpl implements TagXFService {
      */
     @Override
     public List<String> getXFsByTags(final List<String> tagIds) {
+        final Map<String, Object> authInfo = new HashMap<>();
+        authInfo.put(ResourceResolverFactory.SUBSERVICE, "tagxf-service-user");
         List<String> xfs = new ArrayList<>();
 
-        try (ResourceResolver resolver = resolverFactory.getResourceResolver(null)) {
+        try (ResourceResolver resolver = resolverFactory.getResourceResolver(authInfo)) {
             xfs = findXfPathsForTags(resolver, tagIds);
         } catch (LoginException | RepositoryException e) {
             log.error("Error obtaining resource resolver", e);
