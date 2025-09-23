@@ -208,12 +208,12 @@
             <container jcr:primaryType="nt:unstructured">
                 <policy_1574694950110
                     jcr:description="Allows the template components and defines the component mapping (this configures what components should be automatically created when authors drop assets from the content finder to the page editor)."
-                    jcr:lastModified="{Date}2025-07-03T12:03:32.384-05:00"
+                    jcr:lastModified="{Date}2025-09-23T12:13:11.375-05:00"
                     jcr:lastModifiedBy="admin"
                     jcr:primaryType="nt:unstructured"
-                    jcr:title="Page Root"
+                    jcr:title="Pokemon Detail Container"
                     sling:resourceType="wcm/core/components/policy/policy"
-                    components="[/apps/aempokebootcamp/components/pokemoncomponents/pokemonCards]"
+                    components="[/apps/aempokebootcamp/components/container]"
                     layoutDisabled="false">
                     <jcr:content jcr:primaryType="nt:unstructured"/>
                     <cq:authoring jcr:primaryType="nt:unstructured">
@@ -241,12 +241,12 @@
                 </policy_1574694950110>
                 <policy_1574695586800
                     jcr:description="Allows the page components and defines the component mapping (this configures what components should be automatically created when authors drop assets from the content finder to the page editor)."
-                    jcr:lastModified="{Date}2025-07-03T12:04:34.943-05:00"
+                    jcr:lastModified="{Date}2025-09-23T12:11:05.193-05:00"
                     jcr:lastModifiedBy="admin"
                     jcr:primaryType="nt:unstructured"
-                    jcr:title="Page Content"
+                    jcr:title="First Container Detail Policy"
                     sling:resourceType="wcm/core/components/policy/policy"
-                    components="[/apps/aempokebootcamp/components/pokemoncomponents/pokemonCards]"
+                    components="[/apps/aempokebootcamp/components/image,/apps/aempokebootcamp/components/pokemoncomponents/pokemonStats]"
                     layoutDisabled="false">
                     <jcr:content jcr:primaryType="nt:unstructured"/>
                     <cq:authoring jcr:primaryType="nt:unstructured">
@@ -314,6 +314,26 @@
                         </assetToComponentMapping>
                     </cq:authoring>
                 </policy_1575040440977>
+                <policy_3179987550241
+                    jcr:lastModified="{Date}2025-09-23T11:11:08.189-05:00"
+                    jcr:lastModifiedBy="admin"
+                    jcr:primaryType="nt:unstructured"
+                    jcr:title="Second Container"
+                    sling:resourceType="wcm/core/components/policy/policy"
+                    components="[/apps/aempokebootcamp/components/pokemoncomponents/pokemonDetails,/apps/aempokebootcamp/components/pokemoncomponents/pokemonType,/apps/aempokebootcamp/components/text]"
+                    layoutDisabled="false">
+                    <jcr:content jcr:primaryType="nt:unstructured"/>
+                </policy_3179987550241>
+                <policy_1758646799608
+                    jcr:lastModified="{Date}2025-09-23T12:12:51.041-05:00"
+                    jcr:lastModifiedBy="admin"
+                    jcr:primaryType="nt:unstructured"
+                    jcr:title="Content Page Policy"
+                    sling:resourceType="wcm/core/components/policy/policy"
+                    components="/apps/aempokebootcamp/components/pokemoncomponents/pokemonCards"
+                    layoutDisabled="false">
+                    <jcr:content jcr:primaryType="nt:unstructured"/>
+                </policy_1758646799608>
             </container>
             <teaser jcr:primaryType="nt:unstructured">
                 <policy_1575031387650
