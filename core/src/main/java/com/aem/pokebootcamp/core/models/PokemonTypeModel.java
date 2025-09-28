@@ -35,7 +35,6 @@ public class PokemonTypeModel {
     @OSGiService
     private TagXFService tagXFService;
 
-    @Getter
     @ValueMapValue
     private List<String> typesWeaknesses;
 
