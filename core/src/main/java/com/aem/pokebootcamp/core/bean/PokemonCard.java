@@ -27,7 +27,6 @@ public class PokemonCard {
     @ValueMapValue
     private String pokemonImage;
 
-    @Getter
     @ValueMapValue
     private List<String> type;
 
