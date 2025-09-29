@@ -1,15 +1,15 @@
 package com.aem.pokebootcamp.core.bean;
 
+import com.aem.pokebootcamp.core.services.TagXFService;
 import lombok.Getter;
-import org.apache.commons.lang3.StringUtils;
 import org.apache.sling.api.resource.Resource;
 import org.apache.sling.models.annotations.DefaultInjectionStrategy;
 import org.apache.sling.models.annotations.Model;
+import org.apache.sling.models.annotations.injectorspecific.OSGiService;
 import org.apache.sling.models.annotations.injectorspecific.ValueMapValue;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
-import java.util.stream.Collectors;
 
 /**
  * Represents a Pokemon card model with details such as the name, image, and types of a Pokemon.
@@ -30,14 +30,17 @@ public class PokemonCard {
     @ValueMapValue
     private List<String> type;
 
+    @OSGiService
+    private TagXFService tagXFService;
+
+
     /**
-     * Method to return a list of types in a human-readable format.
-     * @return list of types
+     * Retrieves the list of Pokemon types associated with the current Pokemon card.
+     * This method resolves the types by using the tagXFService to fetch
+     * the corresponding Experience Fragments based on the tags defined for the Pokemon.
+     * @return a list of XFs paths as strings, extracted from the associated tags
      */
-    public List<String> getType() {
-        return type.stream()
-                .map(typeElement -> StringUtils.capitalize(typeElement.split(":")[1]))
-                .sorted()
-                .collect(Collectors.toList());
+    public List<String> getTypes() {
+        return tagXFService.getXFsByTags(type);
     }
 }

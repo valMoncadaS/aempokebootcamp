@@ -15,12 +15,10 @@ import static org.junit.jupiter.api.Assertions.*;
 
 /**
  * Unit tests for the PokemonCardModel class.
- *
  * This test class uses JUnit 5 and the AEM Mocks framework to test the functionality
  * of the PokemonCardModel. It ensures that the model is properly adaptable from the
  * AEM resource or request and that the expected behavior of the model matches the
  * defined requirements.
- *
  * Test scenarios:
  * - `pokemonCardModelWithCards`: Tests the behavior when the model contains multiple Pokemon cards.
  *   Verifies that all fields are populated as expected and matches the mocked input JSON data.
@@ -54,14 +52,14 @@ class PokemonCardModelTest {
         assertEquals("Bulbasaur", card2.getName(), "Expected Pokemon name to be 'Bulbasaur'");
         assertEquals("/content/dam/aempokebootcamp/pokemon-images/001.png", card2.getPokemonImage(),
                 "Expected Pokemon image to be '/content/dam/aempokebootcamp/pokemon-images/001.png'");
-        assertEquals(List.of("Grass", "Poison"), card2.getType(),
+        assertEquals(List.of("pokemon-types:grass", "pokemon-types:poison"), card2.getType(),
                 "Expected Pokemon types to be 'Grass, Poison'");
 
         final PokemonCard card1 = cards.get(1);
         assertEquals("Pikachu", card1.getName(), "Expected Pokemon name to be 'Pikachu'");
         assertEquals("/content/dam/aempokebootcamp/pokemon-images/025.png", card1.getPokemonImage(),
                 "Expected Pokemon image to be '/content/dam/aempokebootcamp/pokemon-images/025.png'");
-        assertEquals(List.of("Electric"), card1.getType(), "Expected Pokemon types to be 'Electric'");
+        assertEquals(List.of("pokemon-types:electric"), card1.getType(), "Expected Pokemon types to be 'Electric'");
     }
 
     @Test

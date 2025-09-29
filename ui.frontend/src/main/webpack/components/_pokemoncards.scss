@@ -38,8 +38,8 @@
         gap: $space-sm;
         margin-bottom: $space-md * 5;
 
-        p {
-          margin: 0;
+        > div {
+          width: 38%;
         }
       }
     }
