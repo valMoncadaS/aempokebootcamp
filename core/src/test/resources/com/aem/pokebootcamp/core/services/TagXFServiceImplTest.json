@@ -1,0 +1,20 @@
+{
+  "type": {
+    "jcr:primaryType": "cq:Page",
+    "fire": {
+      "jcr:primaryType": "cq:Page",
+      "jcr:content": {
+        "cq:tags": [
+          "experience-fragments:variation/web",
+          "pokemon-types:fire"
+        ],
+        "sling:resourceType": "aempokebootcamp/components/xfpage"
+      }
+    },
+    "fireNotCqPage": {
+      "jcr:primaryType": "cq:notPage",
+      "sling:resourceType": "aempokebootcamp/components/container",
+      "sling:resourceSuperType": "cq:Page"
+    }
+  }
+}
