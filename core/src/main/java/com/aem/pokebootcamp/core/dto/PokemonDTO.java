@@ -39,7 +39,7 @@ public class PokemonDTO {
 
     @Getter
     @Setter
-    private String ability;
+    private List<String> abilities;
 
     @Getter
     @Setter
