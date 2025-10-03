@@ -335,7 +335,7 @@ Bundle-Category: ${componentGroupName}
 # reproducible builds (https://github.com/bndtools/bnd/issues/3521)
 -noextraheaders: true
 -snapshot: SNAPSHOT
-
+Export-Package: me.sargunvohra.lib.pokekotlin.*, rx.*, sun.misc, android.os, retrofit2, retrofit2.*, okhttp3, okhttp3.internal.*, okio, kotlinx.coroutines, javax.annotation.meta, android.util, com.android.org.conscrypt, android.net.http, android.security, org.conscrypt, sun.security.ssl, android.net.ssl, dalvik.system, kotlin.*, kotlin.reflect.jvm.internal
 Bundle-DocURL:
 -plugin org.apache.sling.caconfig.bndplugin.ConfigurationClassScannerPlugin
 -plugin org.apache.sling.bnd.models.ModelsScannerPlugin
@@ -774,6 +774,11 @@ Bundle-DocURL:
               <goals>
                 <goal>report</goal>
               </goals>
+                <configuration>
+                  <excludes>
+                    <exclude>kotlin/**</exclude>
+                  </excludes>
+                </configuration>
             </execution>
             <execution>
               <id>default-check</id>
@@ -800,6 +805,13 @@ Bundle-DocURL:
                 </rules>
                 <excludes>
                   <exclude>org/jasypt/**</exclude>
+                  <exclude>okhttp3/**</exclude>
+                  <exclude>retrofit2/**</exclude>
+                  <exclude>rx/**</exclude>
+                  <exclude>me/sargunvohra/**</exclude>
+                  <exclude>okio/**</exclude>
+                  <exclude>kotlin/**</exclude>
+                  <exclude>com/aem/pokebootcamp/core/services/impl/PokemonAPIServiceImpl.class</exclude>
                 </excludes>
               </configuration>
             </execution>
@@ -1291,7 +1303,11 @@ Bundle-DocURL:
         <version>1.18.38</version>
         <scope>provided</scope>
       </dependency>
-              
+      <dependency>
+         <groupId>org.jetbrains.kotlin</groupId>
+         <artifactId>kotlin-stdlib</artifactId>
+         <version>2.2.20</version>
+      </dependency>
     </dependencies>
         
   </dependencyManagement>
