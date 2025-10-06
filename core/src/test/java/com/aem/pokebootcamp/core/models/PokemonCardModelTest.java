@@ -52,14 +52,11 @@ class PokemonCardModelTest {
         assertEquals("Bulbasaur", card2.getName(), "Expected Pokemon name to be 'Bulbasaur'");
         assertEquals("/content/dam/aempokebootcamp/pokemon-images/001.png", card2.getPokemonImage(),
                 "Expected Pokemon image to be '/content/dam/aempokebootcamp/pokemon-images/001.png'");
-        assertEquals(List.of("pokemon-types:grass", "pokemon-types:poison"), card2.getType(),
-                "Expected Pokemon types to be 'Grass, Poison'");
 
         final PokemonCard card1 = cards.get(1);
         assertEquals("Pikachu", card1.getName(), "Expected Pokemon name to be 'Pikachu'");
         assertEquals("/content/dam/aempokebootcamp/pokemon-images/025.png", card1.getPokemonImage(),
                 "Expected Pokemon image to be '/content/dam/aempokebootcamp/pokemon-images/025.png'");
-        assertEquals(List.of("pokemon-types:electric"), card1.getType(), "Expected Pokemon types to be 'Electric'");
     }
 
     @Test

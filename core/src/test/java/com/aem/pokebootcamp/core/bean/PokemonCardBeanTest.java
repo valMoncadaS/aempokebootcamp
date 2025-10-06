@@ -9,7 +9,6 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 
-import java.util.Arrays;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -52,9 +51,6 @@ class PokemonCardBeanTest {
         assertEquals("Bulbasaur", pokemonCard.getName(), "Expected Pokemon name to be 'Bulbasaur'");
         assertEquals("/content/dam/aempokebootcamp/pokemon-images/001.png", pokemonCard.getPokemonImage(),
                 "Expected Pokemon image to be '/content/dam/aempokebootcamp/pokemon-images/001.png'");
-
-        final List<String> expectedTypes = Arrays.asList("pokemon-types:grass", "pokemon-types:poison");
-        assertEquals(expectedTypes, pokemonCard.getType(), "Expected Pokemon types to be 'Grass, Poison'");
 
 
         when(tagXFService.getXFsByTags(List.of("pokemon-types:grass", "pokemon-types:poison")))

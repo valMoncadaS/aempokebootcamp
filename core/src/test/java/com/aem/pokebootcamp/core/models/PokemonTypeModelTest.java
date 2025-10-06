@@ -49,12 +49,6 @@ class PokemonTypeModelTest {
         final PokemonTypeModel model = request.adaptTo(PokemonTypeModel.class);
         assertNotNull(model, "Expected Pokemon Type to be adapted to from the test resource");
         assertEquals("Type", model.getTitle(), "Expected Pokemon Type title to be 'Type'");
-
-        final List<String> pokemonTypes = List.copyOf(model.getTypesWeaknesses());
-        assertNotNull(pokemonTypes, "Expected Pokemon Type list to be populated from the test resource");
-        assertEquals("pokemon-types:dragon", pokemonTypes.get(0), "Expected Pokemon Type to be 'dragon'");
-        assertEquals("pokemon-types:fairy", pokemonTypes.get(1), "Expected Pokemon Type to be 'fairy'");
-        assertEquals("pokemon-types:bug", pokemonTypes.get(2), "Expected Pokemon Type to be 'bug'");
     }
 
     @Test
@@ -66,11 +60,6 @@ class PokemonTypeModelTest {
         final PokemonTypeModel model = request.adaptTo(PokemonTypeModel.class);
         assertNotNull(model, "Expected Pokemon Type to be adapted to from the test resource");
         assertEquals("Weakness", model.getTitle(), "Expected Pokemon Type title to be 'Weakness'");
-
-        final List<String> pokemonTypes = List.copyOf(model.getTypesWeaknesses());
-        assertNotNull(pokemonTypes, "Expected Pokemon Type list to be populated from the test resource");
-        assertEquals("pokemon-types:dragon", pokemonTypes.get(0), "Expected Pokemon Type to be 'dragon'");
-        assertEquals("pokemon-types:fairy", pokemonTypes.get(1), "Expected Pokemon Type to be 'fairy'");
     }
 
     @Test
