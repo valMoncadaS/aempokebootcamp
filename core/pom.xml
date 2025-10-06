@@ -173,5 +173,9 @@ Import-Package: javax.annotation;version=0.0.0,*
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
         </dependency>
+        <dependency>
+            <groupId>com.github.PokeAPI</groupId>
+            <artifactId>pokekotlin</artifactId>
+        </dependency>
     </dependencies>
 </project>
