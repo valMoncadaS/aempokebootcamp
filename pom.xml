@@ -777,6 +777,12 @@ Bundle-DocURL:
                 <configuration>
                   <excludes>
                     <exclude>kotlin/**</exclude>
+                    <exclude>okhttp3/**</exclude>
+                    <exclude>retrofit2/**</exclude>
+                    <exclude>rx/**</exclude>
+                    <exclude>me/sargunvohra/**</exclude>
+                    <exclude>okio/**</exclude>
+                    <exclude>com/aem/pokebootcamp/core/services/impl/PokemonAPIServiceImpl.class</exclude>
                   </excludes>
                 </configuration>
             </execution>
