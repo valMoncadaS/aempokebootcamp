@@ -3,6 +3,7 @@ package com.aem.pokebootcamp.core.services.impl;
 import com.aem.pokebootcamp.core.dto.PokemonDTO;
 import com.aem.pokebootcamp.core.services.PokemonAPIService;
 import com.aem.pokebootcamp.core.services.PokemonConfigMethods;
+import com.aem.pokebootcamp.core.services.TagXFService;
 import lombok.extern.slf4j.Slf4j;
 import me.sargunvohra.lib.pokekotlin.client.PokeApiClient;
 import me.sargunvohra.lib.pokekotlin.model.NamedApiResource;
@@ -31,6 +32,9 @@ public class PokemonAPIServiceImpl implements PokemonAPIService {
 
     @Reference
     private PokemonConfigMethods pokemonConfigMethods;
+
+    @Reference
+    private TagXFService tagXFService;
 
     /**
      * Retrieves the base URL used by the Pokémon API service.
@@ -64,7 +68,7 @@ public class PokemonAPIServiceImpl implements PokemonAPIService {
 
         final List<String> weaknesses = pokemon.getTypes().stream()
                 .map(PokemonType::getType)
-                .map(type -> client.getType(type.getId()).getDamageRelations().getNoDamageTo())
+                .map(type -> client.getType(type.getId()).getDamageRelations().getDoubleDamageFrom())
                 .map(noDamage ->
                         noDamage.stream().map(NamedApiResource::getName).collect(Collectors.toList()))
                 .flatMap(List::stream)
@@ -83,6 +87,11 @@ public class PokemonAPIServiceImpl implements PokemonAPIService {
 
         final List<String> gender = resolveGender(species.getGenderRate());
 
+        final String formatedId = String.format("%03d", idPokemon);
+        final String pokemonImage =
+                String.format("https://www.pokemon.com/static-assets/content-assets/cms2/img/pokedex/full/%s.png",
+                        formatedId);
+
         final String category = species.getGenera().stream()
                 .filter(genus -> "en".equals(genus.getLanguage().getName()))
                 .map(Genus::getGenus)
@@ -92,14 +101,15 @@ public class PokemonAPIServiceImpl implements PokemonAPIService {
 
         return PokemonDTO.builder()
                 .name(pokemon.getName())
-                .types(types)
+                .types(tagXFService.getXFsByTags(types))
                 .abilities(abilities)
                 .height(String.valueOf(pokemon.getHeight()))
                 .weight(String.valueOf(pokemon.getWeight()))
                 .stats(stats)
                 .gender(gender)
-                .weakness(weaknesses)
+                .weakness(tagXFService.getXFsByTags(weaknesses))
                 .category(category)
+                .pokemonImage(pokemonImage)
                 .build();
     }
 
