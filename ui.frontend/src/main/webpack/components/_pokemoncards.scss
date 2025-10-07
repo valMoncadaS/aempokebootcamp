@@ -11,6 +11,7 @@
   background: $color-white;
   display: flex;
   flex-direction: column;
+  flex-wrap: wrap;
   padding-top: $space-xl;
 
   .pokemon-card {
