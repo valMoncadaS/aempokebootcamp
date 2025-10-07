@@ -48,4 +48,8 @@ public class PokemonDTO {
     @Getter
     @Setter
     private Map<String, Integer> stats;
+
+    @Getter
+    @Setter
+    private String pokemonImage;
 }
