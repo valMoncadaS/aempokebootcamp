@@ -93,7 +93,7 @@ public class TagXFServiceImpl implements TagXFService {
         if (queryBuilder != null && session != null) {
             for (final String tag : tagIds) {
                 final String fullTagId = tag.startsWith(TAG_PREFIX) ? tag : TAG_PREFIX + tag;
-                final SearchResult result = getXFsResources(tag, queryBuilder, session);
+                final SearchResult result = getXFsResources(fullTagId, queryBuilder, session);
 
                 validateXFs(result, uniqueXfPaths, resourceResolver, fullTagId);
             }
