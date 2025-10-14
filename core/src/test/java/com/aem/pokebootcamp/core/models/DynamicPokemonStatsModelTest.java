@@ -109,6 +109,20 @@ class DynamicPokemonStatsModelTest {
     }
 
     @Test
+    void pokemonAPIServiceNull() throws NoSuchFieldException {
+        PrivateAccessor.setField(model, POKEMON_ID_TEXT, POKEMON_ID);
+        PrivateAccessor.setField(model, "pokemonAPIService", null);
+        model.init();
+
+        assertNull(model.getAttack(), POKEMON_ATTACK_SHOULD_BE_NULL);
+        assertNull(model.getDefense(), POKEMON_DEFENSE_SHOULD_BE_NULL);
+        assertNull(model.getHealthPoints(), POKEMON_HP_SHOULD_BE_NULL);
+        assertNull(model.getSpeed(), POKEMON_SPEED_SHOULD_BE_NULL);
+        assertNull(model.getSpecialAttack(), POKEMON_SPECIAL_ATTACK_SHOULD_BE_NULL);
+        assertNull(model.getSpecialDefense(), POKEMON_SPECIAL_DEFENSE_SHOULD_BE_NULL);
+    }
+
+    @Test
     void statsNull() throws NoSuchFieldException {
         PrivateAccessor.setField(model, POKEMON_ID_TEXT, POKEMON_ID);
         final PokemonDTO pokemonDTO = PokemonDTO.builder().stats(null).build();
