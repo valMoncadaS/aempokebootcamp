@@ -1,6 +1,7 @@
 package com.aem.pokebootcamp.core.bean;
 
 import lombok.Getter;
+import lombok.Setter;
 import org.apache.sling.api.resource.Resource;
 import org.apache.sling.models.annotations.DefaultInjectionStrategy;
 import org.apache.sling.models.annotations.Model;
@@ -21,6 +22,7 @@ import javax.servlet.http.HttpServletRequest;
         defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
 public class PokemonAbility {
     @Getter
+    @Setter
     @ValueMapValue
     private String abilityName;
 }
