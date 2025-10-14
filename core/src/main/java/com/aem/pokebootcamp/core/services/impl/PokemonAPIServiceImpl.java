@@ -29,6 +29,7 @@ import java.util.stream.Collectors;
 @Component(service = PokemonAPIService.class)
 public class PokemonAPIServiceImpl implements PokemonAPIService {
     private static final int MAX_GENRE_NUMBER = 8;
+    private static final float UNIT_DIVISOR = 10;
 
     @Reference
     private PokemonConfigMethods pokemonConfigMethods;
@@ -103,8 +104,8 @@ public class PokemonAPIServiceImpl implements PokemonAPIService {
                 .name(pokemon.getName())
                 .types(tagXFService.getXFsByTags(types))
                 .abilities(abilities)
-                .height(String.valueOf(pokemon.getHeight()))
-                .weight(String.valueOf(pokemon.getWeight()))
+                .height(String.format("%.1f m", pokemon.getHeight() / UNIT_DIVISOR))
+                .weight(String.format("%.1f kg", pokemon.getWeight() / UNIT_DIVISOR))
                 .stats(stats)
                 .gender(gender)
                 .weakness(tagXFService.getXFsByTags(weaknesses))
@@ -125,15 +126,12 @@ public class PokemonAPIServiceImpl implements PokemonAPIService {
      */
     private List<String> resolveGender(final int genderRate) {
         final List<String> genders = new ArrayList<>();
-        if (genderRate == -1) {
-            genders.add("Genderless");
-        }
 
         if (genderRate > 0) {
-            genders.add("Female");
+            genders.add("female");
         }
         if (genderRate < MAX_GENRE_NUMBER) {
-            genders.add("Male");
+            genders.add("male");
         }
 
         return genders;
