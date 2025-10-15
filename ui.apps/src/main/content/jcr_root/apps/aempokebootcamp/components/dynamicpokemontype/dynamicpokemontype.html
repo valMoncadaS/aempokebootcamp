@@ -1,0 +1,17 @@
+<!-- Display all XF paths for weakness tags -->
+<div data-sly-use.pokemonTypeModel="com.aem.pokebootcamp.core.models.DynamicPokemonTypeModel">
+    <sly data-sly-set.typeDefined="${pokemonTypeModel.typesWeaknesses && !pokemonTypeModel.typesWeaknesses.empty}"></sly>
+    <sly data-sly-test.isEdit="${wcmmode.edit && !typeDefined}">
+        <sly data-sly-use.templates="core/wcm/components/commons/v1/templates.html">
+            <sly data-sly-call="${templates.placeholder @ isEmpty=isEdit}"></sly>
+        </sly>
+    </sly>
+    <sly data-sly-test="${typeDefined}">
+        <h3 class="pokemon-type__title">${pokemonTypeModel.title}</h3>
+        <ul class="type-weakness-list" data-sly-list.xf="${pokemonTypeModel.experienceFragments}">
+            <li class="type-weakness-item">
+                <sly data-sly-resource="${@path=xf, selectors='content', wcmmode='disabled'}"></sly>
+            </li>
+        </ul>
+    </sly>
+</div>
