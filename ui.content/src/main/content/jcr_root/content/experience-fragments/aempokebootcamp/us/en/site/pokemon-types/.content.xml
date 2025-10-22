@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:sling="http://sling.apache.org/jcr/sling/1.0"
+    jcr:primaryType="cq:Page">
+    <jcr:content
+        cq:tags="[]"
+        cq:template="/libs/cq/experience-fragments/components/experiencefragment/template"
+        jcr:primaryType="cq:PageContent"
+        jcr:title="Pokemon Type"
+        sling:resourceType="cq/experience-fragments/components/experiencefragment"/>
+        <master/>
+        <bug-variation/>
+        <dark-variation/>
+        <dragon-variation/>
+        <electric-variation/>
+        <fairy-variation/>
+        <fighting-variation/>
+        <fire-variation/>
+        <flying-variation/>
+        <ghost-variation/>
+        <grass-variation/>
+        <ground-variation/>
+        <ice-variation/>
+        <normal-variation/>
+        <poison-variation/>
+        <physic-variation/>
+        <rock-variation/>
+        <shadow-variation/>
+        <special-variation/>
+        <steel-variation/>
+        <water-variation/>
+</jcr:root>
