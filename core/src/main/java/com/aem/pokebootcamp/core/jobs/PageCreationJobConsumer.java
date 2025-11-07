@@ -7,6 +7,8 @@ import org.apache.sling.api.resource.LoginException;
 import org.apache.sling.api.resource.PersistenceException;
 import org.apache.sling.api.resource.ResourceResolver;
 import org.apache.sling.api.resource.ResourceResolverFactory;
+import org.apache.sling.api.resource.Resource;
+import org.apache.sling.api.resource.ModifiableValueMap;
 import org.apache.sling.event.jobs.Job;
 import org.apache.sling.event.jobs.consumer.JobConsumer;
 import org.osgi.service.component.annotations.Component;
@@ -32,6 +34,28 @@ public class PageCreationJobConsumer implements JobConsumer {
     @Reference
     private ResourceResolverFactory resolverFactory;
 
+    private void modifyComponentPokemonId(final Resource resource, final String path, final int pokemonId) {
+        final Resource componentResource =
+                resource.getChild(path);
+        if (componentResource != null) {
+            final ModifiableValueMap properties = componentResource.adaptTo(ModifiableValueMap.class);
+            if (properties != null) {
+                properties.put("pokemonId", pokemonId);
+            }
+        }
+    }
+
+    private void modifyTitle(final Resource resource, final String path, final String title) {
+        final Resource componentResource =
+                resource.getChild(path);
+        if (componentResource != null) {
+            final ModifiableValueMap properties = componentResource.adaptTo(ModifiableValueMap.class);
+            if (properties != null) {
+                properties.put("title", title);
+            }
+        }
+    }
+
     /**
      * Processes a job to create a new page in Adobe Experience Manager (AEM) based on the properties
      * provided in the job. If the page creation is successful, the job's result is marked as successful.
@@ -49,11 +73,20 @@ public class PageCreationJobConsumer implements JobConsumer {
         final String parentPath = job.getProperty("parentPath", String.class);
         final String templatePath = job.getProperty("templatePath", String.class);
         final String pageName = job.getProperty("pageName", String.class);
+        final int pokemonId = job.getProperty("pokemonId", Integer.class);
 
         try (ResourceResolver resolver = getServiceResolver()) {
             final PageManager pageManager = resolver.adaptTo(PageManager.class);
             if (pageManager != null) {
                 final Page page = pageManager.create(parentPath, pageName, templatePath, pageTitle);
+                final Resource contentResource = page.getContentResource();
+                modifyComponentPokemonId(contentResource, "root/container_982851773/dynamicpokemonstats", pokemonId);
+                modifyComponentPokemonId(contentResource, "root/container_1575998991/dynamicpokemondetail", pokemonId);
+                modifyComponentPokemonId(contentResource, "root/container_1575998991/dynamicpokemontype", pokemonId);
+                modifyComponentPokemonId(contentResource, "root/container_1575998991/dynamicpokemontype_956465200",
+                        pokemonId);
+                modifyTitle(contentResource, "root/container_1575998991/dynamicpokemontype", "Type");
+                modifyTitle(contentResource, "root/container_1575998991/dynamicpokemontype_956465200", "Weakness");
                 resolver.commit();
                 if (logger.isInfoEnabled()) {
                     logger.info("Page created successfully at: {}", page.getPath());

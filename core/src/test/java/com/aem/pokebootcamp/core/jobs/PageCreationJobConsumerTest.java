@@ -8,6 +8,8 @@ import org.apache.sling.api.resource.LoginException;
 import org.apache.sling.api.resource.PersistenceException;
 import org.apache.sling.api.resource.ResourceResolver;
 import org.apache.sling.api.resource.ResourceResolverFactory;
+import org.apache.sling.api.resource.Resource;
+import org.apache.sling.api.resource.ModifiableValueMap;
 import org.apache.sling.event.jobs.Job;
 import org.apache.sling.event.jobs.consumer.JobConsumer;
 import org.junit.jupiter.api.BeforeEach;
@@ -21,6 +23,7 @@ import org.slf4j.Logger;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.times;
 
 /**
@@ -34,10 +37,13 @@ class PageCreationJobConsumerTest {
     private static final String PARENT_PATH = "/content/aempokebootcamp";
     private static final String TEMPLATE_PATH = "/conf/aempokebootcamp/settings/wcm/templates/page-template";
     private static final String PAGE_NAME = "test-page";
+    private static final int POKEMON_ID = 1;
     private static final String PAGE_TITLE_ATTRIBUTE = "pageTitle";
     private static final String PARENT_PATH_ATTRIBUTE = "parentPath";
     private static final String TEMPLATE_PATH_ATTRIBUTE = "templatePath";
     private static final String PAGE_NAME_ATTRIBUTE = "pageName";
+    private static final String POKEMON_ID_ATTRIBUTE = "pokemonId";
+    private static final String EXPECTED_OK = "Expected JobResult.OK when the page creation is successful";
 
     @InjectMocks
     private PageCreationJobConsumer jobConsumer;
@@ -60,6 +66,15 @@ class PageCreationJobConsumerTest {
     @Mock
     private Logger logger;
 
+    @Mock
+    private Resource resource;
+
+    @Mock
+    private Resource componentResource;
+
+    @Mock
+    private ModifiableValueMap properties;
+
 
     @BeforeEach
     void setUp() throws LoginException {
@@ -79,18 +94,78 @@ class PageCreationJobConsumerTest {
         Mockito.when(job.getProperty(PARENT_PATH_ATTRIBUTE, String.class)).thenReturn(PARENT_PATH);
         Mockito.when(job.getProperty(TEMPLATE_PATH_ATTRIBUTE, String.class)).thenReturn(TEMPLATE_PATH);
         Mockito.when(job.getProperty(PAGE_NAME_ATTRIBUTE, String.class)).thenReturn(PAGE_NAME);
+        Mockito.when(job.getProperty(POKEMON_ID_ATTRIBUTE, Integer.class)).thenReturn(POKEMON_ID);
+        Mockito.when(page.getContentResource()).thenReturn(resource);
+        Mockito.when(resource.getChild(anyString())).thenReturn(componentResource);
+        Mockito.when(componentResource.adaptTo(ModifiableValueMap.class)).thenReturn(properties);
 
         Mockito.doNothing().when(resourceResolver).commit();
 
         final JobConsumer.JobResult result = jobConsumer.process(job);
 
-        assertEquals(JobConsumer.JobResult.OK, result, "Expected JobResult.OK when the page creation is successful");
+        assertEquals(JobConsumer.JobResult.OK, result, EXPECTED_OK);
+        Mockito.verify(pageManager, times(1)).create(any(), any(), any(), any());
+        Mockito.verify(resourceResolver, times(1)).commit();
+    }
+
+    @Test
+    void processJobSuccessfullyPropertiesNull() throws PersistenceException, WCMException {
+        Mockito.when(pageManager.create(PARENT_PATH,
+                PAGE_NAME,
+                TEMPLATE_PATH,
+                PAGE_TITLE))
+                .thenReturn(page);
+
+        Mockito.when(job.getProperty(PAGE_TITLE_ATTRIBUTE, String.class)).thenReturn(PAGE_TITLE);
+        Mockito.when(job.getProperty(PARENT_PATH_ATTRIBUTE, String.class)).thenReturn(PARENT_PATH);
+        Mockito.when(job.getProperty(TEMPLATE_PATH_ATTRIBUTE, String.class)).thenReturn(TEMPLATE_PATH);
+        Mockito.when(job.getProperty(PAGE_NAME_ATTRIBUTE, String.class)).thenReturn(PAGE_NAME);
+        Mockito.when(job.getProperty(POKEMON_ID_ATTRIBUTE, Integer.class)).thenReturn(POKEMON_ID);
+        Mockito.when(page.getContentResource()).thenReturn(resource);
+        Mockito.when(resource.getChild(anyString())).thenReturn(componentResource);
+        Mockito.when(componentResource.adaptTo(ModifiableValueMap.class)).thenReturn(null);
+
+        Mockito.doNothing().when(resourceResolver).commit();
+
+        final JobConsumer.JobResult result = jobConsumer.process(job);
+
+        assertEquals(JobConsumer.JobResult.OK, result, EXPECTED_OK);
+        Mockito.verify(pageManager, times(1)).create(any(), any(), any(), any());
+        Mockito.verify(resourceResolver, times(1)).commit();
+    }
+
+    @Test
+    void processJobSuccessfullyComponentResourceNull() throws PersistenceException, WCMException {
+        Mockito.when(pageManager.create(PARENT_PATH,
+                PAGE_NAME,
+                TEMPLATE_PATH,
+                PAGE_TITLE))
+                .thenReturn(page);
+
+        Mockito.when(job.getProperty(PAGE_TITLE_ATTRIBUTE, String.class)).thenReturn(PAGE_TITLE);
+        Mockito.when(job.getProperty(PARENT_PATH_ATTRIBUTE, String.class)).thenReturn(PARENT_PATH);
+        Mockito.when(job.getProperty(TEMPLATE_PATH_ATTRIBUTE, String.class)).thenReturn(TEMPLATE_PATH);
+        Mockito.when(job.getProperty(PAGE_NAME_ATTRIBUTE, String.class)).thenReturn(PAGE_NAME);
+        Mockito.when(job.getProperty(POKEMON_ID_ATTRIBUTE, Integer.class)).thenReturn(POKEMON_ID);
+        Mockito.when(page.getContentResource()).thenReturn(resource);
+        Mockito.when(resource.getChild(anyString())).thenReturn(null);
+
+        Mockito.doNothing().when(resourceResolver).commit();
+
+        final JobConsumer.JobResult result = jobConsumer.process(job);
+
+        assertEquals(JobConsumer.JobResult.OK, result, EXPECTED_OK);
         Mockito.verify(pageManager, times(1)).create(any(), any(), any(), any());
         Mockito.verify(resourceResolver, times(1)).commit();
     }
 
     @Test
     void testProcessJobFailureWhenPageManagerIsNull() {
+        Mockito.when(job.getProperty(PAGE_TITLE_ATTRIBUTE, String.class)).thenReturn(PAGE_TITLE);
+        Mockito.when(job.getProperty(PARENT_PATH_ATTRIBUTE, String.class)).thenReturn(PARENT_PATH);
+        Mockito.when(job.getProperty(TEMPLATE_PATH_ATTRIBUTE, String.class)).thenReturn(TEMPLATE_PATH);
+        Mockito.when(job.getProperty(PAGE_NAME_ATTRIBUTE, String.class)).thenReturn(PAGE_NAME);
+        Mockito.when(job.getProperty(POKEMON_ID_ATTRIBUTE, Integer.class)).thenReturn(POKEMON_ID);
         Mockito.when(resourceResolver.adaptTo(PageManager.class)).thenReturn(null);
 
         final JobConsumer.JobResult result = jobConsumer.process(job);
@@ -114,12 +189,14 @@ class PageCreationJobConsumerTest {
         Mockito.when(job.getProperty(TEMPLATE_PATH_ATTRIBUTE, String.class))
                 .thenReturn(TEMPLATE_PATH);
         Mockito.when(job.getProperty(PAGE_NAME_ATTRIBUTE, String.class)).thenReturn(PAGE_NAME);
+        Mockito.when(job.getProperty(POKEMON_ID_ATTRIBUTE, Integer.class)).thenReturn(POKEMON_ID);
+        Mockito.when(page.getContentResource()).thenReturn(resource);
 
         Mockito.doNothing().when(resourceResolver).commit();
 
         final JobConsumer.JobResult result = jobConsumer.process(job);
 
-        assertEquals(JobConsumer.JobResult.OK, result, "Expected JobResult.OK when the page creation is successful");
+        assertEquals(JobConsumer.JobResult.OK, result, EXPECTED_OK);
     }
 
     @Test
@@ -138,6 +215,7 @@ class PageCreationJobConsumerTest {
         Mockito.when(job.getProperty(TEMPLATE_PATH_ATTRIBUTE, String.class))
                 .thenReturn(TEMPLATE_PATH);
         Mockito.when(job.getProperty(PAGE_NAME_ATTRIBUTE, String.class)).thenReturn(PAGE_NAME);
+        Mockito.when(job.getProperty(POKEMON_ID_ATTRIBUTE, Integer.class)).thenReturn(POKEMON_ID);
 
         final JobConsumer.JobResult result = jobConsumer.process(job);
 
@@ -161,6 +239,7 @@ class PageCreationJobConsumerTest {
         Mockito.when(job.getProperty(TEMPLATE_PATH_ATTRIBUTE, String.class))
                 .thenReturn(TEMPLATE_PATH);
         Mockito.when(job.getProperty(PAGE_NAME_ATTRIBUTE, String.class)).thenReturn(PAGE_NAME);
+        Mockito.when(job.getProperty(POKEMON_ID_ATTRIBUTE, Integer.class)).thenReturn(POKEMON_ID);
 
         final JobConsumer.JobResult result = jobConsumer.process(job);
 
