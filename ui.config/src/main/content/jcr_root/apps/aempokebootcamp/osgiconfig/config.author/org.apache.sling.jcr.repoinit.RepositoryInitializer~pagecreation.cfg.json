@@ -1,0 +1,7 @@
+{
+  "scripts": [
+    "create service user page-creator-svc",
+    "set ACL for page-creator-svc\n\tallow jcr:all on /content/aempokebootcamp\nend",
+    "set ACL on /conf/aempokebootcamp\n\tallow jcr:read for page-creator-svc\nend"
+  ]
+}
