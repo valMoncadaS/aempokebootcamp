@@ -1,0 +1,6 @@
+{
+  "user.mapping": [
+    "aempokebootcamp.core:pageCreationService=page-creator-svc"
+  ],
+  "service.ranking:Integer": 1000
+}

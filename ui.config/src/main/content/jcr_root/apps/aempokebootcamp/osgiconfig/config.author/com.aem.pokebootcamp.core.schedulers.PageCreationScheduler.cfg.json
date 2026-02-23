@@ -1,0 +1,6 @@
+{
+  "startId": 1,
+  "endId": 1025,
+  "targetPath": "/content/aempokebootcamp/us/en/pokemons",
+  "schedulerExpression": "0 * * * * ?"
+}
