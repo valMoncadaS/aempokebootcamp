@@ -35,8 +35,7 @@ public class PageCreationJobConsumer implements JobConsumer {
     private ResourceResolverFactory resolverFactory;
 
     private void modifyComponentPokemonId(final Resource resource, final String path, final int pokemonId) {
-        final Resource componentResource =
-                resource.getChild(path);
+        final Resource componentResource = resource.getChild(path);
         if (componentResource != null) {
             final ModifiableValueMap properties = componentResource.adaptTo(ModifiableValueMap.class);
             if (properties != null) {
@@ -45,13 +44,14 @@ public class PageCreationJobConsumer implements JobConsumer {
         }
     }
 
-    private void modifyTitle(final Resource resource, final String path, final String title) {
+    private void modifyStringProperty(final Resource resource, final String path,
+                                      final String title, final String property) {
         final Resource componentResource =
                 resource.getChild(path);
         if (componentResource != null) {
             final ModifiableValueMap properties = componentResource.adaptTo(ModifiableValueMap.class);
             if (properties != null) {
-                properties.put("title", title);
+                properties.put(property, title);
             }
         }
     }
@@ -69,27 +69,19 @@ public class PageCreationJobConsumer implements JobConsumer {
     @Override
     public JobResult process(final Job job) {
         JobResult result = JobResult.FAILED;
-        final String pageTitle = job.getProperty("pageTitle", String.class);
         final String parentPath = job.getProperty("parentPath", String.class);
-        final String templatePath = job.getProperty("templatePath", String.class);
         final String pageName = job.getProperty("pageName", String.class);
-        final int pokemonId = job.getProperty("pokemonId", Integer.class);
 
         try (ResourceResolver resolver = getServiceResolver()) {
             final PageManager pageManager = resolver.adaptTo(PageManager.class);
             if (pageManager != null) {
-                final Page page = pageManager.create(parentPath, pageName, templatePath, pageTitle);
-                final Resource contentResource = page.getContentResource();
-                modifyComponentPokemonId(contentResource, "root/container_982851773/dynamicpokemonstats", pokemonId);
-                modifyComponentPokemonId(contentResource, "root/container_1575998991/dynamicpokemondetail", pokemonId);
-                modifyComponentPokemonId(contentResource, "root/container_1575998991/dynamicpokemontype", pokemonId);
-                modifyComponentPokemonId(contentResource, "root/container_1575998991/dynamicpokemontype_956465200",
-                        pokemonId);
-                modifyTitle(contentResource, "root/container_1575998991/dynamicpokemontype", "Type");
-                modifyTitle(contentResource, "root/container_1575998991/dynamicpokemontype_956465200", "Weakness");
-                resolver.commit();
-                if (logger.isInfoEnabled()) {
-                    logger.info("Page created successfully at: {}", page.getPath());
+                final Resource page = resolver.getResource(parentPath + "/" + pageName);
+                if (page != null) {
+                    if (logger.isInfoEnabled()) {
+                        logger.info("Page already exists at: {}", page.getPath());
+                    }
+                } else {
+                    createPage(pageManager, job, resolver);
                 }
                 result = JobResult.OK;
             }
@@ -99,6 +91,34 @@ public class PageCreationJobConsumer implements JobConsumer {
             }
         }
         return result;
+    }
+
+    private void createPage(final PageManager pageManager, final Job job, final ResourceResolver resolver)
+            throws WCMException, PersistenceException {
+        final String parentPath = job.getProperty("parentPath", String.class);
+        final String pageName = job.getProperty("pageName", String.class);
+        final String pageTitle = job.getProperty("pageTitle", String.class);
+        final String templatePath = job.getProperty("templatePath", String.class);
+        final int pokemonId = job.getProperty("pokemonId", Integer.class);
+
+        final Page page = pageManager.create(parentPath, pageName, templatePath, pageTitle);
+        final Resource contentResource = page.getContentResource();
+        final String imageSrc = "https://www.pokemon.com/static-assets/content-assets/cms2/img/pokedex/full/"
+                                + String.format("%03d", pokemonId) + ".png";
+        modifyComponentPokemonId(contentResource, "root/container_982851773/dynamicpokemonstats", pokemonId);
+        modifyComponentPokemonId(contentResource, "root/container_1575998991/dynamicpokemondetail", pokemonId);
+        modifyComponentPokemonId(contentResource, "root/container_1575998991/dynamicpokemontype", pokemonId);
+        modifyComponentPokemonId(contentResource, "root/container_1575998991/dynamicpokemontype_956465200",
+                pokemonId);
+        modifyStringProperty(contentResource, "root/container_1575998991/dynamicpokemontype", "Type",
+                "title");
+        modifyStringProperty(contentResource, "root/container_1575998991/dynamicpokemontype_956465200",
+                "Weakness", "title");
+        modifyStringProperty(contentResource, "root/container_982851773/image", imageSrc, "imageUrl");
+        resolver.commit();
+        if (logger.isInfoEnabled()) {
+            logger.info("Page created successfully at: {}", page.getPath());
+        }
     }
 
 
